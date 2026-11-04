@@ -1,11 +1,11 @@
 # Kapanış Notu: Memecoin Motoru
 
 **Tarih:** 4 Kasım 2026
-**Karar:** Aktif geliştirme ve "kendi sermayemizle işlem" hedefi durduruldu. Kod, veri ve raporlar arşivlendi.
+**Karar:** Aktif geliştirme ve "yüksek X yapacak coin'i erken yakalayıp kendi sermayemizle girmek" hedefi durduruldu. Kod, veri ve raporlar arşivlendi.
 
 ## Ne vardı
 
-Solana'da Pump.fun launch'larını public WebSocket ile dinleyen, ilk 600 saniyeyi kaydeden, kural tabanlı karar ve cüzdansız paper-trade üreten bir Python sistemi. 1 Eylül - 8 Ekim 2026 arasında 58.316 launch ve 2,09 milyon trade toplandı (10,2 GB SQLite). Collector takvimin %9,6'sında açıktı; trade verisi yalnızca 1-17 Eylül arasında sağlıklı (18 Eylül sonrası ücretsiz RPC kuyruğu yüzünden trade'ler düştü; neden ve ücretsiz çözümü `ANALIZ_15X_KOINLER_2026-10-23.md` §2'de).
+Solana'da Pump.fun launch'larını public WebSocket ile dinleyen, ilk 600 saniyeyi kaydeden, kural tabanlı karar ve cüzdansız paper-trade üreten bir Python sistemi. 1 Eylül - 8 Ekim 2026 arasında 58.316 launch ve 2,09 milyon trade toplandı (10,2 GB SQLite). Collector takvimin %9,6'sında açıktı; trade verisi yalnızca 1-17 Eylül arasında sağlıklı (18 Eylül sonrası ücretsiz RPC kuyruğu yüzünden trade'ler düştü; neden ve ücretsiz çözümü `ANALIZ_YUKSEK_X_KOINLER_2026-10-23.md` §2'de).
 
 ## Ne denendi, ne çıktı
 
@@ -21,7 +21,7 @@ Tüm testler zaman ayrımlı (eğitim 1-8 Eylül, test 9-17 Eylül), %3 maliyet 
 | Graduate sonrası PumpSwap (dakikalık, 1.278 havuz) | 15 dk'da fiyat medyan 0,19x. Tek sıfır-üstü hücre: migrasyondan ≤1 dk gir, 1,5x hedef / -25% stop → test +2% (±2,6), iyimser dolum varsayımıyla |
 | Sniper (kör) | Erken alımların ortalaması 0. sn'de +1-3%, sonrası negatif; kâr tamamen ilk blokta |
 
-Yapısal bulgular: "15x" pratikte graduate demek (eğri 14,7x). Graduate'lerin %63'ü launch ile aynı saniyede dolan paketli insider launch'ları. Dev medyan 8. saniyede satıyor. Yükselen coin'lerin zirvesi medyan 9. saniyede. Mayhem-mode coin'lerin fiyatı sanal rezerv şişmesi yüzünden sahte. Bizim zincir gecikmemiz medyan 22 sn.
+Yapısal bulgular: Yüksek X (15x ve üstü) pratikte graduate demek; bonding curve launch fiyatından dolum fiyatına 14,7x gider. Graduate'lerin %63'ü launch ile aynı saniyede dolan paketli insider launch'ları. Dev medyan 8. saniyede satıyor. Yükselen coin'lerin zirvesi medyan 9. saniyede. Mayhem-mode coin'lerin fiyatı sanal rezerv şişmesi yüzünden sahte. Bizim zincir gecikmemiz medyan 22 sn.
 
 **Sonuç:** Bu pazarda dışarıdan analizle seçilebilen bir edge yok. Para, coin'i çıkaran/paketleyene ve ilk blokta giren saniye altı botlara gidiyor. Edge yalnızca hızda; hız da aylık 150-500 $ altyapı + özel sunucu + Jito ile başlıyor ve orada bile garanti değil.
 
@@ -40,7 +40,7 @@ Yeniden açılırsa ilk iş değişmez: launch'ı WebSocket log'undan çözmek (
 | Kod (3.700 satır, 27 test) | `src/`, `tests/`; Git deposu (4 Kasım 2026 ilk commit) |
 | Veritabanı (10,2 GB) | Orijinal 4 Kasım 2026'da silindi. Tek kopya: `../memecoin_backup_2026-11-04/memecoin_motor.db.gz` (2,2 GB, gzip; bayt bayt doğrulandı). Geri almak için: `gzip -dc memecoin_motor.db.gz > data/memecoin_motor.db` (10,2 GB boş yer gerekir). Eski küçük `.bak` dosyaları da aynı klasörde |
 | Sistem/veri/gelir raporu | `ANALIZ_RAPORU_2026-10-14.md` |
-| 58.316 coin'in akıbeti, tüm strateji testleri | `ANALIZ_15X_KOINLER_2026-10-23.md` (§1-12) |
+| 58.316 coin'in akıbeti, tüm strateji testleri | `ANALIZ_YUKSEK_X_KOINLER_2026-10-23.md` (§1-12) |
 | Coin bazlı otopsi (max X, kim sattı) | `analiz_ekleri/coin_otopsi.csv` |
 | Creator satışı sonrası, akıllı cüzdan, sürme, PumpSwap testleri | `analiz_ekleri/*.txt`, `analiz_ekleri/*.csv` |
 | Zincir durumu (graduate), PumpSwap gün/dakika mumları | `analiz_ekleri/15x/` |

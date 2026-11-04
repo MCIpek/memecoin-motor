@@ -1,7 +1,7 @@
-# 58.316 Coin'in Akıbeti: 15x Erken Tespit Edilebilir mi?
+# 58.316 Coin'in Akıbeti: Yüksek X Yapacak Coin Erken Tespit Edilebilir mi?
 
 **Tarih:** 23-26 Ekim 2026 (sürüm 3, final: zincir durumu 58.316 coin'in tamamı; PumpSwap zirve verisi 1.853 graduate havuzunun tamamı)
-**Soru:** Elimizdeki 10 GB veride kayıtlı 58.316 Pump.fun launch'ının sonradan ne olduğuna bakarak, "büyük X yapacak coin"i ilk dakikalarda ayırt etmek mümkün mü? Mümkünse kendimiz girmeli miyiz, yoksa bunu araç olarak mı satmalıyız?
+**Soru:** Elimizdeki 10 GB veride kayıtlı 58.316 Pump.fun launch'ının sonradan ne olduğuna bakarak, yüksek X yapacak coin'i ilk dakikalarda ayırt etmek mümkün mü? Mümkünse kendimiz girmeli miyiz, yoksa bunu araç olarak mı satmalıyız?
 **Yöntem:**
 1. Veritabanındaki 58.316 mint'in tamamı için bonding-curve hesabı Solana public RPC'den okundu (`getMultipleAccounts`, 584 çağrı, 0 hata). Böylece her coin için zincirdeki **kesin** durum elde edildi: graduate oldu mu (`complete`), şu anki rezervler, mayhem bayrağı.
 2. Graduate olan 2.020 coin için PumpSwap havuzu ve günlük fiyat geçmişi GeckoTerminal'den çekiliyor (ücretsiz API dakikada ~7 istek; ~5 saat sürüyor, devam ediyor).
@@ -14,7 +14,7 @@ Etiketler: `[DOĞRULANDI]` zincir veya veritabanıyla; `[ÇIKARIM]` veriden tür
 
 ## 1. Beş cümlelik sonuç
 
-1. **Bu veride "15x" demek "graduate oldu" demek.** Pump.fun eğrisi launch fiyatından dolum fiyatına tam 14,7x yol alır; eğri dolmadan 15x olmaz, eğri dolan her coin de tanım gereği 14,7x'tir. `[DOĞRULANDI]`
+1. **Bu veride "yüksek X" pratikte "graduate oldu" demek.** Pump.fun eğrisi launch fiyatından dolum fiyatına tam 14,7x yol alır; eğri dolmadan 15x olmaz, eğri dolan her coin de tanım gereği 14,7x'tir. `[DOĞRULANDI]`
 2. **58.316 coin'in %3,7'si (2.020) graduate olmuş;** mayhem dışı SOL coin'lerde %4,1 (1.436). Geri kalan %96 eğrinin ilk %1'inde ölmüş ve launch fiyatına geri dönmüş. `[DOĞRULANDI]`
 3. **Graduate olanların %63'ü (906) launch ile aynı saniyede, ortalama 2,8 cüzdanla ve tek alıcının alımların %79'unu yaptığı "paketli anında dolum" launch'ları.** Bunlar biz görmeden bitmiş; bize sadece çıkış likiditesi rolü kalır. Erişilebilir hedef, 600 saniyeden sonra graduate olan **398 coin (%1,1)**. `[DOĞRULANDI]`
 4. **İlk 60 saniye özellikleri bu %1,1'lik hedefi 4-12 kat zenginleştirebiliyor** (örneğin 60 sn'de 15 SOL+ net giriş ve eğri henüz dolmamışsa graduate oranı %7,3). **Ama 60. saniyede girip gerçek PumpSwap fiyatlarıyla çıkınca gerçekçi her senaryoda her kural zarar ediyor (-6% ile -49%); en iyimser senaryoda bile en iyi kural +5% ile sıfır civarı.** Erişilebilir graduate'lerin dolum sonrası koşusu medyan 1,83x ve aynı gün çöküyor; bugün %89'u launch fiyatının altında. Sinyal var, para yok. `[DOĞRULANDI, 1.853 graduate havuzunun tamamı]`
@@ -82,14 +82,14 @@ Erişilebilir hedef, mayhem dışı launch'ların **%1,1'i**. "Anında dolum" gr
 
 ---
 
-## 4. 15x nerede oluşuyor?
+## 4. Yüksek X nerede oluşuyor?
 
 - Launch fiyatından eğri dolumuna kadar yol: **14,7x** (fiyat sanal SOL rezervinin karesiyle büyür; 30 → 115 SOL).
 - 60. saniyede gördüğümüz giriş fiyatı launch fiyatının medyan **1,02x**'i (p90: 2,09x). Yani sağlıklı bir 60 sn girişinden graduate'e kadar yaklaşık 14x kalıyor.
 - Graduate sonrası PumpSwap koşusu ne kadar? **Bu, GeckoTerminal taraması bitince eklenecek.** Erken örnekleme (ilk 240 coin) güvenilir değil; tam tabloyu bekliyoruz.
 - Mayhem dışı coin'lerde 600 sn içinde 10 sn girişinden 15x: **0 / 4.209** (önceki rapor). Eğri dolmadan 15x yok.
 
-Sonuç: "15x coin'i yakalamak" sorusu pratikte "600 saniyeden sonra graduate olacak %1,1'i ilk 60 saniyede seçmek ve graduate sonrası koşuyu yakalamak" sorusuna indirgeniyor.
+Sonuç: "yüksek X yapacak coin'i yakalamak" sorusu pratikte "600 saniyeden sonra graduate olacak %1,1'i ilk 60 saniyede seçmek ve graduate sonrası koşuyu yakalamak" sorusuna indirgeniyor.
 
 ---
 

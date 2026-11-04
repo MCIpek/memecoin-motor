@@ -41,10 +41,10 @@ If reopened, the first task does not change: decode launches from the WebSocket 
 | Database (10.2 GB) | Original deleted on 4 Nov 2026. Single copy: `../memecoin_backup_2026-11-04/memecoin_motor.db.gz` (2.2 GB gzip; verified byte for byte). Restore: `gzip -dc memecoin_motor.db.gz > data/memecoin_motor.db` (needs 10.2 GB free). Old small `.bak` files in the same folder |
 | System/data/revenue report | `ANALYSIS_REPORT_2026-10-14.md` |
 | Fate of 58,316 coins, all strategy tests | `HIGH_X_COINS_ANALYSIS_2026-10-23.md` (§1-12) |
-| Per-coin autopsy (max X, who sold) | `analiz_ekleri/coin_otopsi.csv` |
-| Post-creator-sell, smart-wallet, ride and PumpSwap tests | `analiz_ekleri/*.txt`, `analiz_ekleri/*.csv` |
-| Chain state (graduation), PumpSwap daily/minute candles | `analiz_ekleri/15x/` |
-| All scripts (read-only, re-runnable) | `analiz_ekleri/*.py`, `analiz_ekleri/15x/*.py` |
-| Original Turkish documents | `TURKCE.md` |
+| Per-coin autopsy (max X, who sold) | `turkish/analiz_ekleri/coin_otopsi.csv` |
+| Post-creator-sell, smart-wallet, ride and PumpSwap tests | `turkish/analiz_ekleri/*.txt`, `turkish/analiz_ekleri/*.csv` |
+| Chain state (graduation), PumpSwap daily/minute candles | `turkish/analiz_ekleri/15x/` |
+| All scripts (read-only, re-runnable) | `turkish/analiz_ekleri/*.py`, `turkish/analiz_ekleri/15x/*.py` |
+| Original Turkish documents | `turkish/TURKCE.md` |
 
 The scripts open the database with `mode=ro` only; no test modified production data and no real transaction was ever sent.

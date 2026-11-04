@@ -9,8 +9,8 @@ Documents:
 - [HIGH_X_COINS_ANALYSIS_2026-10-23.md](HIGH_X_COINS_ANALYSIS_2026-10-23.md): what happened to all 58,316 coins, and every strategy test
 - [CLOSING_NOTE_2026-11-04.md](CLOSING_NOTE_2026-11-04.md): decision, results, conditions to reopen
 - [DESIGN_v2.md](DESIGN_v2.md): the original design document the code implements
-- [TURKCE.md](TURKCE.md): all original Turkish documents in one file
-- `analiz_ekleri/`: raw outputs and read-only analysis scripts (the 10 GB SQLite database is not in the repo)
+- [turkish/TURKCE.md](turkish/TURKCE.md): all original Turkish documents in one file
+- `turkish/analiz_ekleri/`: raw outputs and read-only analysis scripts (the 10 GB SQLite database is not in the repo)
 
 The rest of this file is the operational README of the engine as it was at the end of collection.
 

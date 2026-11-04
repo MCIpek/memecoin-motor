@@ -163,7 +163,7 @@ No group shows positive expectancy after fees. The calibration table (`x_band_ca
 - `wallet_positions` vs trade aggregates: all 608,540 positions match the trade totals (buy tokens, buy/sell counts) with **0 mismatches** (full scan, 263 s). This table is reliable.
 - Graduation proximity could only be measured inside the 600 s window; no post-PumpSwap data. Within 600 s: 1,859 of 50,739 SOL-quote mints (3.7%) reached `virtual_sol_reserves ≥ 115 SOL` (≈ 85 SOL real, curve full); 2,747 reached ≥ 85, 4,700 reached ≥ 60. Consistent with the public 1-3% graduation band but an upper bound because nothing after 600 s is tracked. (The 23 Oct analysis later read the chain directly for all mints.)
 
-Raw check outputs and the script are in `analiz_ekleri/` (`dq_check.py`, `dq_results*.txt`); the script opens the database read-only.
+Raw check outputs and the script are in `turkish/analiz_ekleri/` (`dq_check.py`, `dq_results*.txt`); the script opens the database read-only.
 
 ---
 

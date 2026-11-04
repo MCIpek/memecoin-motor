@@ -4,7 +4,7 @@ import sys; sys.stdout.reconfigure(encoding="utf-8")
 import json, os, statistics, datetime
 from collections import defaultdict
 G = r"C:/Users/PD/AppData/Local/Temp/claude/C--Users-PD-project-claude-memecoin/5a0f1dfe-1637-4fac-95a3-1703257554c2/scratchpad/gecko/"
-OUT = r"C:/Users/PD/project_claude/memecoin/analiz_ekleri/pumpswap_dakika_testi.txt"
+OUT = r"C:/Users/PD/project_claude/memecoin/turkish/analiz_ekleri/pumpswap_dakika_testi.txt"
 FEE = 0.03          # PumpSwap: 0.25-0.3% swap + bot fee ~1% + slippage; 3% toplam gidiş-dönüş varsayımı
 out = open(OUT, "w", encoding="utf-8")
 def log(*a):

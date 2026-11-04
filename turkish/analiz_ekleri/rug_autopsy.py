@@ -6,9 +6,9 @@ from itertools import groupby
 
 ROOT = r"C:/Users/PD/project_claude/memecoin/"
 DB = ROOT + "data/memecoin_motor.db"
-EK = ROOT + "analiz_ekleri/15x/"
-OUT_CSV = ROOT + "analiz_ekleri/coin_otopsi.csv"
-OUT_TXT = ROOT + "analiz_ekleri/coin_otopsi_ozet.txt"
+EK = ROOT + "turkish/analiz_ekleri/15x/"
+OUT_CSV = ROOT + "turkish/analiz_ekleri/coin_otopsi.csv"
+OUT_TXT = ROOT + "turkish/analiz_ekleri/coin_otopsi_ozet.txt"
 P0 = 30e9 / 1.073e15            # launch price (lamports per raw token unit ratio)
 GRAD_X = (115 / 30) ** 2
 HEALTHY = {"2026-09-01","2026-09-03","2026-09-04","2026-09-07","2026-09-08","2026-09-09","2026-09-15","2026-09-16","2026-09-17"}

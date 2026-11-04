@@ -6,7 +6,7 @@
 1. The bonding-curve account of every one of the 58,316 mints was read from the public Solana RPC (`getMultipleAccounts`, 584 calls, 0 errors). This gives the **definitive** chain state per coin: graduated or not (`complete`), current reserves, mayhem flag.
 2. For the 2,020 graduated coins, the PumpSwap pool and its daily price history were fetched from GeckoTerminal (free API, ~7 requests/minute, ~5 hours).
 3. These were joined with the database's first-10/30/60-second features, risk decisions and creator history.
-4. All queries are read-only; production data was not modified. Raw outputs are under `analiz_ekleri/15x/`.
+4. All queries are read-only; production data was not modified. Raw outputs are under `turkish/analiz_ekleri/15x/`.
 
 Tags: `[VERIFIED]` by chain or database; `[INFERENCE]` derived from data; `[ASSUMPTION]` could not be verified.
 
@@ -219,7 +219,7 @@ Peak-data coverage: 732 of the 848 graduates on healthy days (103 of the 104 rea
 ## 10. Additional test (3 Nov): smart-wallet copying `[VERIFIED]`
 
 Question: are there wallets that consistently enter early and exit with profit, and does copying them leave a profit?
-Method: every wallet's first-60-second buys on 1-8 Sep (train) were scored; on 9-17 Sep (test) those wallets were copied. Copy rule: enter d seconds after the wallet buys, exit d seconds after its first sell, otherwise exit at 600 s; 3% cost. 16,722 coins, 47,852 wallets, 268k early buys. Details: `analiz_ekleri/akilli_cuzdan_ozet.txt`, list: `analiz_ekleri/akilli_cuzdan_listesi.csv`.
+Method: every wallet's first-60-second buys on 1-8 Sep (train) were scored; on 9-17 Sep (test) those wallets were copied. Copy rule: enter d seconds after the wallet buys, exit d seconds after its first sell, otherwise exit at 600 s; 3% cost. 16,722 coins, 47,852 wallets, 268k early buys. Details: `turkish/analiz_ekleri/akilli_cuzdan_ozet.txt`, list: `turkish/analiz_ekleri/akilli_cuzdan_listesi.csv`.
 
 | Wallet quintile by train score | Test, no delay (+0 s) | Test, +1 s | Test, +2 s | Test, +5 s | Test, +22 s (our latency) |
 |---|---:|---:|---:|---:|---:|
@@ -237,7 +237,7 @@ Signal frequency for the best wallet rule: ~19 coins/hour of collection, ~13,800
 
 ## 11. Additional test (3 Nov): "see the coin, enter, ride" `[VERIFIED]`
 
-Question: without picking wallets, what happens if we enter a coin as soon as we see it and ride with an exit rule? Details: `analiz_ekleri/coin_surme_testi.txt`.
+Question: without picking wallets, what happens if we enter a coin as soon as we see it and ride with an exit rule? Details: `turkish/analiz_ekleri/coin_surme_testi.txt`.
 Method: healthy days, non-mayhem; entry at the first trade +2 s (WebSocket scenario), +5 s, +22 s (current latency) after launch; 8 exit rules (hold, 60 s, target/stop pairs, trailing stop 25%/40%, staged); 6 launch-time filters; 3% cost; train 1-8 Sep, test 9-17 Sep.
 
 Result: **all 144 combinations are negative in the test period.** Unfiltered +2 s entry, best rule (trailing stop 25%): train -4.5%, test -3.2%; at +22 s -3.7% / -3.5%. Cutting latency from 22 to 2 seconds does not change the result. Best filter (creator's first launch, dev first buy 0.5-3 SOL, trailing 25%): train +0.8%, test -2.9%; indistinguishable from zero. The "dev first buy ≥5 SOL" filter is the worst (-10% … -23%): those are bundled dumps. Win rate across all combinations 6-22%.
@@ -246,7 +246,7 @@ Interpretation: entering early and riding loses at every latency between 2 and 2
 
 ## 12. Additional test (4 Nov): post-graduation PumpSwap, minute level `[VERIFIED]`
 
-Data: minute candles for the first ~16 hours after migration for 1,278 non-mayhem graduate pools (GeckoTerminal, free; 1,251 with ≥10 candles). Wicks capped at 1.5× the candle body; means winsorized at 10x per trade; 3% cost. Train: migration ≤ 21 Sep; test: later. Details: `analiz_ekleri/pumpswap_dakika_testi.txt`, raw candles: `analiz_ekleri/15x/minute_graduated.jsonl`.
+Data: minute candles for the first ~16 hours after migration for 1,278 non-mayhem graduate pools (GeckoTerminal, free; 1,251 with ≥10 candles). Wicks capped at 1.5× the candle body; means winsorized at 10x per trade; 3% cost. Train: migration ≤ 21 Sep; test: later. Details: `turkish/analiz_ekleri/pumpswap_dakika_testi.txt`, raw candles: `turkish/analiz_ekleri/15x/minute_graduated.jsonl`.
 
 **Price path (reachable group, 365 pools, migration open = 1.0):** +1 min median 0.99; +5 min 0.91; +15 min **0.19**; +60 min 0.07; +6 h 0.06. Peak at a median of minute 4; 57% within the first 5 minutes. No "buy and hold" on PumpSwap; at most a 1-5 minute pop, absent in half of the pools.
 

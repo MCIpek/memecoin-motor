@@ -1,7 +1,7 @@
 """Graduate sonrası ilk ~16 saat dakikalık mumlar (GeckoTerminal, ücretsiz, ~5/dk). Mayhem dışı graduate'ler, rastgele sıra, resumable."""
 import json, os, sqlite3, time, random, datetime, urllib.request, urllib.error
 G = r"C:\Users\PD\AppData\Local\Temp\claude\C--Users-PD-project-claude-memecoin\5a0f1dfe-1637-4fac-95a3-1703257554c2\scratchpad\gecko"
-EK = r"C:\Users\PD\project_claude\memecoin\analiz_ekleri\15x"
+EK = r"C:\Users\PD\project_claude\memecoin\turkish\analiz_ekleri\15x"
 OUT = os.path.join(G, "minute_graduated.jsonl"); LOG = os.path.join(G, "progress_minute.log")
 INTERVAL = 7.0; _last = [0.0]
 def log(m):

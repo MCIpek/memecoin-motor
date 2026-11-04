@@ -5,7 +5,7 @@
 **First scope:** a single launchpad/program
 **Approach:** deterministic rules + classical ML + agentic research/audit
 
-This is the English version of the original design document (`memecoin_analiz_motoru_v2.md`, kept in `TURKCE.md`). Sections 19-20 describe what was actually implemented; the ML and agentic layers (sections 9, 13) were never built.
+This is the English version of the original design document (`memecoin_analiz_motoru_v2.md`, kept in `turkish/TURKCE.md`). Sections 19-20 describe what was actually implemented; the ML and agentic layers (sections 9, 13) were never built.
 
 ## 1. Purpose
 

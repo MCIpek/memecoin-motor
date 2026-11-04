@@ -17,7 +17,7 @@ This file collects the original Turkish documents in one place. English versions
 
 ## Memecoin Motoru
 
-> **English summary.** A Solana research engine for Pump.fun launches: event-time data pipeline (WebSocket + IDL decoding), rule-based risk scoring and wallet-free, bonding-curve-aware paper trading. Between 1 Sep and 8 Oct 2026 it recorded 58,316 launches and 2.09M trades; every coin's fate was then read back from chain (graduation flag) and PumpSwap price history. **Verdict:** 63% of graduates are filled in the launch block by insiders; the dev sells at a median of 8 s; every outsider entry strategy tested (early-feature selection, post-dev-exit entry, smart-wallet copying, enter-and-ride, post-graduation minute trading) has negative expected value after costs, and the only positive edge exists at 0-second (same-block) latency. Reports are in Turkish: `ANALIZ_RAPORU_2026-10-14.md` (system/data/revenue), `ANALIZ_YUKSEK_X_KOINLER_2026-10-23.md` (58k-coin post-mortem and strategy tests), `KAPANIS_NOTU_2026-11-04.md` (closing note). Raw outputs and read-only analysis scripts live in `analiz_ekleri/`. The 10 GB SQLite database is not in the repo.
+> **English summary.** A Solana research engine for Pump.fun launches: event-time data pipeline (WebSocket + IDL decoding), rule-based risk scoring and wallet-free, bonding-curve-aware paper trading. Between 1 Sep and 8 Oct 2026 it recorded 58,316 launches and 2.09M trades; every coin's fate was then read back from chain (graduation flag) and PumpSwap price history. **Verdict:** 63% of graduates are filled in the launch block by insiders; the dev sells at a median of 8 s; every outsider entry strategy tested (early-feature selection, post-dev-exit entry, smart-wallet copying, enter-and-ride, post-graduation minute trading) has negative expected value after costs, and the only positive edge exists at 0-second (same-block) latency. Reports are in Turkish: `ANALIZ_RAPORU_2026-10-14.md` (system/data/revenue), `ANALIZ_YUKSEK_X_KOINLER_2026-10-23.md` (58k-coin post-mortem and strategy tests), `KAPANIS_NOTU_2026-11-04.md` (closing note). Raw outputs and read-only analysis scripts live in `turkish/analiz_ekleri/`. The 10 GB SQLite database is not in the repo.
 
 Bu depo, `memecoin_analiz_motoru_v2.md` tasariminin uygulamasidir. Sistem veri
 toplar, kural karari ve cuzdansiz paper test uretir; gercek alim-satim yapmaz,
@@ -513,7 +513,7 @@ Hiçbir grup ücret sonrası pozitif beklenti vermiyor. Kalibrasyon tablosu (`x_
 - Launch kapsaması (public WS'nin kaçırdığı Create olayları) dış referans olmadan ölçülemedi. Önerilen sorgu: Bitquery `Solana.Instructions` ile 4 Eylül 05:41-13:41 UTC penceresinde `create_v2` sayısını alıp 6.670 ile karşılaştırmak.
 - `wallet_positions` ile trade toplamlarının tam eşleşmesi: 608.540 pozisyonun tamamı trade toplamlarıyla (alım token, alım/satım sayısı) **0 uyumsuz** (tam tarama, 263 sn). Bu tablo güvenilir.
 
-Ham kontrol çıktıları ve çalıştırılan betik `analiz_ekleri/` klasöründe (`dq_check.py`, `dq_results*.txt`); betik veritabanını yalnızca `mode=ro` ile açar.
+Ham kontrol çıktıları ve çalıştırılan betik `turkish/analiz_ekleri/` klasöründe (`dq_check.py`, `dq_results*.txt`); betik veritabanını yalnızca `mode=ro` ile açar.
 - Graduation yakınlığı (bonding curve dolumu) yalnızca 600 sn penceresi içinde ölçülebiliyor; PumpSwap sonrası veri yok. 600 sn içinde ölçülebilen kadarı: 50.739 SOL-quote mint'in 1.859'u (%3,7) `virtual_sol_reserves ≥ 115 SOL` (≈ 85 SOL gerçek rezerv, curve dolumu) seviyesine ulaşmış; 2.747'si ≥ 85 SOL, 4.700'ü ≥ 60 SOL. Bu oran kamu kaynaklarındaki %1-3 graduation bandıyla uyumlu ama 600 sn sonrası izlenmediği için üst sınırdır.
 
 ---
@@ -694,7 +694,7 @@ Not: Fiyat ve oran kaynaklarının bir kısmı satıcı veya affiliate içeriği
 1. Veritabanındaki 58.316 mint'in tamamı için bonding-curve hesabı Solana public RPC'den okundu (`getMultipleAccounts`, 584 çağrı, 0 hata). Böylece her coin için zincirdeki **kesin** durum elde edildi: graduate oldu mu (`complete`), şu anki rezervler, mayhem bayrağı.
 2. Graduate olan 2.020 coin için PumpSwap havuzu ve günlük fiyat geçmişi GeckoTerminal'den çekiliyor (ücretsiz API dakikada ~7 istek; ~5 saat sürüyor, devam ediyor).
 3. Bunlar veritabanındaki ilk 10/30/60 saniye özellikleri, risk kararları ve creator geçmişiyle eşleştirildi.
-4. Tüm sorgular salt-okunur; üretim verisi değiştirilmedi. Ham çıktılar `analiz_ekleri/15x/` altında.
+4. Tüm sorgular salt-okunur; üretim verisi değiştirilmedi. Ham çıktılar `turkish/analiz_ekleri/15x/` altında.
 
 Etiketler: `[DOĞRULANDI]` zincir veya veritabanıyla; `[ÇIKARIM]` veriden türetilmiş yorum; `[VARSAYIM]` doğrulanamadı.
 
@@ -904,14 +904,14 @@ Zirve verisi kapsamı: sağlıklı günlerdeki 848 graduate'in 732'si (erişileb
 
 ### Ekler
 
-`analiz_ekleri/15x/`: `curves.jsonl` (58.316 zincir durumu), `curve_scan.py`, `grad_features3.py` ve çıktıları, `x15_check*.py` ve çıktıları, GeckoTerminal çıktıları (tamamlanınca).
+`turkish/analiz_ekleri/15x/`: `curves.jsonl` (58.316 zincir durumu), `curve_scan.py`, `grad_features3.py` ve çıktıları, `x15_check*.py` ve çıktıları, GeckoTerminal çıktıları (tamamlanınca).
 
 ---
 
 ### 10. Ek test (3 Kasım): akıllı cüzdan kopyalama `[DOĞRULANDI]`
 
 Soru: Erken girip kârla çıkmayı sürekli başaran cüzdanlar var mı, ve onları kopyalamak kâr bırakır mı?
-Yöntem: 1-8 Eylül'de (train) her cüzdanın ilk 60 saniyedeki alımları puanlandı; 9-17 Eylül'de (test) bu cüzdanlar kopyalandı. Kopya kuralı: cüzdan alınca +d sn sonra gir, cüzdan ilk sattığında +d sn sonra çık, satmazsa 600. saniyede çık; %3 maliyet. 16.722 coin, 47.852 cüzdan, 268 bin erken alım. Ayrıntı: `analiz_ekleri/akilli_cuzdan_ozet.txt`, liste: `analiz_ekleri/akilli_cuzdan_listesi.csv`.
+Yöntem: 1-8 Eylül'de (train) her cüzdanın ilk 60 saniyedeki alımları puanlandı; 9-17 Eylül'de (test) bu cüzdanlar kopyalandı. Kopya kuralı: cüzdan alınca +d sn sonra gir, cüzdan ilk sattığında +d sn sonra çık, satmazsa 600. saniyede çık; %3 maliyet. 16.722 coin, 47.852 cüzdan, 268 bin erken alım. Ayrıntı: `turkish/analiz_ekleri/akilli_cuzdan_ozet.txt`, liste: `turkish/analiz_ekleri/akilli_cuzdan_listesi.csv`.
 
 | Train skoruna göre cüzdan dilimi | Test, gecikmesiz (+0 sn) | Test, +5 sn | Test, +22 sn (bizim gecikmemiz) |
 |---|---:|---:|---:|
@@ -927,7 +927,7 @@ Okuma:
 
 ### 11. Ek test (3 Kasım): "coin'i gör, gir, hareketi sür" `[DOĞRULANDI]`
 
-Soru: Cüzdan seçmeden, coin'i gördüğümüz an girip çıkış kuralıyla ilerlersek ne olur? Ayrıntı: `analiz_ekleri/coin_surme_testi.txt`.
+Soru: Cüzdan seçmeden, coin'i gördüğümüz an girip çıkış kuralıyla ilerlersek ne olur? Ayrıntı: `turkish/analiz_ekleri/coin_surme_testi.txt`.
 Yöntem: Sağlıklı günler, mayhem dışı; giriş launch'tan +2 sn (WebSocket senaryosu), +5 sn, +22 sn (bugünkü gecikme) sonraki ilk işlem fiyatı; 8 çıkış kuralı (tut, 60 sn, hedef/stop çiftleri, iz süren stop %25/%40, kademeli); 6 launch-anı filtresi; %3 maliyet; train 1-8 Eylül, test 9-17 Eylül.
 
 Sonuç: **144 kombinasyonun tamamında test dönemi negatif.** Filtresiz +2 sn girişte en iyi kural (iz süren stop %25) train -4,5%, test -3,2%; +22 sn'de -3,7% / -3,5%. Gecikmeyi 22'den 2 saniyeye indirmek sonucu değiştirmiyor. En iyi filtre (creator'ın ilk launch'ı, dev ilk alımı 0,5-3 SOL, iz süren %25) train +0,8%, test -2,9%; sıfırdan ayırt edilemez. "Dev ilk alımı ≥5 SOL" filtresi en kötüsü (-10% … -23%): bunlar paketli dump'lar. Kazanma oranı tüm kombinasyonlarda %6-22.
@@ -936,7 +936,7 @@ Yorum: Erken girip sürmek, 2 ile 22 saniye arasındaki her gecikmede zarar. Ara
 
 ### 12. Ek test (4 Kasım): graduate sonrası PumpSwap, dakikalık `[DOĞRULANDI]`
 
-Veri: Mayhem dışı 1.278 graduate havuzun migrasyon sonrası ilk ~16 saatlik dakikalık mumları (GeckoTerminal, ücretsiz; 1.251'inde ≥10 mum). Fitiller mum gövdesinin 1,5 katında kırpıldı; ortalamalar işlem başına 10x ile tavanlandı; %3 maliyet. Train: migrasyon ≤ 21 Eylül; test: sonrası. Ayrıntı: `analiz_ekleri/pumpswap_dakika_testi.txt`, ham mumlar: `analiz_ekleri/15x/minute_graduated.jsonl`.
+Veri: Mayhem dışı 1.278 graduate havuzun migrasyon sonrası ilk ~16 saatlik dakikalık mumları (GeckoTerminal, ücretsiz; 1.251'inde ≥10 mum). Fitiller mum gövdesinin 1,5 katında kırpıldı; ortalamalar işlem başına 10x ile tavanlandı; %3 maliyet. Train: migrasyon ≤ 21 Eylül; test: sonrası. Ayrıntı: `turkish/analiz_ekleri/pumpswap_dakika_testi.txt`, ham mumlar: `turkish/analiz_ekleri/15x/minute_graduated.jsonl`.
 
 **Fiyat yolu (erişilebilir grup, 365 havuz, migrasyon açılışı = 1,0):** +1 dk medyan 0,99; +5 dk 0,91; +15 dk **0,19**; +60 dk 0,07; +6 saat 0,06. Zirve medyan 4. dakikada; %57'si ilk 5 dakikada. Yani PumpSwap'ta "al-tut" yok; olsa olsa ilk 1-5 dakikalık bir sıçrama var ve havuzların yarısında o da yok.
 
@@ -1003,10 +1003,10 @@ Yeniden açılırsa ilk iş değişmez: launch'ı WebSocket log'undan çözmek (
 | Veritabanı (10,2 GB) | Orijinal 4 Kasım 2026'da silindi. Tek kopya: `../memecoin_backup_2026-11-04/memecoin_motor.db.gz` (2,2 GB, gzip; bayt bayt doğrulandı). Geri almak için: `gzip -dc memecoin_motor.db.gz > data/memecoin_motor.db` (10,2 GB boş yer gerekir). Eski küçük `.bak` dosyaları da aynı klasörde |
 | Sistem/veri/gelir raporu | `ANALIZ_RAPORU_2026-10-14.md` |
 | 58.316 coin'in akıbeti, tüm strateji testleri | `ANALIZ_YUKSEK_X_KOINLER_2026-10-23.md` (§1-12) |
-| Coin bazlı otopsi (max X, kim sattı) | `analiz_ekleri/coin_otopsi.csv` |
-| Creator satışı sonrası, akıllı cüzdan, sürme, PumpSwap testleri | `analiz_ekleri/*.txt`, `analiz_ekleri/*.csv` |
-| Zincir durumu (graduate), PumpSwap gün/dakika mumları | `analiz_ekleri/15x/` |
-| Tüm betikler (salt-okunur, yeniden çalıştırılabilir) | `analiz_ekleri/*.py`, `analiz_ekleri/15x/*.py` |
+| Coin bazlı otopsi (max X, kim sattı) | `turkish/analiz_ekleri/coin_otopsi.csv` |
+| Creator satışı sonrası, akıllı cüzdan, sürme, PumpSwap testleri | `turkish/analiz_ekleri/*.txt`, `turkish/analiz_ekleri/*.csv` |
+| Zincir durumu (graduate), PumpSwap gün/dakika mumları | `turkish/analiz_ekleri/15x/` |
+| Tüm betikler (salt-okunur, yeniden çalıştırılabilir) | `turkish/analiz_ekleri/*.py`, `turkish/analiz_ekleri/15x/*.py` |
 
 Betikler veritabanını yalnızca `mode=ro` ile açar; hiçbir test üretim verisini değiştirmedi, hiçbir gerçek işlem gönderilmedi.
 

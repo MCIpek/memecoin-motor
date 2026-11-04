@@ -38,7 +38,7 @@ Yeniden açılırsa ilk iş değişmez: launch'ı WebSocket log'undan çözmek (
 | Ne | Yer |
 |---|---|
 | Kod (3.700 satır, 27 test) | `src/`, `tests/`; Git deposu (4 Kasım 2026 ilk commit) |
-| Veritabanı (10,2 GB) | `data/memecoin_motor.db` (Git dışı); sıkıştırılmış yedek `../memecoin_backup_2026-11-04/` |
+| Veritabanı (10,2 GB) | Orijinal 4 Kasım 2026'da silindi. Tek kopya: `../memecoin_backup_2026-11-04/memecoin_motor.db.gz` (2,2 GB, gzip; bayt bayt doğrulandı). Geri almak için: `gzip -dc memecoin_motor.db.gz > data/memecoin_motor.db` (10,2 GB boş yer gerekir). Eski küçük `.bak` dosyaları da aynı klasörde |
 | Sistem/veri/gelir raporu | `ANALIZ_RAPORU_2026-10-14.md` |
 | 58.316 coin'in akıbeti, tüm strateji testleri | `ANALIZ_15X_KOINLER_2026-10-23.md` (§1-12) |
 | Coin bazlı otopsi (max X, kim sattı) | `analiz_ekleri/coin_otopsi.csv` |

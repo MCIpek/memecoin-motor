@@ -1,5 +1,7 @@
 # Memecoin Motoru
 
+> **English summary.** A Solana research engine for Pump.fun launches: event-time data pipeline (WebSocket + IDL decoding), rule-based risk scoring and wallet-free, bonding-curve-aware paper trading. Between 1 Sep and 8 Oct 2026 it recorded 58,316 launches and 2.09M trades; every coin's fate was then read back from chain (graduation flag) and PumpSwap price history. **Verdict:** 63% of graduates are filled in the launch block by insiders; the dev sells at a median of 8 s; every outsider entry strategy tested (early-feature selection, post-dev-exit entry, smart-wallet copying, enter-and-ride, post-graduation minute trading) has negative expected value after costs, and the only positive edge exists at 0-second (same-block) latency. Reports are in Turkish: `ANALIZ_RAPORU_2026-10-14.md` (system/data/revenue), `ANALIZ_YUKSEK_X_KOINLER_2026-10-23.md` (58k-coin post-mortem and strategy tests), `KAPANIS_NOTU_2026-11-04.md` (closing note). Raw outputs and read-only analysis scripts live in `analiz_ekleri/`. The 10 GB SQLite database is not in the repo.
+
 Bu depo, `memecoin_analiz_motoru_v2.md` tasariminin uygulamasidir. Sistem veri
 toplar, kural karari ve cuzdansiz paper test uretir; gercek alim-satim yapmaz,
 cuzdan istemez ve henuz ML/agent calistirmaz.

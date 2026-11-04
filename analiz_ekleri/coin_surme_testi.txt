@@ -1,0 +1,110 @@
+coins 17577
+  4000/17577 79s
+  8000/17577 166s
+  12000/17577 230s
+  16000/17577 314s
+computed 336s
+
+=== A. Filtre yok, giriş gecikmesine ve çıkış kuralına göre (ücret %3 dahil) ===
+
+  giriş +2 sn:
+    600 sn sonuna kadar tut                  | train n= 9946 ort   -8.8% (±0.6) kazan    8% medyan 0.937 | test n= 3542 ort   -4.7% (±1.2) kazan   10% medyan 0.941
+    60 sn sonra çık                          | train n= 9946 ort   -6.2% (±0.4) kazan   14% medyan 0.964 | test n= 3542 ort   -3.6% (±0.8) kazan   17% medyan 0.968
+    2x hedef / -30% stop                     | train n= 9946 ort   -6.7% (±0.3) kazan   10% medyan 0.946 | test n= 3542 ort   -6.1% (±0.5) kazan   12% medyan 0.951
+    1.5x hedef / -20% stop                   | train n= 9946 ort   -6.1% (±0.2) kazan   13% medyan 0.954 | test n= 3542 ort   -6.1% (±0.4) kazan   14% medyan 0.960
+    3x hedef / -40% stop                     | train n= 9946 ort   -8.0% (±0.4) kazan    8% medyan 0.939 | test n= 3542 ort   -5.9% (±0.7) kazan   10% medyan 0.944
+    iz süren stop %25                        | train n= 9946 ort   -4.5% (±0.3) kazan   14% medyan 0.957 | test n= 3542 ort   -3.2% (±0.9) kazan   13% medyan 0.960
+    iz süren stop %40                        | train n= 9946 ort   -5.7% (±0.5) kazan   11% medyan 0.951 | test n= 3542 ort   -3.8% (±1.0) kazan   12% medyan 0.953
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 9946 ort   -5.9% (±0.3) kazan   14% medyan 0.957 | test n= 3542 ort   -4.6% (±0.7) kazan   15% medyan 0.963
+
+  giriş +5 sn:
+    600 sn sonuna kadar tut                  | train n= 9650 ort   -8.2% (±0.6) kazan    8% medyan 0.945 | test n= 3387 ort   -4.4% (±1.2) kazan    9% medyan 0.954
+    60 sn sonra çık                          | train n= 9650 ort   -5.9% (±0.3) kazan   14% medyan 0.964 | test n= 3387 ort   -3.7% (±0.7) kazan   17% medyan 0.969
+    2x hedef / -30% stop                     | train n= 9650 ort   -6.8% (±0.3) kazan   10% medyan 0.951 | test n= 3387 ort   -5.8% (±0.5) kazan   12% medyan 0.960
+    1.5x hedef / -20% stop                   | train n= 9650 ort   -5.8% (±0.2) kazan   13% medyan 0.956 | test n= 3387 ort   -5.5% (±0.4) kazan   14% medyan 0.964
+    3x hedef / -40% stop                     | train n= 9650 ort   -7.5% (±0.4) kazan    8% medyan 0.945 | test n= 3387 ort   -5.5% (±0.7) kazan   10% medyan 0.956
+    iz süren stop %25                        | train n= 9650 ort   -4.1% (±0.3) kazan   13% medyan 0.958 | test n= 3387 ort   -2.8% (±0.9) kazan   13% medyan 0.964
+    iz süren stop %40                        | train n= 9650 ort   -5.3% (±0.5) kazan   11% medyan 0.954 | test n= 3387 ort   -3.7% (±1.0) kazan   12% medyan 0.961
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 9650 ort   -5.6% (±0.3) kazan   13% medyan 0.959 | test n= 3387 ort   -4.4% (±0.7) kazan   14% medyan 0.965
+
+  giriş +22 sn:
+    600 sn sonuna kadar tut                  | train n= 8864 ort   -6.6% (±0.6) kazan    7% medyan 0.960 | test n= 2836 ort   -4.8% (±1.1) kazan    9% medyan 0.966
+    60 sn sonra çık                          | train n= 8864 ort   -5.2% (±0.3) kazan   13% medyan 0.969 | test n= 2836 ort   -4.5% (±0.5) kazan   16% medyan 0.970
+    2x hedef / -30% stop                     | train n= 8864 ort   -6.0% (±0.3) kazan    8% medyan 0.962 | test n= 2836 ort   -5.7% (±0.5) kazan   10% medyan 0.967
+    1.5x hedef / -20% stop                   | train n= 8864 ort   -5.2% (±0.2) kazan   10% medyan 0.964 | test n= 2836 ort   -5.7% (±0.4) kazan   12% medyan 0.968
+    3x hedef / -40% stop                     | train n= 8864 ort   -6.4% (±0.4) kazan    7% medyan 0.960 | test n= 2836 ort   -5.0% (±0.8) kazan    9% medyan 0.966
+    iz süren stop %25                        | train n= 8864 ort   -3.7% (±0.4) kazan   10% medyan 0.965 | test n= 2836 ort   -3.5% (±0.8) kazan   11% medyan 0.968
+    iz süren stop %40                        | train n= 8864 ort   -4.7% (±0.5) kazan    9% medyan 0.963 | test n= 2836 ort   -4.1% (±0.9) kazan   10% medyan 0.967
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 8864 ort   -5.5% (±0.3) kazan   11% medyan 0.965 | test n= 2836 ort   -4.4% (±0.7) kazan   13% medyan 0.969
+
+=== B. Launch anında bilinen filtreler, giriş +2 sn (WebSocket senaryosu), en iyi 3 çıkış kuralı ===
+
+  filtre: hepsi  (train giriş 9946, test giriş 3542)
+    2x hedef / -30% stop                     | train n= 9946 ort   -6.7% (±0.3) kazan   10% medyan 0.946 | test n= 3542 ort   -6.1% (±0.5) kazan   12% medyan 0.951
+    iz süren stop %25                        | train n= 9946 ort   -4.5% (±0.3) kazan   14% medyan 0.957 | test n= 3542 ort   -3.2% (±0.9) kazan   13% medyan 0.960
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 9946 ort   -5.9% (±0.3) kazan   14% medyan 0.957 | test n= 3542 ort   -4.6% (±0.7) kazan   15% medyan 0.963
+    600 sn sonuna kadar tut                  | train n= 9946 ort   -8.8% (±0.6) kazan    8% medyan 0.937 | test n= 3542 ort   -4.7% (±1.2) kazan   10% medyan 0.941
+
+  filtre: creator'ın ilk launch'ı  (train giriş 4023, test giriş 1949)
+    2x hedef / -30% stop                     | train n= 4023 ort   -4.8% (±0.5) kazan   13% medyan 0.959 | test n= 1949 ort   -4.8% (±0.7) kazan   13% medyan 0.962
+    iz süren stop %25                        | train n= 4023 ort   -2.1% (±0.6) kazan   16% medyan 0.964 | test n= 1949 ort   -2.1% (±1.2) kazan   15% medyan 0.965
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 4023 ort   -4.0% (±0.6) kazan   15% medyan 0.964 | test n= 1949 ort   -2.8% (±0.9) kazan   17% medyan 0.967
+    600 sn sonuna kadar tut                  | train n= 4023 ort   -6.9% (±1.0) kazan   10% medyan 0.954 | test n= 1949 ort   -2.2% (±1.7) kazan   12% medyan 0.958
+
+  filtre: creator ilk launch & dev ilk alım 0,5-3 SOL  (train giriş 1613, test giriş 851)
+    2x hedef / -30% stop                     | train n= 1613 ort   -4.8% (±0.9) kazan   16% medyan 0.891 | test n=  851 ort   -5.9% (±1.2) kazan   16% medyan 0.881
+    iz süren stop %25                        | train n= 1613 ort   +0.8% (±1.4) kazan   22% medyan 0.917 | test n=  851 ort   -2.9% (±1.9) kazan   18% medyan 0.907
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 1613 ort   -2.6% (±1.1) kazan   21% medyan 0.913 | test n=  851 ort   -2.8% (±1.5) kazan   21% medyan 0.917
+    600 sn sonuna kadar tut                  | train n= 1613 ort   -8.5% (±1.9) kazan   11% medyan 0.864 | test n=  851 ort   -3.3% (±2.7) kazan   14% medyan 0.868
+
+  filtre: dev ilk alım ≥ 5 SOL  (train giriş 679, test giriş 301)
+    2x hedef / -30% stop                     | train n=  679 ort  -16.7% (±1.7) kazan   17% medyan 0.670 | test n=  301 ort  -15.3% (±2.8) kazan   18% medyan 0.670
+    iz süren stop %25                        | train n=  679 ort  -14.6% (±1.7) kazan   19% medyan 0.755 | test n=  301 ort  -10.1% (±3.7) kazan   16% medyan 0.776
+    %50'yi 2x'te sat, kalan iz süren %30     | train n=  679 ort  -15.8% (±1.9) kazan   24% medyan 0.698 | test n=  301 ort  -17.9% (±3.0) kazan   19% medyan 0.643
+    600 sn sonuna kadar tut                  | train n=  679 ort  -21.0% (±2.9) kazan   14% medyan 0.574 | test n=  301 ort  -22.6% (±4.0) kazan   13% medyan 0.590
+
+  filtre: dev ilk alım < 0,5 SOL  (train giriş 4195, test giriş 1333)
+    2x hedef / -30% stop                     | train n= 4195 ort   -3.4% (±0.3) kazan    6% medyan 0.969 | test n= 1333 ort   -1.8% (±0.5) kazan    7% medyan 0.970
+    iz süren stop %25                        | train n= 4195 ort   -2.9% (±0.3) kazan    7% medyan 0.969 | test n= 1333 ort   -0.5% (±1.1) kazan    8% medyan 0.970
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 4195 ort   -3.4% (±0.3) kazan    7% medyan 0.969 | test n= 1333 ort   -0.8% (±0.8) kazan    8% medyan 0.970
+    600 sn sonuna kadar tut                  | train n= 4195 ort   -4.2% (±0.6) kazan    4% medyan 0.969 | test n= 1333 ort   -1.2% (±1.2) kazan    6% medyan 0.970
+
+  filtre: seri creator (≥5 önceki launch)  (train giriş 3179, test giriş 839)
+    2x hedef / -30% stop                     | train n= 3179 ort   -9.3% (±0.6) kazan    9% medyan 0.880 | test n=  839 ort   -8.5% (±1.2) kazan   12% medyan 0.854
+    iz süren stop %25                        | train n= 3179 ort   -7.4% (±0.5) kazan   12% medyan 0.918 | test n=  839 ort   -3.7% (±2.2) kazan   14% medyan 0.903
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 3179 ort   -9.1% (±0.6) kazan   13% medyan 0.922 | test n=  839 ort   -6.6% (±1.6) kazan   15% medyan 0.905
+    600 sn sonuna kadar tut                  | train n= 3179 ort  -11.7% (±1.1) kazan    6% medyan 0.860 | test n=  839 ort   -7.0% (±2.9) kazan    9% medyan 0.833
+
+=== C. Aynı filtreler, giriş +22 sn (bugünkü gecikme) ===
+
+  filtre: hepsi
+    2x hedef / -30% stop                     | train n= 8864 ort   -6.0% (±0.3) kazan    8% medyan 0.962 | test n= 2836 ort   -5.7% (±0.5) kazan   10% medyan 0.967
+    iz süren stop %25                        | train n= 8864 ort   -3.7% (±0.4) kazan   10% medyan 0.965 | test n= 2836 ort   -3.5% (±0.8) kazan   11% medyan 0.968
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 8864 ort   -5.5% (±0.3) kazan   11% medyan 0.965 | test n= 2836 ort   -4.4% (±0.7) kazan   13% medyan 0.969
+
+  filtre: creator'ın ilk launch'ı
+    2x hedef / -30% stop                     | train n= 3639 ort   -3.9% (±0.4) kazan   10% medyan 0.966 | test n= 1542 ort   -4.5% (±0.7) kazan   11% medyan 0.969
+    iz süren stop %25                        | train n= 3639 ort   -1.4% (±0.7) kazan   12% medyan 0.967 | test n= 1542 ort   -2.0% (±1.3) kazan   12% medyan 0.969
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 3639 ort   -3.7% (±0.5) kazan   12% medyan 0.967 | test n= 1542 ort   -3.1% (±1.0) kazan   14% medyan 0.970
+
+  filtre: creator ilk launch & dev ilk alım 0,5-3 SOL
+    2x hedef / -30% stop                     | train n= 1479 ort   -3.4% (±0.8) kazan   13% medyan 0.955 | test n=  678 ort   -4.9% (±1.3) kazan   14% medyan 0.955
+    iz süren stop %25                        | train n= 1479 ort   +0.2% (±1.3) kazan   16% medyan 0.958 | test n=  678 ort   -2.5% (±1.8) kazan   17% medyan 0.964
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 1479 ort   -3.0% (±1.0) kazan   16% medyan 0.958 | test n=  678 ort   -2.8% (±1.5) kazan   19% medyan 0.968
+
+  filtre: dev ilk alım ≥ 5 SOL
+    2x hedef / -30% stop                     | train n=  637 ort  -13.2% (±1.4) kazan   14% medyan 0.806 | test n=  256 ort  -10.7% (±2.7) kazan   14% medyan 0.932
+    iz süren stop %25                        | train n=  637 ort   -7.6% (±1.9) kazan   19% medyan 0.901 | test n=  256 ort   -8.0% (±2.9) kazan   15% medyan 0.937
+    %50'yi 2x'te sat, kalan iz süren %30     | train n=  637 ort  -11.7% (±1.7) kazan   20% medyan 0.926 | test n=  256 ort  -12.3% (±2.7) kazan   17% medyan 0.943
+
+  filtre: dev ilk alım < 0,5 SOL
+    2x hedef / -30% stop                     | train n= 3590 ort   -3.8% (±0.2) kazan    5% medyan 0.970 | test n= 1032 ort   -2.1% (±0.5) kazan    6% medyan 0.970
+    iz süren stop %25                        | train n= 3590 ort   -2.5% (±0.5) kazan    6% medyan 0.970 | test n= 1032 ort   -0.6% (±1.4) kazan    6% medyan 0.970
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 3590 ort   -3.5% (±0.3) kazan    6% medyan 0.970 | test n= 1032 ort   -1.3% (±1.0) kazan    6% medyan 0.970
+
+  filtre: seri creator (≥5 önceki launch)
+    2x hedef / -30% stop                     | train n= 2785 ort   -8.3% (±0.5) kazan    6% medyan 0.942 | test n=  668 ort   -7.5% (±1.2) kazan   11% medyan 0.923
+    iz süren stop %25                        | train n= 2785 ort   -6.0% (±0.5) kazan    9% medyan 0.955 | test n=  668 ort   -4.7% (±1.7) kazan   13% medyan 0.945
+    %50'yi 2x'te sat, kalan iz süren %30     | train n= 2785 ort   -7.5% (±0.5) kazan   10% medyan 0.957 | test n=  668 ort   -6.2% (±1.5) kazan   15% medyan 0.947
+
+done 344s

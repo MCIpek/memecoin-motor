@@ -1,0 +1,76 @@
+coins 17577
+  3000/17577 106s
+  6000/17577 236s
+  9000/17577 339s
+  12000/17577 419s
+  15000/17577 507s
+loaded 16722 coins, 47852 wallets with early buys, 551s
+wallets with >=5 early buys in train: 7894; of those active in test: 2724
+
+=== 1. Taban: tüm erken alımları kopyalamak (her cüzdan, her coin) ===
+   train + 0 sn: n= 208459  ortalama  +1.2%  kazanma 37.0%  medyan 0.961
+   train + 1 sn: n= 207678  ortalama  -9.9%  kazanma 27.6%  medyan 0.892
+   train + 2 sn: n= 207304  ortalama -10.1%  kazanma 27.1%  medyan 0.901
+   train + 3 sn: n= 206962  ortalama -10.0%  kazanma 27.0%  medyan 0.909
+   train + 5 sn: n= 206264  ortalama  -9.8%  kazanma 26.6%  medyan 0.922
+   train +22 sn: n= 200501  ortalama  -8.9%  kazanma 22.8%  medyan 0.956
+   test  + 0 sn: n=  59474  ortalama  +3.0%  kazanma 35.7%  medyan 0.949
+   test  + 1 sn: n=  58905  ortalama  -3.4%  kazanma 28.8%  medyan 0.900
+   test  + 2 sn: n=  58566  ortalama  -3.3%  kazanma 28.7%  medyan 0.910
+   test  + 3 sn: n=  58274  ortalama  -3.2%  kazanma 28.3%  medyan 0.917
+   test  + 5 sn: n=  57848  ortalama  -3.0%  kazanma 28.2%  medyan 0.930
+   test  +22 sn: n=  54768  ortalama  -3.2%  kazanma 24.3%  medyan 0.956
+
+=== 2. Train skoru test performansını tahmin ediyor mu? (≥5 train alımı olan cüzdanlar, train ortalamasına göre 5 dilim) ===
+   dilim 1 (train ort  -23.3%, 1578 cüzdan) | test +0s: n= 1856 ort  -3.8% kazan 28.9% | test +1s: n= 1849 ort  -9.9% kazan 22.8% | test +2s: n= 1840 ort -10.0% kazan 21.6% | test +3s: n= 1833 ort  -9.7% kazan 21.6% | test +5s: n= 1816 ort -10.1% kazan 22.4% | test +22s: n= 1709 ort  -7.0% kazan 20.9%
+   dilim 2 (train ort   -9.7%, 1578 cüzdan) | test +0s: n= 4012 ort  -1.4% kazan 31.2% | test +1s: n= 3989 ort  -6.1% kazan 27.0% | test +2s: n= 3957 ort  -5.3% kazan 26.7% | test +3s: n= 3940 ort  -5.4% kazan 26.0% | test +5s: n= 3903 ort  -4.8% kazan 25.8% | test +22s: n= 3707 ort  -3.1% kazan 23.1%
+   dilim 3 (train ort   -3.2%, 1578 cüzdan) | test +0s: n=11178 ort  -0.9% kazan 31.9% | test +1s: n=11130 ort  -4.4% kazan 27.5% | test +2s: n=11058 ort  -4.1% kazan 27.6% | test +3s: n=10998 ort  -3.7% kazan 27.0% | test +5s: n=10919 ort  -3.5% kazan 26.1% | test +22s: n=10293 ort  -4.0% kazan 20.5%
+   dilim 4 (train ort   +3.8%, 1578 cüzdan) | test +0s: n= 8646 ort  +1.8% kazan 35.5% | test +1s: n= 8608 ort  -4.0% kazan 28.4% | test +2s: n= 8572 ort  -3.9% kazan 28.2% | test +3s: n= 8539 ort  -3.6% kazan 28.6% | test +5s: n= 8484 ort  -2.7% kazan 29.2% | test +22s: n= 8124 ort  -4.0% kazan 23.2%
+   dilim 5 (train ort  +30.9%, 1582 cüzdan) | test +0s: n= 2892 ort +10.0% kazan 44.1% | test +1s: n= 2882 ort  -4.9% kazan 28.6% | test +2s: n= 2862 ort  -4.8% kazan 28.4% | test +3s: n= 2847 ort  -4.6% kazan 27.4% | test +5s: n= 2825 ort  -4.3% kazan 27.6% | test +22s: n= 2678 ort  -1.9% kazan 22.3%
+
+=== 3. 'Akıllı cüzdan' seçimleri, test döneminde kopyalama ===
+   train ort ≥ +20% & kazanma ≥ %50 & n ≥ 5      618 cüzdan (134 testte aktif) | +0s:  360 coin ort +12.2% kazan 46.1% | +1s:  360 coin ort  -3.1% kazan 28.3% | +2s:  359 coin ort  -2.4% kazan 28.7% | +3s:  357 coin ort  -2.0% kazan 27.7% | +5s:  354 coin ort  -1.2% kazan 30.8% | +22s:  338 coin ort  -1.4% kazan 23.7%
+   train ort ≥ +50% & n ≥ 5                      212 cüzdan (36 testte aktif) | +0s:  106 coin ort  +2.0% kazan 35.8% | +1s:  106 coin ort -17.1% kazan 18.9% | +2s:  106 coin ort -17.5% kazan 17.0% | +3s:  106 coin ort -16.3% kazan 18.9% | +5s:  105 coin ort -17.4% kazan 17.1% | +22s:   92 coin ort  -6.6% kazan 20.7%
+   train ort ≥ +20% & n ≥ 10                     255 cüzdan (105 testte aktif) | +0s:  324 coin ort +14.3% kazan 48.8% | +1s:  323 coin ort  -6.5% kazan 27.9% | +2s:  321 coin ort  -6.0% kazan 27.4% | +3s:  321 coin ort  -5.8% kazan 25.5% | +5s:  318 coin ort  -5.7% kazan 25.2% | +22s:  300 coin ort  -4.4% kazan 21.0%
+   train kazanma ≥ %60 & n ≥ 10                  352 cüzdan (180 testte aktif) | +0s:  337 coin ort +14.0% kazan 46.9% | +1s:  334 coin ort  +1.6% kazan 34.4% | +2s:  334 coin ort  +1.5% kazan 32.0% | +3s:  333 coin ort  +0.6% kazan 28.8% | +5s:  332 coin ort  +1.6% kazan 31.0% | +22s:  317 coin ort  +3.9% kazan 25.6%
+   train ort ≥ +10% & n ≥ 20                     167 cüzdan (107 testte aktif) | +0s:  384 coin ort +13.1% kazan 41.9% | +1s:  383 coin ort  -2.8% kazan 27.4% | +2s:  381 coin ort  -2.2% kazan 26.5% | +3s:  380 coin ort  -2.9% kazan 23.7% | +5s:  377 coin ort  -4.7% kazan 24.9% | +22s:  354 coin ort  -3.1% kazan 20.3%
+
+=== 4. Train'in en iyi 20 cüzdanı ve test dönemindeki halleri (kopya +5 sn) ===
+   cS4gyYGP… train n=  80 ort +269.8% kazan 38.8% | test n=  22 ort   -8.4% kazan 22.7%
+   9Pcwta7p… train n=  80 ort +237.5% kazan 38.8% | test n=  22 ort  -18.7% kazan 27.3%
+   5JTvwLFy… train n=  80 ort +206.1% kazan 38.8% | test n=   0 ort   +nan% kazan  nan%
+   J4iit8Mm… train n=  80 ort +178.0% kazan 37.5% | test n=  50 ort  -11.1% kazan 26.0%
+   8fQKzCsi… train n=  13 ort +152.5% kazan 100.0% | test n=   0 ort   +nan% kazan  nan%
+   7j4uWuDd… train n=  80 ort +151.9% kazan 37.5% | test n=  47 ort  -10.3% kazan 25.5%
+   7ecLyWYY… train n=  15 ort +127.7% kazan 80.0% | test n=   0 ort   +nan% kazan  nan%
+   5RZJ2r7U… train n=  80 ort +125.3% kazan 37.5% | test n=  33 ort   -4.6% kazan 33.3%
+   ADXc63V4… train n=  11 ort +121.1% kazan 81.8% | test n=   0 ort   +nan% kazan  nan%
+   85UBEbc8… train n=  80 ort +115.0% kazan 36.2% | test n=  25 ort  -12.2% kazan 24.0%
+   HsQ2cXCn… train n=  11 ort +105.4% kazan 63.6% | test n=   0 ort   +nan% kazan  nan%
+   7XNBwHzX… train n=  10 ort +100.3% kazan 90.0% | test n=   0 ort   +nan% kazan  nan%
+   MFQKMm2N… train n=  80 ort +100.0% kazan 37.5% | test n=  20 ort  -11.8% kazan 35.0%
+   GXLXTuzz… train n=  25 ort  +95.3% kazan 96.0% | test n=   0 ort   +nan% kazan  nan%
+   Ecwzx5Qj… train n=  28 ort  +92.7% kazan 89.3% | test n=   1 ort  +13.0% kazan 100.0%
+   CHYw1Vad… train n=  16 ort  +90.0% kazan 81.2% | test n=   0 ort   +nan% kazan  nan%
+   9sqYsvaf… train n=  74 ort  +81.4% kazan 59.5% | test n=   0 ort   +nan% kazan  nan%
+   6vj6ACjM… train n=  11 ort  +81.0% kazan 54.5% | test n=   0 ort   +nan% kazan  nan%
+   8EA8vTRB… train n=  10 ort  +78.8% kazan 80.0% | test n=   0 ort   +nan% kazan  nan%
+   2vPYViLt… train n=  80 ort  +78.2% kazan 38.8% | test n=  56 ort  -23.4% kazan  8.9%
+
+csv: C:/Users/PD/project_claude/memecoin/analiz_ekleri/akilli_cuzdan_listesi_v2.csv
+done 586s
+
+=== 6. Sinyal sıklığı (test dönemi, seçili cüzdan kuralı: train kazanma ≥ %60 & n ≥ 10) ===
+   test dönemi toplanan saat: 17.5  | sinyal: 334 coin  → saatte 19.1, 7/24 ayda ~13768
+   + 0 sn, pozisyon 0.1 SOL: işlem başına +0.0140 SOL (±0.0055)  → ayda ~+194.6 SOL  (kazanma %47, en kötü işlem 0.13x, en iyi 14.1x)
+   + 0 sn, pozisyon 0.5 SOL: işlem başına +0.0701 SOL (±0.0275)  → ayda ~+973.2 SOL  (kazanma %47, en kötü işlem 0.13x, en iyi 14.1x)
+   + 1 sn, pozisyon 0.1 SOL: işlem başına +0.0016 SOL (±0.0052)  → ayda ~+22.5 SOL  (kazanma %34, en kötü işlem 0.13x, en iyi 14.1x)
+   + 1 sn, pozisyon 0.5 SOL: işlem başına +0.0082 SOL (±0.0262)  → ayda ~+112.6 SOL  (kazanma %34, en kötü işlem 0.13x, en iyi 14.1x)
+   + 2 sn, pozisyon 0.1 SOL: işlem başına +0.0015 SOL (±0.0051)  → ayda ~+21.1 SOL  (kazanma %32, en kötü işlem 0.13x, en iyi 13.9x)
+   + 2 sn, pozisyon 0.5 SOL: işlem başına +0.0077 SOL (±0.0256)  → ayda ~+105.4 SOL  (kazanma %32, en kötü işlem 0.13x, en iyi 13.9x)
+   + 3 sn, pozisyon 0.1 SOL: işlem başına +0.0006 SOL (±0.0051)  → ayda ~+8.4 SOL  (kazanma %29, en kötü işlem 0.13x, en iyi 13.9x)
+   + 3 sn, pozisyon 0.5 SOL: işlem başına +0.0031 SOL (±0.0253)  → ayda ~+42.2 SOL  (kazanma %29, en kötü işlem 0.13x, en iyi 13.9x)
+   + 5 sn, pozisyon 0.1 SOL: işlem başına +0.0016 SOL (±0.0052)  → ayda ~+22.0 SOL  (kazanma %31, en kötü işlem 0.13x, en iyi 14.0x)
+   + 5 sn, pozisyon 0.5 SOL: işlem başına +0.0080 SOL (±0.0261)  → ayda ~+109.8 SOL  (kazanma %31, en kötü işlem 0.13x, en iyi 14.0x)
+   +22 sn, pozisyon 0.1 SOL: işlem başına +0.0039 SOL (±0.0051)  → ayda ~+51.5 SOL  (kazanma %26, en kötü işlem 0.12x, en iyi 14.0x)
+   +22 sn, pozisyon 0.5 SOL: işlem başına +0.0197 SOL (±0.0256)  → ayda ~+257.3 SOL  (kazanma %26, en kötü işlem 0.12x, en iyi 14.0x)

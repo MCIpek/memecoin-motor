@@ -1,0 +1,90 @@
+reserve monotonic check sample (buy must raise virtual_sol):    [slow 8.6s] SELECT mint FROM pump_trades GROUP BY mint HAVING COUNT(*)>=20 ORDER BY RANDOM()
+violations 143/38260 (0.37%) [ordering by slot; violations hint at intra-slot ordering/missing events]
+
+=== 5. CHAIN_EVENTS ===
+   [slow 144.5s] SELECT data_completeness, is_backfilled, COUNT(*) FROM chain_events GROUP BY 1,2
+completeness: [('BACKFILLED', 1, 1480), ('COMPLETE', 0, 60310), ('LOG_EVENT', 0, 2016354)]
+   [slow 155.5s] SELECT provider_name, commitment, COUNT(*) FROM chain_events GROUP BY 1,2
+provider: [('api.mainnet-beta.solana.com', 'confirmed', 2078144)]
+   [slow 129.1s] SELECT COUNT(*) FROM chain_events WHERE raw_transaction_json IS NOT NULL
+raw json present: 61790
+   [slow 124.6s] SELECT COUNT(*) FROM chain_events WHERE transaction_error IS NOT NULL
+transaction_error not null: 0
+   [slow 133.5s] SELECT ingestion_latency_ms FROM chain_events WHERE data_completeness=? AND inge
+ingestion_latency_ms COMPLETE: p50 452 p90 82956210 p99 303719894 max 406822796
+   [slow 127.4s] SELECT ingestion_latency_ms FROM chain_events WHERE data_completeness=? AND inge
+ingestion_latency_ms LOG_EVENT: p50 0 p90 0 p99 16 max 16
+   [slow 126.6s] SELECT AVG(LENGTH(raw_transaction_json)) FROM (SELECT raw_transaction_json FROM 
+sizes: avg len raw json (sample 500): 29719.876
+   [slow 146.3s] SELECT AVG(LENGTH(logs_json)) FROM (SELECT logs_json FROM chain_events WHERE dat
+sizes: avg len logs_json LOG_EVENT (sample 2000): 628.0815
+   [slow 126.1s] SELECT COUNT(*) FROM chain_events WHERE block_time IS NULL
+block_time null (live): 67
+   [slow 131.1s] SELECT substr(client_received_at,1,10), COUNT(*) FROM chain_events GROUP BY 1 OR
+events per day (client_received_at): [('2026-09-01', 1871), ('2026-09-03', 44532), ('2026-09-04', 508338), ('2026-09-07', 590186), ('2026-09-08', 336433), ('2026-09-09', 30064), ('2026-09-15', 6651), ('2026-09-16', 269461), ('2026-09-17', 192713), ('2026-09-18', 46598), ('2026-09-21', 12084), ('2026-09-22', 4124), ('2026-09-23', 11398), ('2026-09-29', 3956), ('2026-09-30', 7136), ('2026-10-01', 5920), ('2026-10-02', 72), ('2026-10-07', 6538), ('2026-10-08', 69)]
+
+=== 6. STREAM_GAPS ===
+status: [('BACKFILLED', 207, 862), ('DETECTED', 1, 10), ('FAILED', 28, 377), ('SKIPPED_TOO_LARGE', 1276, 11626799)]
+largest gaps: [('2026-09-29T06:55:43.319+00:00', 1891419, 'SKIPPED_TOO_LARGE'), ('2026-09-15T16:43:52.957+00:00', 1757552, 'SKIPPED_TOO_LARGE'), ('2026-10-12T04:20:23.120+00:00', 1350948, 'SKIPPED_TOO_LARGE'), ('2026-10-05T05:22:56.563+00:00', 857255, 'SKIPPED_TOO_LARGE'), ('2026-09-21T04:21:27.822+00:00', 845243, 'SKIPPED_TOO_LARGE'), ('2026-09-07T05:15:03.146+00:00', 724111, 'SKIPPED_TOO_LARGE'), ('2026-10-07T08:29:27.293+00:00', 678191, 'SKIPPED_TOO_LARGE'), ('2026-09-03T10:08:47.721+00:00', 519004, 'SKIPPED_TOO_LARGE')]
+gap size distribution (slots) for SKIPPED: [('101-1k', 951, 259207), ('1k-100k', 146, 506818), ('33-100', 159, 14287), ('>100k', 20, 10846487)]
+
+=== 7. SNAPSHOT_TRACKING ===
+ended_at null: 6080
+launches without tracking: 34
+tracking ended before launch+600 (incomplete): 178
+tracking ended before launch+300: 91
+tracking ended before launch+60: 33
+ended_at < launch_timestamp (negative): 2
+distinct ended_at values (= restart count): 18
+ended_at values: [(None, 6080), ('2026-09-01 08:45:27', 15), ('2026-09-01 08:46:41', 5), ('2026-09-01 08:47:43', 3), ('2026-09-01 12:39:29', 20), ('2026-09-09 06:25:49', 19802), ('2026-09-17 12:29:12', 7905), ('2026-09-18 06:08:53', 931), ('2026-09-18 06:11:38', 13), ('2026-09-18 07:27:04', 523), ('2026-09-18 07:32:21', 6), ('2026-09-18 07:35:26', 3), ('2026-09-18 11:24:12', 469), ('2026-09-21 07:38:41', 3850), ('2026-09-22 08:33:23', 3127), ('2026-09-22 13:03:13', 429), ('2026-09-23 10:31:44', 1355), ('2026-09-30 08:19:58', 2233), ('2026-10-07 08:29:14', 11513)]
+
+=== 8. TOKEN_SNAPSHOTS ===
+quality by age (README table check):
+     2s  on_time   2,313  late  55,968  ratio   4.0%
+     5s  on_time   5,880  late  52,401  ratio  10.1%
+    10s  on_time  13,089  late  45,190  ratio  22.5%
+    30s  on_time  15,485  late  42,781  ratio  26.6%
+    60s  on_time  16,438  late  41,813  ratio  28.2%
+generation_delay_ms percentiles LATE (sample): p50 994s p90 86761s p99 84.4h max 4.7d
+LATE but delay<=1500ms: 0
+ON_TIME with delay>1500: 0
+snapshots with cutoff > tracking ended_at (should be 0): 9
+snapshots generated AFTER a restart that ended tracking (generated_at > ended_at): 77
+mints with all 5 snapshots: 58251 mints with any: 58281
+snapshot null price: 17058
+trade_count=0 by age: [(2, 4922, 58281), (5, 4902, 58281), (10, 4859, 58279), (30, 4800, 58266), (60, 4773, 58251)]
+
+=== 9. SNAPSHOT RECOMPUTATION (raw trades vs stored) sample 400 mints ===
+checked snapshots: 2000 mismatches: {'trade_count': 438, 'net_quote_flow': 438, 'creator_sold': 90, 'unique_buyers': 265} (mismatch = trades arrived AFTER snapshot was generated, i.e. snapshot used incomplete data)
+ON_TIME snapshots whose window trades were observed after generated_at (sample 3000): 1250/3000 (41.7%)
+
+=== 10. RISK_DECISIONS ===
+   [slow 17.8s] SELECT ruleset_version, COUNT(*) FROM risk_decisions GROUP BY 1
+ruleset: [('baseline-v1', 291358)]
+decision by age:
+     2s ADAY      0 ( 0.0%) IZLE  56823 GIRME   1458
+     5s ADAY      0 ( 0.0%) IZLE  55657 GIRME   2624
+    10s ADAY   2190 ( 3.8%) IZLE  46719 GIRME   9370
+    30s ADAY   3089 ( 5.3%) IZLE  40732 GIRME  14445
+    60s ADAY   2916 ( 5.0%) IZLE  37773 GIRME  17562
+decisions without snapshot: 0
+snapshots without decision: 0
+ADAY with quality by age: [(10, 'LATE', 825), (10, 'ON_TIME', 1365), (30, 'LATE', 1570), (30, 'ON_TIME', 1519), (60, 'LATE', 1407), (60, 'ON_TIME', 1509)]
+re-evaluate stored features_json through evaluate() (sample 20000):    [slow 9.2s] SELECT * FROM risk_decisions ORDER BY RANDOM() LIMIT 20000
+0/20000 differ; {'schema:RiskFeatures.__init__() missing 3 requir': 9964}
+features_json key sets: [(('analyzed_wallets', 'buy_quote_amount', 'coordinated_snipers', 'creator_launch_count', 'creator_sold', 'creator_sold_token_count', 'high_bundle_likelihood_wallets', 'max_sniper_score', 'mint', 'net_quote_flow', 'queued_wallets', 'sell_quote_amount', 'shared_funder_wallets', 'snapshot_age', 'snapshot_quality', 'top5_buyer_share', 'top_buyer_share', 'trade_count', 'unique_buyers', 'unique_sellers'), 1034), (('analyzed_wallets', 'buy_quote_amount', 'creator_launch_count', 'creator_sold', 'creator_sold_token_count', 'mint', 'net_quote_flow', 'queued_wallets', 'sell_quote_amount', 'shared_funder_wallets', 'snapshot_age', 'snapshot_quality', 'top5_buyer_share', 'top_buyer_share', 'trade_count', 'unique_buyers', 'unique_sellers'), 966)]
+evaluated_at - cutoff (s) for ADAY decisions (sample): p50 31 p90 59543 max 385.4h  (>60s: 2213/5000)
+confidence distribution ADAY: [(0.47, 825), (0.48, 22), (0.52, 54), (0.53, 489), (0.55, 95), (0.56, 21), (0.57, 248), (0.58, 284), (0.59, 95), (0.62, 208), (0.63, 1014), (0.66, 91), (0.67, 855), (0.68, 263), (0.69, 66), (0.72, 24), (0.73, 808), (0.76, 49), (0.78, 235), (0.79, 55), (0.82, 23), (0.83, 1131), (0.85, 78), (0.88, 217), (0.89, 59), (0.93, 886)]
+
+=== 11. WALLET ENRICHMENT ===
+wallet queue status: [('DONE', 'CREATOR', 16616), ('DONE', 'EARLY_BUYER', 19645), ('PENDING', 'CREATOR', 41651), ('PENDING', 'EARLY_BUYER', 69543)]
+tx enrichment status: [('DONE', 5964), ('PENDING', 20557)]
+wallet_profiles funding_label: [(None, 0, 3930), (None, 1, 1931), ('FIRST_FUNDING', 1, 6953), ('RECENT_FUNDING_CANDIDATE', 0, 1754)]
+wallet_profiles confidence: [(0.0, 5861), (0.55, 1754), (0.9, 6953)]
+sniper classification: [('COORDINATED_SNIPER', 'LOW', 274), ('COORDINATED_SNIPER', 'MEDIUM', 31), ('EARLY_TRADER', 'LOW', 2055), ('EARLY_TRADER', 'MEDIUM', 231), ('SNIPER_CANDIDATE', 'LOW', 2349), ('SNIPER_CANDIDATE', 'MEDIUM', 675)]
+early_trade_metadata jito tip>0: 952 / 5964
+mints with sniper scores: 4890 mints with analyzed creator: 40385
+wallet_behavior_stats top: [(9317, 1), (1029, 1), (895, 1), (821, 1), (794, 1)]
+   [slow 9.1s] SELECT COUNT(*) FROM (SELECT w.user_address FROM wallet_positions w JOIN pump_la
+wallet_behavior_stats vs recompute: stored 39759 recomputed 40015
+   [slow 399.1s] SELECT COUNT(*) FROM wallet_positions w JOIN (SELECT mint,user_address,SUM(CASE 

@@ -1,0 +1,57 @@
+loaded meta 5s
+read 50739 rows from csv
+
+=== ÖZET: sağlıklı günler (1-17 Eylül), mayhem dışı, trade'i olan coin: 16722 ===
+İlk 600 sn içinde ulaşılan max X (launch fiyatına göre):
+       0x -   1.1x :   7456  ( 44.6%)
+     1.1x -   1.5x :   3516  ( 21.0%)
+     1.5x -     2x :   2146  ( 12.8%)
+       2x -     3x :   1551  (  9.3%)
+       3x -     5x :    733  (  4.4%)
+       5x -    10x :    434  (  2.6%)
+      10x -  14.4x :    139  (  0.8%)
+    14.4x -     ∞x :    747  (  4.5%)
+   medyan 1.16x
+
+Yükselip graduate OLMAYAN (max ≥1,5x): 4908
+   zirve anı (launch'tan saniye): medyan 9  ilk 10 sn 52.0%  ilk 60 sn 73.8%  ilk 300 sn 91.0%
+   zirveden 600 sn içindeki düşüş: medyan %49  ≥%50 46.9%  ≥%80 5.6%
+   %80 düşüş zirveden kaç sn sonra: medyan 27  ≤10 sn 37.8%  ≤60 sn 68.9%
+   %50 düşüş zirveden kaç sn sonra: medyan 27  ≤10 sn 30.6%  ≤60 sn 69.5%
+   en büyük tek düşüşü yapan satıcı: other: 1838 (37.4%), creator: 1492 (30.4%), top3_buyer: 1486 (30.3%), None: 92 (1.9%)
+   tek bir satışın yarattığı en büyük düşüş: medyan %14  ≥%30 16.2%  ≥%50 5.2%
+   creator 600 sn içinde sattı: 3929 (80.1%)  ilk satış medyan 4 sn
+   ilk 3 alıcının toplam satıştaki payı: medyan %40
+
+Sınıflar (sağlıklı günler, mayhem dışı):
+   HİÇ YÜKSELMEDİ (<1,5x)          10968  ( 65.6%)
+   SÖNDÜ (%80 düşüş yok)            4636  ( 27.7%)
+   PAKETLİ ANINDA DOLUM              630  (  3.8%)
+   POMPALA-BOŞALT (diğer)            173  (  1.0%)
+   GRADUATE (600 sn içinde)          115  (  0.7%)
+   GRADUATE (600 sn sonrası)         103  (  0.6%)
+   İLK ALICI DUMP                     52  (  0.3%)
+   CREATOR RUG                        45  (  0.3%)
+
+En yüksek max X'e ulaşan, graduate OLMAYAN 15 coin (600 sn içinde):
+   Swaps          HkKDGEJs… max 14.69x @   3 sn | düşüş %93 | %80 düşüş +3 sn | büyük satıcı top3_buyer (33.082 SOL) | bugün eğri 1.0x
+   HolyBull       9CY1SFhR… max 14.68x @ 370 sn | düşüş %93 | %80 düşüş +6 sn | büyük satıcı other (4.22 SOL) | bugün eğri 1.079x
+   GME            DwqAvAzA… max 14.39x @ 121 sn | düşüş %93 | %80 düşüş +41 sn | büyük satıcı other (6.825 SOL) | bugün eğri 1.002x
+   DEATH          7bQSesi5… max 14.37x @  90 sn | düşüş %93 | %80 düşüş +84 sn | büyük satıcı other (5.539 SOL) | bugün eğri 1.007x
+   CLODINU        E8wuc2Tn… max 14.21x @ 181 sn | düşüş %93 | %80 düşüş +6 sn | büyük satıcı creator (79.451 SOL) | bugün eğri 1.0x
+   JCR6900        4t3sJv5h… max 14.16x @  48 sn | düşüş %92 | %80 düşüş +117 sn | büyük satıcı other (4.228 SOL) | bugün eğri 1.002x
+   BIRK           hHWxHzFk… max 14.12x @ 460 sn | düşüş %44 | %80 düşüş +None sn | büyük satıcı other (6.711 SOL) | bugün eğri 1.018x
+   funcoin        8mcu6Rqp… max 14.09x @ 516 sn | düşüş %56 | %80 düşüş +None sn | büyük satıcı other (10.863 SOL) | bugün eğri 1.005x
+   AT             vURuDevc… max 14.07x @  18 sn | düşüş %93 | %80 düşüş +0 sn | büyük satıcı top3_buyer (67.522 SOL) | bugün eğri 1.0x
+   AYANE          CxQ3qkC4… max 14.06x @  52 sn | düşüş %93 | %80 düşüş +57 sn | büyük satıcı other (0.098 SOL) | bugün eğri 1.0x
+   FAPSTER        4FYsASDU… max 13.95x @  61 sn | düşüş %93 | %80 düşüş +52 sn | büyük satıcı creator (24.907 SOL) | bugün eğri 1.0x
+   paid           39Xw3Q2z… max 13.94x @ 565 sn | düşüş %19 | %80 düşüş +None sn | büyük satıcı other (9.245 SOL) | bugün eğri 1.014x
+   LILX           4d4NHz5A… max 13.75x @ 316 sn | düşüş %77 | %80 düşüş +None sn | büyük satıcı top3_buyer (6.752 SOL) | bugün eğri 1.005x
+   CLODINU        FPeyPkL4… max 13.62x @ 169 sn | düşüş %93 | %80 düşüş +6 sn | büyük satıcı creator (77.305 SOL) | bugün eğri 1.0x
+   Zoinbase       K2RceVRG… max 13.57x @ 389 sn | düşüş %92 | %80 düşüş +64 sn | büyük satıcı top3_buyer (6.013 SOL) | bugün eğri 1.007x
+
+Graduate olanlar (PumpSwap verisi olan 732): launch fiyatına göre
+   600 sn sonrası graduate    n= 102  zirve medyan 23.7x  p90 46.8x  | bugün medyan 0.75x  bugün <1x 84%
+   paketli anında dolum       n= 530  zirve medyan 113.4x  p90 9094.1x  | bugün medyan 0.65x  bugün <1x 98%
+
+done 19s

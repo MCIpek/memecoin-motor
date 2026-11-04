@@ -1,0 +1,123 @@
+coins 6062
+  0/6062 4s
+  1500/6062 42s
+  3000/6062 93s
+  4500/6062 132s
+  6000/6062 167s
+features ready 168s
+
+=== 1. Kazanan (≥2x) 437 vs diğer 5625: giriş anındaki özelliklerin medyanları ===
+   creator alımı (SOL)              kazanan    2.963   diğer    2.000
+   creator ilk satış (sn)           kazanan    4.000   diğer    5.000
+   creator tam çıkış (sn)           kazanan    7.000   diğer    9.000
+   creator dışı alıcı sayısı        kazanan   32.000   diğer   11.000
+   creator dışı satıcı sayısı       kazanan   12.000   diğer    6.000
+   dış alım (SOL)                   kazanan   20.020   diğer    6.601
+   dış net giriş (SOL)              kazanan   12.262   diğer    2.141
+   en büyük alıcı payı              kazanan    0.129   diğer    0.252
+   ilk dış alım (sn)                kazanan    0.000   diğer    0.000
+   ilk dış alım (SOL)               kazanan    1.450   diğer    1.000
+   giriş fiyatı (launch'a göre)     kazanan    1.844   diğer    1.099
+   çıkış öncesi zirve               kazanan    2.195   diğer    1.597
+   zirveden düşüş (giriş anı)       kazanan    0.120   diğer    0.177
+   işlem sayısı                     kazanan   54.000   diğer   23.000
+   creator önceki launch            kazanan    3.000   diğer    2.000
+   isim uzunluğu                    kazanan   10.000   diğer   10.000
+   isim tamamen büyük harf          kazanan % 11.0   diğer % 15.2
+   isim ASCII                       kazanan % 99.3   diğer % 98.2
+   sembolde rakam                   kazanan %  3.4   diğer %  3.2
+   metadata ipfs                    kazanan % 37.3   diğer % 49.5
+   graduate oldu                    kazanan % 14.4   diğer %  0.5
+
+=== 2. Tek özellik kovaları (tüm dönem) ===
+
+   creator dışı alıcı sayısı (çıkış anında)
+     a 0                    n=  148  ≥2x %  1.4  (lift 0.19x)  EV(2x'te sat)  -2.9%
+     b 1-2                  n=  635  ≥2x %  1.3  (lift 0.17x)  EV(2x'te sat)  -2.6%
+     c 3-5                  n=  891  ≥2x %  1.9  (lift 0.26x)  EV(2x'te sat)  -4.5%
+     d 6-10                 n= 1096  ≥2x %  3.0  (lift 0.42x)  EV(2x'te sat)  -7.2%
+     e 11-20                n= 1300  ≥2x %  6.5  (lift 0.90x)  EV(2x'te sat)  -9.5%
+     f 21+                  n= 1992  ≥2x % 14.7  (lift 2.04x)  EV(2x'te sat) -13.0%
+
+   dış net giriş (SOL)
+     a ≤0                   n=  196  ≥2x %  1.0  (lift 0.14x)  EV(2x'te sat)  -3.8%
+     b <0.5                 n= 1478  ≥2x %  0.9  (lift 0.13x)  EV(2x'te sat)  -2.7%
+     c <2                   n= 1077  ≥2x %  1.1  (lift 0.15x)  EV(2x'te sat)  -4.9%
+     d <5                   n= 1079  ≥2x %  4.6  (lift 0.64x)  EV(2x'te sat)  -8.9%
+     e <15                  n= 1516  ≥2x % 12.7  (lift 1.76x)  EV(2x'te sat) -15.3%
+     f ≥15                  n=  716  ≥2x % 23.3  (lift 3.24x)  EV(2x'te sat) -13.3%
+
+   giriş fiyatı / launch
+     a <1.05                n= 2392  ≥2x %  1.0  (lift 0.14x)  EV(2x'te sat)  -3.0%
+     b <1.3                 n= 1574  ≥2x %  3.6  (lift 0.50x)  EV(2x'te sat)  -8.6%
+     c <2                   n= 1325  ≥2x % 12.5  (lift 1.73x)  EV(2x'te sat) -16.9%
+     d <4                   n=  699  ≥2x % 25.2  (lift 3.49x)  EV(2x'te sat) -11.3%
+     e ≥4                   n=   72  ≥2x % 19.4  (lift 2.70x)  EV(2x'te sat) -17.0%
+
+   zirveden düşüş (giriş anında)
+     a <10%                 n= 1924  ≥2x %  9.7  (lift 1.34x)  EV(2x'te sat)  -7.0%
+     b <30%                 n= 2600  ≥2x %  7.2  (lift 1.00x)  EV(2x'te sat) -10.6%
+     c <60%                 n= 1306  ≥2x %  4.6  (lift 0.64x)  EV(2x'te sat)  -7.2%
+     d ≥60%                 n=  232  ≥2x %  1.3  (lift 0.18x)  EV(2x'te sat)  -7.6%
+
+   creator tam çıkış zamanı
+     a ≤3 sn                n= 1241  ≥2x %  7.0  (lift 0.97x)  EV(2x'te sat)  -7.7%
+     b 4-10                 n= 2164  ≥2x % 10.9  (lift 1.51x)  EV(2x'te sat) -10.6%
+     c 11-30                n= 1311  ≥2x %  6.7  (lift 0.93x)  EV(2x'te sat)  -8.9%
+     d 31-120               n=  874  ≥2x %  2.6  (lift 0.37x)  EV(2x'te sat)  -6.2%
+     e >120                 n=  472  ≥2x %  0.8  (lift 0.12x)  EV(2x'te sat)  -5.9%
+
+   creator alımı (SOL)
+     a <0.5                 n= 1105  ≥2x %  3.6  (lift 0.50x)  EV(2x'te sat)  -5.6%
+     b 0.5-1                n=  867  ≥2x %  4.5  (lift 0.62x)  EV(2x'te sat)  -7.0%
+     c 1-2                  n=  769  ≥2x %  6.5  (lift 0.90x)  EV(2x'te sat)  -6.2%
+     d 2-5                  n= 2609  ≥2x %  9.4  (lift 1.30x)  EV(2x'te sat) -10.3%
+     e ≥5                   n=  712  ≥2x %  9.0  (lift 1.25x)  EV(2x'te sat) -11.9%
+
+   en büyük dış alıcı payı
+     a <0.3                 n= 3608  ≥2x % 10.6  (lift 1.48x)  EV(2x'te sat) -11.4%
+     b <0.5                 n= 1187  ≥2x %  2.7  (lift 0.37x)  EV(2x'te sat)  -5.8%
+     c <0.8                 n=  674  ≥2x %  1.8  (lift 0.25x)  EV(2x'te sat)  -4.2%
+     d ≥0.8                 n=  593  ≥2x %  1.5  (lift 0.21x)  EV(2x'te sat)  -2.7%
+
+   creator önceki launch
+     a 0                    n= 2063  ≥2x %  6.9  (lift 0.95x)  EV(2x'te sat)  -6.9%
+     b 1-4                  n= 1537  ≥2x %  6.7  (lift 0.93x)  EV(2x'te sat)  -8.5%
+     c 5+                   n= 2462  ≥2x %  7.8  (lift 1.08x)  EV(2x'te sat) -10.1%
+
+   ilk dış alım zamanı
+     a ≤1 sn                n= 5526  ≥2x %  7.8  (lift 1.08x)  EV(2x'te sat)  -9.0%
+     b 2-5                  n=  169  ≥2x %  3.0  (lift 0.41x)  EV(2x'te sat)  -4.8%
+     c 6-30                 n=  178  ≥2x %  0.6  (lift 0.08x)  EV(2x'te sat)  -5.8%
+     d >30                  n=  179  ≥2x %  0.6  (lift 0.08x)  EV(2x'te sat)  -4.2%
+     z yok                  n=   10  ≥2x %  0.0  (lift 0.00x)  EV(2x'te sat)  -4.0%
+
+   launch saati (UTC)
+     05                     n=  524  ≥2x %  9.4  (lift 1.30x)  EV(2x'te sat)  -5.6%
+     06                     n=  791  ≥2x %  7.2  (lift 1.00x)  EV(2x'te sat)  -9.2%
+     07                     n=  608  ≥2x %  6.1  (lift 0.84x)  EV(2x'te sat)  -9.2%
+     08                     n=  624  ≥2x %  8.3  (lift 1.16x)  EV(2x'te sat)  -6.9%
+     09                     n=  590  ≥2x %  6.4  (lift 0.89x)  EV(2x'te sat)  -7.8%
+     10                     n=  729  ≥2x %  8.9  (lift 1.24x)  EV(2x'te sat)  -7.0%
+     11                     n=  562  ≥2x %  5.0  (lift 0.69x)  EV(2x'te sat) -10.5%
+     12                     n=  840  ≥2x %  6.9  (lift 0.96x)  EV(2x'te sat)  -9.7%
+     13                     n=  670  ≥2x %  6.3  (lift 0.87x)  EV(2x'te sat) -11.4%
+     14                     n=  113  ≥2x %  8.0  (lift 1.10x)  EV(2x'te sat)  -7.6%
+     16                     n=    7  ≥2x % 14.3  (lift 1.98x)  EV(2x'te sat)  +5.6%
+     17                     n=    4  ≥2x % 25.0  (lift 3.47x)  EV(2x'te sat) +15.6%
+
+   isim tamamen büyük harf
+     evet                   n=  904  ≥2x %  5.3  (lift 0.74x)  EV(2x'te sat)  -5.1%
+     hayır                  n= 5158  ≥2x %  7.5  (lift 1.05x)  EV(2x'te sat)  -9.2%
+
+=== 3. Kombinasyonlar, zaman ayrımlı (train 1-8 Eylül, test 9-17 Eylül) ===
+   alıcı ≥6 & net ≥2 SOL                        | train: n=2463 ≥2x %12.2 EV(2x) -14.3% EV(1.5x) -13.1% | test: n= 606 ≥2x %16.3 EV(2x)  -8.0% EV(1.5x)  -8.3%
+   alıcı ≥6 & net ≥2 & giriş <2x                | train: n=1853 ≥2x % 9.0 EV(2x) -13.8% EV(1.5x) -13.5% | test: n= 447 ≥2x % 9.6 EV(2x) -11.9% EV(1.5x) -11.8%
+   alıcı ≥11 & net ≥5 & top <0.5                | train: n=1629 ≥2x %15.8 EV(2x) -16.2% EV(1.5x) -14.4% | test: n= 395 ≥2x %20.8 EV(2x)  -8.4% EV(1.5x)  -7.6%
+   alıcı ≥6 & zirveden düşüş <30%               | train: n=2433 ≥2x %10.8 EV(2x) -12.9% EV(1.5x) -11.7% | test: n= 542 ≥2x %16.4 EV(2x)  -6.8% EV(1.5x)  -7.2%
+   alıcı ≥6 & creator çıkış ≤10 sn & prior==0   | train: n= 767 ≥2x % 9.3 EV(2x)  -8.7% EV(1.5x)  -7.7% | test: n= 131 ≥2x %13.7 EV(2x)  -4.8% EV(1.5x)  -5.5%
+   net ≥5 SOL & giriş <1.5x                     | train: n= 517 ≥2x % 8.7 EV(2x) -13.0% EV(1.5x) -14.2% | test: n= 135 ≥2x % 8.1 EV(2x) -11.6% EV(1.5x) -14.1%
+   alıcı ≥21                                    | train: n=1643 ≥2x %14.0 EV(2x) -14.0% EV(1.5x) -12.0% | test: n= 349 ≥2x %18.1 EV(2x)  -8.1% EV(1.5x)  -6.4%
+   alıcı ≥11 & creator alım 0.5-3 & prior==0    | train: n= 580 ≥2x %10.5 EV(2x)  -9.3% EV(1.5x)  -8.6% | test: n= 111 ≥2x %15.3 EV(2x)  -4.6% EV(1.5x)  -3.4%
+
+done 169s

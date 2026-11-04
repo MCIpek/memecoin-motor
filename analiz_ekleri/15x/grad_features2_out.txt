@@ -1,0 +1,55 @@
+== capture health by day (SOL, non-mayhem): launches, trades/launch, share with >=1 trade, share with 60s ub>=6 ==
+  2026-09-01  n=   48  trades/launch   30.4  >=1 trade  60.4%  ub60>=6  12.5%  grad 6.25%  HEALTHY
+  2026-09-03  n=  489  trades/launch   57.9  >=1 trade  97.1%  ub60>=6  35.0%  grad 4.09%  HEALTHY
+  2026-09-04  n= 3718  trades/launch   69.5  >=1 trade  94.8%  ub60>=6  36.5%  grad 5.22%  HEALTHY
+  2026-09-07  n= 4696  trades/launch   84.4  >=1 trade  94.6%  ub60>=6  38.8%  grad 5.09%  HEALTHY
+  2026-09-08  n= 3972  trades/launch   60.2  >=1 trade  93.6%  ub60>=6  38.2%  grad 3.93%  HEALTHY
+  2026-09-09  n=  237  trades/launch   82.0  >=1 trade  97.9%  ub60>=6  41.4%  grad 2.53%  HEALTHY
+  2026-09-15  n=  100  trades/launch   34.1  >=1 trade  96.0%  ub60>=6  31.0%  grad 5.00%  HEALTHY
+  2026-09-16  n= 2142  trades/launch   60.1  >=1 trade  98.3%  ub60>=6  38.4%  grad 6.07%  HEALTHY
+  2026-09-17  n= 2175  trades/launch   50.5  >=1 trade  96.6%  ub60>=6  35.2%  grad 4.46%  HEALTHY
+  2026-09-18  n= 2621  trades/launch    9.7  >=1 trade  82.1%  ub60>=6   8.1%  grad 3.28%  DEGRADED
+  2026-09-21  n= 2518  trades/launch    3.0  >=1 trade  84.4%  ub60>=6   0.4%  grad 3.97%  DEGRADED
+  2026-09-22  n=  261  trades/launch    8.3  >=1 trade  97.7%  ub60>=6   0.8%  grad 3.83%  DEGRADED
+  2026-09-23  n=  701  trades/launch   10.7  >=1 trade  95.0%  ub60>=6   0.4%  grad 7.99%  DEGRADED
+  2026-09-29  n= 1413  trades/launch    1.6  >=1 trade  69.9%  ub60>=6   0.1%  grad 1.70%  DEGRADED
+  2026-09-30  n= 2976  trades/launch    1.1  >=1 trade  89.7%  ub60>=6   0.1%  grad 2.89%  DEGRADED
+  2026-10-01  n= 3121  trades/launch    1.0  >=1 trade  93.5%  ub60>=6   0.0%  grad 4.13%  DEGRADED
+  2026-10-07  n= 3794  trades/launch    0.6  >=1 trade  63.1%  ub60>=6   0.0%  grad 2.48%  DEGRADED
+  2026-10-08  n=   39  trades/launch    0.8  >=1 trade  76.9%  ub60>=6   0.0%  grad 2.56%  DEGRADED
+healthy days: ['2026-09-01', '2026-09-03', '2026-09-04', '2026-09-07', '2026-09-08', '2026-09-09', '2026-09-15', '2026-09-16', '2026-09-17']
+
+rows on healthy days with 60s price: 17543  grad 4.83%  grad>600s 0.59%
+non-graduates: value NOW vs 60s entry price: median 0.984  mean 0.897  >=1 21.9%  <=0.5 6.1%
+60s price vs launch (how much already up at entry): median 1.020  p90 2.09
+
+== rules: train = healthy days <=09-09 (n=13126, grad>600s 0.50%), test = healthy days >=09-15 (n=4417, grad>600s 0.86%) ==
+EV = buy at 60s price; graduates(>600s) sold at curve-full price; non-graduates valued at CURRENT curve price (weeks later); 3% costs. EV_x3 = same but graduates sold at 3x curve-full price (optimistic PumpSwap run).
+  ALL (buy everything)                 | train: n=13126 grad>600s  66 ( 0.50%, lift  1.0x) full@60s 550  EV    -9% | test: n= 4417 grad>600s  38 ( 0.86%, lift  1.0x) full@60s 194  EV   -10%
+  cn==1                                | train: n= 3777 grad>600s  20 ( 0.53%, lift  1.1x) full@60s 479  EV    -8% | test: n= 1980 grad>600s  25 ( 1.26%, lift  1.5x) full@60s 180  EV    -9%
+  cn==1 & !csold                       | train: n= 2776 grad>600s  13 ( 0.47%, lift  0.9x) full@60s 478  EV    -6% | test: n= 1748 grad>600s  19 ( 1.09%, lift  1.3x) full@60s 177  EV    -9%
+  cn==1 & ub>=6 & flow>=1              | train: n=  862 grad>600s  17 ( 1.97%, lift  3.9x) full@60s 133  EV   -21% | test: n=  622 grad>600s  24 ( 3.86%, lift  4.5x) full@60s  95  EV   -17%
+  cn==1 & ub>=11 & flow>=3 & top<0.5   | train: n=  440 grad>600s  14 ( 3.18%, lift  6.3x) full@60s  25  EV   -30% | test: n=  359 grad>600s  21 ( 5.85%, lift  6.8x) full@60s  23  EV   -18%
+  ub>=21 & flow>=5                     | train: n= 1222 grad>600s  47 ( 3.85%, lift  7.6x) full@60s  72  EV   -36% | test: n=  472 grad>600s  25 ( 5.30%, lift  6.2x) full@60s  22  EV   -29%
+  ub>=51                               | train: n=  971 grad>600s  30 ( 3.09%, lift  6.1x) full@60s  42  EV   -33% | test: n=  250 grad>600s  17 ( 6.80%, lift  7.9x) full@60s  11  EV   -22%
+  flow>=15 & not full yet (x60<10)     | train: n=  663 grad>600s  43 ( 6.49%, lift 12.9x) full@60s  32  EV   -39% | test: n=  238 grad>600s  23 ( 9.66%, lift 11.2x) full@60s  14  EV   -30%
+  flow 5-40 & cn==1 & top<0.4          | train: n=  397 grad>600s  12 ( 3.02%, lift  6.0x) full@60s   4  EV   -36% | test: n=  337 grad>600s  12 ( 3.56%, lift  4.1x) full@60s   6  EV   -34%
+  d60==ADAY                            | train: n= 1579 grad>600s  19 ( 1.20%, lift  2.4x) full@60s 211  EV   -20% | test: n=  853 grad>600s  22 ( 2.58%, lift  3.0x) full@60s 104  EV   -18%
+  d60==ADAY & cn==1                    | train: n=  714 grad>600s  10 ( 1.40%, lift  2.8x) full@60s 178  EV   -15% | test: n=  595 grad>600s  18 ( 3.03%, lift  3.5x) full@60s  99  EV   -14%
+  buy2s>=20 SOL (bundle launch)        | train: n= 1012 grad>600s  23 ( 2.27%, lift  4.5x) full@60s 519  EV   -17% | test: n=  323 grad>600s  17 ( 5.26%, lift  6.1x) full@60s 182  EV   -12%
+  x60<1.5 & ub>=6 & cn==1              | train: n=  913 grad>600s   5 ( 0.55%, lift  1.1x) full@60s   2  EV    -4% | test: n=  433 grad>600s   4 ( 0.92%, lift  1.1x) full@60s   0  EV    -3%
+
+== same rules, graduates sold at 3x curve-full price (optimistic; real ATH pending from GeckoTerminal) ==
+  ALL (buy everything)                 train EV    +1%   test EV    +3%
+  cn==1                                train EV   +13%   test EV   +13%
+  cn==1 & !csold                       train EV   +20%   test EV   +13%
+  cn==1 & ub>=6 & flow>=1              train EV   +23%   test EV   +35%
+  cn==1 & ub>=11 & flow>=3 & top<0.5   train EV   +17%   test EV   +47%
+  ub>=21 & flow>=5                     train EV    +6%   test EV   +20%
+  ub>=51                               train EV    -2%   test EV   +47%
+  flow>=15 & not full yet (x60<10)     train EV   +21%   test EV   +49%
+  flow 5-40 & cn==1 & top<0.4          train EV    -0%   test EV    -1%
+  d60==ADAY                            train EV    +8%   test EV   +18%
+  d60==ADAY & cn==1                    train EV   +34%   test EV   +33%
+  buy2s>=20 SOL (bundle launch)        train EV   +51%   test EV   +74%
+  x60<1.5 & ub>=6 & cn==1              train EV    +9%   test EV   +17%

@@ -1,0 +1,55 @@
+coins 17577
+  3000/17577 86s
+  6000/17577 170s
+  9000/17577 238s
+  12000/17577 299s
+  15000/17577 370s
+loaded 16722 coins, 47852 wallets with early buys, 413s
+wallets with >=5 early buys in train: 7894; of those active in test: 2724
+
+=== 1. Taban: tüm erken alımları kopyalamak (her cüzdan, her coin) ===
+   train + 0 sn: n= 208459  ortalama  +1.2%  kazanma 37.0%  medyan 0.961
+   train + 5 sn: n= 206264  ortalama  -9.8%  kazanma 26.6%  medyan 0.922
+   train +22 sn: n= 200501  ortalama  -8.9%  kazanma 22.8%  medyan 0.956
+   test  + 0 sn: n=  59474  ortalama  +3.0%  kazanma 35.7%  medyan 0.949
+   test  + 5 sn: n=  57848  ortalama  -3.0%  kazanma 28.2%  medyan 0.930
+   test  +22 sn: n=  54768  ortalama  -3.2%  kazanma 24.3%  medyan 0.956
+
+=== 2. Train skoru test performansını tahmin ediyor mu? (≥5 train alımı olan cüzdanlar, train ortalamasına göre 5 dilim) ===
+   dilim 1 (train ort  -23.3%, 1578 cüzdan) | test +0s: n= 1856 ort  -3.8% kazan 28.9% | test +5s: n= 1816 ort -10.1% kazan 22.4% | test +22s: n= 1709 ort  -7.0% kazan 20.9%
+   dilim 2 (train ort   -9.7%, 1578 cüzdan) | test +0s: n= 4012 ort  -1.4% kazan 31.2% | test +5s: n= 3903 ort  -4.8% kazan 25.8% | test +22s: n= 3707 ort  -3.1% kazan 23.1%
+   dilim 3 (train ort   -3.2%, 1578 cüzdan) | test +0s: n=11178 ort  -0.9% kazan 31.9% | test +5s: n=10919 ort  -3.5% kazan 26.1% | test +22s: n=10293 ort  -4.0% kazan 20.5%
+   dilim 4 (train ort   +3.8%, 1578 cüzdan) | test +0s: n= 8646 ort  +1.8% kazan 35.5% | test +5s: n= 8484 ort  -2.7% kazan 29.2% | test +22s: n= 8124 ort  -4.0% kazan 23.2%
+   dilim 5 (train ort  +30.9%, 1582 cüzdan) | test +0s: n= 2892 ort +10.0% kazan 44.1% | test +5s: n= 2825 ort  -4.3% kazan 27.6% | test +22s: n= 2678 ort  -1.9% kazan 22.3%
+
+=== 3. 'Akıllı cüzdan' seçimleri, test döneminde kopyalama ===
+   train ort ≥ +20% & kazanma ≥ %50 & n ≥ 5      618 cüzdan (134 testte aktif) | +0s:  360 coin ort +12.2% kazan 46.1% | +5s:  354 coin ort  -1.2% kazan 30.8% | +22s:  338 coin ort  -1.4% kazan 23.7%
+   train ort ≥ +50% & n ≥ 5                      212 cüzdan (36 testte aktif) | +0s:  106 coin ort  +2.0% kazan 35.8% | +5s:  105 coin ort -17.4% kazan 17.1% | +22s:   92 coin ort  -6.6% kazan 20.7%
+   train ort ≥ +20% & n ≥ 10                     255 cüzdan (105 testte aktif) | +0s:  324 coin ort +14.3% kazan 48.8% | +5s:  318 coin ort  -5.7% kazan 25.2% | +22s:  300 coin ort  -4.4% kazan 21.0%
+   train kazanma ≥ %60 & n ≥ 10                  352 cüzdan (180 testte aktif) | +0s:  337 coin ort +14.0% kazan 46.9% | +5s:  332 coin ort  +1.6% kazan 31.0% | +22s:  317 coin ort  +3.9% kazan 25.6%
+   train ort ≥ +10% & n ≥ 20                     167 cüzdan (107 testte aktif) | +0s:  384 coin ort +13.1% kazan 41.9% | +5s:  377 coin ort  -4.7% kazan 24.9% | +22s:  354 coin ort  -3.1% kazan 20.3%
+
+=== 4. Train'in en iyi 20 cüzdanı ve test dönemindeki halleri (kopya +5 sn) ===
+   cS4gyYGP… train n=  80 ort +269.8% kazan 38.8% | test n=  22 ort   -8.4% kazan 22.7%
+   9Pcwta7p… train n=  80 ort +237.5% kazan 38.8% | test n=  22 ort  -18.7% kazan 27.3%
+   5JTvwLFy… train n=  80 ort +206.1% kazan 38.8% | test n=   0 ort   +nan% kazan  nan%
+   J4iit8Mm… train n=  80 ort +178.0% kazan 37.5% | test n=  50 ort  -11.1% kazan 26.0%
+   8fQKzCsi… train n=  13 ort +152.5% kazan 100.0% | test n=   0 ort   +nan% kazan  nan%
+   7j4uWuDd… train n=  80 ort +151.9% kazan 37.5% | test n=  47 ort  -10.3% kazan 25.5%
+   7ecLyWYY… train n=  15 ort +127.7% kazan 80.0% | test n=   0 ort   +nan% kazan  nan%
+   5RZJ2r7U… train n=  80 ort +125.3% kazan 37.5% | test n=  33 ort   -4.6% kazan 33.3%
+   ADXc63V4… train n=  11 ort +121.1% kazan 81.8% | test n=   0 ort   +nan% kazan  nan%
+   85UBEbc8… train n=  80 ort +115.0% kazan 36.2% | test n=  25 ort  -12.2% kazan 24.0%
+   HsQ2cXCn… train n=  11 ort +105.4% kazan 63.6% | test n=   0 ort   +nan% kazan  nan%
+   7XNBwHzX… train n=  10 ort +100.3% kazan 90.0% | test n=   0 ort   +nan% kazan  nan%
+   MFQKMm2N… train n=  80 ort +100.0% kazan 37.5% | test n=  20 ort  -11.8% kazan 35.0%
+   GXLXTuzz… train n=  25 ort  +95.3% kazan 96.0% | test n=   0 ort   +nan% kazan  nan%
+   Ecwzx5Qj… train n=  28 ort  +92.7% kazan 89.3% | test n=   1 ort  +13.0% kazan 100.0%
+   CHYw1Vad… train n=  16 ort  +90.0% kazan 81.2% | test n=   0 ort   +nan% kazan  nan%
+   9sqYsvaf… train n=  74 ort  +81.4% kazan 59.5% | test n=   0 ort   +nan% kazan  nan%
+   6vj6ACjM… train n=  11 ort  +81.0% kazan 54.5% | test n=   0 ort   +nan% kazan  nan%
+   8EA8vTRB… train n=  10 ort  +78.8% kazan 80.0% | test n=   0 ort   +nan% kazan  nan%
+   2vPYViLt… train n=  80 ort  +78.2% kazan 38.8% | test n=  56 ort  -23.4% kazan  8.9%
+
+csv: C:/Users/PD/project_claude/memecoin/analiz_ekleri/akilli_cuzdan_listesi.csv
+done 431s

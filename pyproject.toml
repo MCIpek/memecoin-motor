@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "memecoin-motor"
+version = "0.1.0"
+description = "Solana memecoin event-time data collection and paper research engine"
+requires-python = ">=3.11"
+dependencies = ["aiohttp>=3.10,<4"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "pytest-asyncio>=0.24,<1"]
+
+[project.scripts]
+memecoin-motor = "memecoin_motor.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"memecoin_motor.resources" = ["*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

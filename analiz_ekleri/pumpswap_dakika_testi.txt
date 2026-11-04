@@ -1,0 +1,176 @@
+pools with >=10 minute candles: 1251  (candles median 60)
+
+=== A. Migrasyondan k dk sonra gir, filtre yok (gruplara göre) ===
+
+### 600 sn SONRASI graduate (erişilebilir): 365 havuz
+
+  giriş: +1 dk
+    3 dk tut                     | train n= 176 ort(10x tavan)  +13.4% (±6.4) kazan  51% medyan 1.010 | test n= 189 ort(10x tavan)   -2.6% (±4.3) kazan  48% medyan 0.976
+    5 dk tut                     | train n= 176 ort(10x tavan)   +5.7% (±8.8) kazan  41% medyan 0.866 | test n= 189 ort(10x tavan)  -13.0% (±6.1) kazan  36% medyan 0.754
+    10 dk tut                    | train n= 176 ort(10x tavan)   -6.9% (±9.7) kazan  31% medyan 0.597 | test n= 189 ort(10x tavan)  -28.7% (±7.5) kazan  25% medyan 0.296
+    30 dk tut                    | train n= 176 ort(10x tavan)  -36.2% (±8.3) kazan  20% medyan 0.163 | test n= 189 ort(10x tavan)  -44.6% (±9.4) kazan  15% medyan 0.104
+    2 saat tut                   | train n= 176 ort(10x tavan)  -53.6% (±8.9) kazan  10% medyan 0.094 | test n= 189 ort(10x tavan)  -65.8% (±7.0) kazan   8% medyan 0.065
+    6 saat tut                   | train n= 176 ort(10x tavan)  -67.6% (±6.9) kazan   7% medyan 0.073 | test n= 189 ort(10x tavan)  -75.2% (±4.1) kazan   6% medyan 0.059
+    16 saat tut                  | train n= 176 ort(10x tavan)  -73.5% (±7.0) kazan   3% medyan 0.063 | test n= 189 ort(10x tavan)  -82.9% (±2.5) kazan   4% medyan 0.056
+    2x hedef / -30% stop         | train n= 176 ort(10x tavan)   +2.4% (±4.2) kazan  27% medyan 0.679 | test n= 189 ort(10x tavan)   +3.4% (±4.1) kazan  28% medyan 0.679
+    1.5x hedef / -25% stop       | train n= 176 ort(10x tavan)   +5.1% (±2.7) kazan  44% medyan 0.728 | test n= 189 ort(10x tavan)   +2.1% (±2.6) kazan  40% medyan 0.728
+    3x hedef / -40% stop         | train n= 176 ort(10x tavan)   -0.5% (±6.7) kazan  18% medyan 0.582 | test n= 189 ort(10x tavan)   -7.8% (±5.9) kazan  15% medyan 0.582
+    iz süren %25                 | train n= 176 ort(10x tavan)   -0.8% (±6.3) kazan  38% medyan 0.839 | test n= 189 ort(10x tavan)   -9.2% (±5.2) kazan  37% medyan 0.764
+    iz süren %40                 | train n= 176 ort(10x tavan)  -13.5% (±7.4) kazan  23% medyan 0.641 | test n= 189 ort(10x tavan)  -18.0% (±7.7) kazan  24% medyan 0.546
+    iz süren %25, max 2 saat     | train n= 176 ort(10x tavan)   +0.1% (±6.3) kazan  38% medyan 0.844 | test n= 189 ort(10x tavan)  -10.3% (±5.1) kazan  37% medyan 0.764
+
+  giriş: +5 dk
+    3 dk tut                     | train n= 176 ort(10x tavan)  -22.3% (±4.2) kazan  26% medyan 0.774 | test n= 189 ort(10x tavan)  -16.7% (±7.0) kazan  31% medyan 0.745
+    5 dk tut                     | train n= 176 ort(10x tavan)  -24.6% (±4.9) kazan  28% medyan 0.633 | test n= 189 ort(10x tavan)  -31.8% (±4.4) kazan  25% medyan 0.615
+    10 dk tut                    | train n= 176 ort(10x tavan)  -32.4% (±5.5) kazan  24% medyan 0.447 | test n= 189 ort(10x tavan)  -27.7% (±9.0) kazan  20% medyan 0.379
+    30 dk tut                    | train n= 176 ort(10x tavan)  -43.0% (±7.5) kazan  15% medyan 0.247 | test n= 189 ort(10x tavan)  -48.5% (±7.2) kazan  13% medyan 0.214
+    2 saat tut                   | train n= 176 ort(10x tavan)  -56.3% (±7.4) kazan  10% medyan 0.129 | test n= 189 ort(10x tavan)  -65.4% (±5.3) kazan   8% medyan 0.137
+    6 saat tut                   | train n= 176 ort(10x tavan)  -67.9% (±5.4) kazan   6% medyan 0.100 | test n= 189 ort(10x tavan)  -73.0% (±3.0) kazan   6% medyan 0.103
+    16 saat tut                  | train n= 176 ort(10x tavan)  -74.0% (±5.4) kazan   3% medyan 0.082 | test n= 189 ort(10x tavan)  -79.2% (±2.4) kazan   3% medyan 0.090
+    2x hedef / -30% stop         | train n= 176 ort(10x tavan)  -11.4% (±3.5) kazan  16% medyan 0.679 | test n= 189 ort(10x tavan)   -6.1% (±3.7) kazan  21% medyan 0.679
+    1.5x hedef / -25% stop       | train n= 176 ort(10x tavan)  -11.1% (±2.2) kazan  22% medyan 0.728 | test n= 189 ort(10x tavan)   -3.0% (±2.5) kazan  33% medyan 0.728
+    3x hedef / -40% stop         | train n= 176 ort(10x tavan)  -15.6% (±5.4) kazan  11% medyan 0.582 | test n= 189 ort(10x tavan)  -10.6% (±5.6) kazan  14% medyan 0.582
+    iz süren %25                 | train n= 176 ort(10x tavan)  -24.2% (±4.1) kazan  21% medyan 0.698 | test n= 189 ort(10x tavan)  -24.1% (±4.5) kazan  27% medyan 0.711
+    iz süren %40                 | train n= 176 ort(10x tavan)  -29.1% (±6.8) kazan  15% medyan 0.539 | test n= 189 ort(10x tavan)  -32.6% (±4.9) kazan  19% medyan 0.553
+    iz süren %25, max 2 saat     | train n= 176 ort(10x tavan)  -23.3% (±4.2) kazan  22% medyan 0.701 | test n= 189 ort(10x tavan)  -25.1% (±4.4) kazan  27% medyan 0.711
+
+  giriş: +15 dk
+    3 dk tut                     | train n= 174 ort(10x tavan)  -10.4% (±2.4) kazan  26% medyan 0.951 | test n= 182 ort(10x tavan)   -1.1% (±5.4) kazan  21% medyan 0.964
+    5 dk tut                     | train n= 174 ort(10x tavan)  -10.3% (±3.0) kazan  23% medyan 0.946 | test n= 182 ort(10x tavan)   -1.8% (±5.7) kazan  21% medyan 0.961
+    10 dk tut                    | train n= 174 ort(10x tavan)  -13.6% (±3.5) kazan  22% medyan 0.942 | test n= 182 ort(10x tavan)   -6.0% (±6.3) kazan  17% medyan 0.948
+    30 dk tut                    | train n= 174 ort(10x tavan)  -15.8% (±6.7) kazan  17% medyan 0.869 | test n= 182 ort(10x tavan)  -14.9% (±6.0) kazan  13% medyan 0.923
+    2 saat tut                   | train n= 174 ort(10x tavan)  -28.3% (±7.0) kazan  10% medyan 0.687 | test n= 182 ort(10x tavan)  -30.3% (±3.3) kazan   9% medyan 0.859
+    6 saat tut                   | train n= 174 ort(10x tavan)  -39.9% (±5.3) kazan   7% medyan 0.505 | test n= 182 ort(10x tavan)  -37.0% (±3.1) kazan   6% medyan 0.788
+    16 saat tut                  | train n= 174 ort(10x tavan)  -46.8% (±4.9) kazan   5% medyan 0.369 | test n= 182 ort(10x tavan)  -43.1% (±3.1) kazan   3% medyan 0.593
+    2x hedef / -30% stop         | train n= 174 ort(10x tavan)   -8.4% (±3.1) kazan  14% medyan 0.679 | test n= 182 ort(10x tavan)   -8.7% (±2.7) kazan  10% medyan 0.845
+    1.5x hedef / -25% stop       | train n= 174 ort(10x tavan)   -6.4% (±2.1) kazan  21% medyan 0.813 | test n= 182 ort(10x tavan)   -4.8% (±2.0) kazan  19% medyan 0.929
+    3x hedef / -40% stop         | train n= 174 ort(10x tavan)  -14.0% (±4.4) kazan   9% medyan 0.582 | test n= 182 ort(10x tavan)  -13.1% (±3.8) kazan   7% medyan 0.742
+    iz süren %25                 | train n= 174 ort(10x tavan)  -11.4% (±3.1) kazan  18% medyan 0.859 | test n= 182 ort(10x tavan)  -10.0% (±3.4) kazan  14% medyan 0.924
+    iz süren %40                 | train n= 174 ort(10x tavan)  -12.7% (±6.9) kazan  12% medyan 0.813 | test n= 182 ort(10x tavan)  -16.7% (±3.1) kazan  10% medyan 0.888
+    iz süren %25, max 2 saat     | train n= 174 ort(10x tavan)  -10.4% (±3.1) kazan  19% medyan 0.879 | test n= 182 ort(10x tavan)  -10.2% (±3.3) kazan  15% medyan 0.933
+
+### anında dolum (paketli): 886 havuz
+
+  giriş: +1 dk
+    3 dk tut                     | train n= 712 ort(10x tavan)   -1.3% (±1.6) kazan  47% medyan 0.996 | test n= 174 ort(10x tavan)   -3.7% (±2.9) kazan  63% medyan 1.064
+    5 dk tut                     | train n= 712 ort(10x tavan)   -9.3% (±2.4) kazan  43% medyan 0.992 | test n= 174 ort(10x tavan)   -8.6% (±3.9) kazan  56% medyan 1.017
+    10 dk tut                    | train n= 712 ort(10x tavan)  -21.6% (±2.3) kazan  41% medyan 0.988 | test n= 174 ort(10x tavan)  -24.4% (±5.5) kazan  43% medyan 0.990
+    30 dk tut                    | train n= 712 ort(10x tavan)  -34.7% (±3.0) kazan  37% medyan 0.417 | test n= 174 ort(10x tavan)  -36.1% (±8.3) kazan  30% medyan 0.006
+    2 saat tut                   | train n= 712 ort(10x tavan)  -59.5% (±2.5) kazan  25% medyan 0.040 | test n= 174 ort(10x tavan)  -72.0% (±5.6) kazan  21% medyan 0.005
+    6 saat tut                   | train n= 712 ort(10x tavan)  -73.2% (±2.3) kazan  14% medyan 0.019 | test n= 174 ort(10x tavan)  -71.0% (±7.0) kazan  17% medyan 0.005
+    16 saat tut                  | train n= 712 ort(10x tavan)  -81.4% (±2.5) kazan   6% medyan 0.011 | test n= 174 ort(10x tavan)  -72.0% (±7.8) kazan  12% medyan 0.005
+    2x hedef / -30% stop         | train n= 712 ort(10x tavan)   +3.8% (±2.1) kazan  30% medyan 0.679 | test n= 174 ort(10x tavan)   +6.4% (±4.2) kazan  35% medyan 0.679
+    1.5x hedef / -25% stop       | train n= 712 ort(10x tavan)   +5.7% (±1.3) kazan  46% medyan 0.728 | test n= 174 ort(10x tavan)  +10.4% (±2.7) kazan  55% medyan 1.194
+    3x hedef / -40% stop         | train n= 712 ort(10x tavan)  -10.5% (±2.9) kazan  15% medyan 0.582 | test n= 174 ort(10x tavan)   +3.0% (±6.6) kazan  25% medyan 0.582
+    iz süren %25                 | train n= 712 ort(10x tavan)  -45.5% (±2.9) kazan  20% medyan 0.226 | test n= 174 ort(10x tavan)  -58.2% (±7.9) kazan  14% medyan 0.083
+    iz süren %40                 | train n= 712 ort(10x tavan)  -53.8% (±3.0) kazan  15% medyan 0.169 | test n= 174 ort(10x tavan)  -60.4% (±7.8) kazan  13% medyan 0.073
+    iz süren %25, max 2 saat     | train n= 712 ort(10x tavan)  -27.4% (±2.6) kazan  37% medyan 0.706 | test n= 174 ort(10x tavan)  -58.7% (±5.5) kazan  23% medyan 0.134
+
+  giriş: +5 dk
+    3 dk tut                     | train n= 712 ort(10x tavan)  -18.7% (±1.7) kazan  27% medyan 0.974 | test n= 174 ort(10x tavan)  -19.8% (±4.1) kazan  41% medyan 0.980
+    5 dk tut                     | train n= 712 ort(10x tavan)  -23.2% (±1.9) kazan  27% medyan 0.974 | test n= 174 ort(10x tavan)  -22.7% (±4.9) kazan  38% medyan 0.978
+    10 dk tut                    | train n= 712 ort(10x tavan)  -27.0% (±2.1) kazan  28% medyan 0.973 | test n= 174 ort(10x tavan)  -35.9% (±5.2) kazan  27% medyan 0.685
+    30 dk tut                    | train n= 712 ort(10x tavan)  -36.8% (±2.5) kazan  30% medyan 0.610 | test n= 174 ort(10x tavan)  -41.0% (±8.2) kazan  22% medyan 0.017
+    2 saat tut                   | train n= 712 ort(10x tavan)  -60.2% (±2.2) kazan  22% medyan 0.034 | test n= 174 ort(10x tavan)  -70.6% (±5.5) kazan  16% medyan 0.005
+    6 saat tut                   | train n= 712 ort(10x tavan)  -72.1% (±2.2) kazan  14% medyan 0.019 | test n= 174 ort(10x tavan)  -69.5% (±7.0) kazan  17% medyan 0.005
+    16 saat tut                  | train n= 712 ort(10x tavan)  -79.8% (±2.3) kazan   7% medyan 0.013 | test n= 174 ort(10x tavan)  -70.6% (±7.7) kazan  13% medyan 0.005
+    2x hedef / -30% stop         | train n= 712 ort(10x tavan)   -2.6% (±2.0) kazan  25% medyan 0.679 | test n= 174 ort(10x tavan)   +0.6% (±4.0) kazan  31% medyan 0.679
+    1.5x hedef / -25% stop       | train n= 712 ort(10x tavan)   +0.4% (±1.3) kazan  39% medyan 0.728 | test n= 174 ort(10x tavan)   +4.1% (±2.6) kazan  47% medyan 0.728
+    3x hedef / -40% stop         | train n= 712 ort(10x tavan)  -16.2% (±2.6) kazan  13% medyan 0.582 | test n= 174 ort(10x tavan)   -5.0% (±6.0) kazan  22% medyan 0.582
+    iz süren %25                 | train n= 712 ort(10x tavan)  -53.0% (±2.7) kazan  15% medyan 0.151 | test n= 174 ort(10x tavan)  -62.2% (±7.8) kazan  13% medyan 0.024
+    iz süren %40                 | train n= 712 ort(10x tavan)  -59.4% (±2.6) kazan  12% medyan 0.101 | test n= 174 ort(10x tavan)  -63.4% (±7.8) kazan  13% medyan 0.023
+    iz süren %25, max 2 saat     | train n= 712 ort(10x tavan)  -36.4% (±2.3) kazan  29% medyan 0.585 | test n= 174 ort(10x tavan)  -62.7% (±5.4) kazan  16% medyan 0.061
+
+  giriş: +15 dk
+    3 dk tut                     | train n= 694 ort(10x tavan)   -7.2% (±1.0) kazan  20% medyan 0.971 | test n= 140 ort(10x tavan)   -5.8% (±2.6) kazan  29% medyan 0.976
+    5 dk tut                     | train n= 694 ort(10x tavan)   -9.0% (±1.2) kazan  20% medyan 0.971 | test n= 140 ort(10x tavan)   -8.2% (±2.9) kazan  29% medyan 0.975
+    10 dk tut                    | train n= 694 ort(10x tavan)  -11.1% (±1.5) kazan  24% medyan 0.971 | test n= 140 ort(10x tavan)   -6.0% (±7.6) kazan  29% medyan 0.974
+    30 dk tut                    | train n= 694 ort(10x tavan)  -19.6% (±1.8) kazan  28% medyan 0.968 | test n= 140 ort(10x tavan)  -11.7% (±9.0) kazan  25% medyan 0.972
+    2 saat tut                   | train n= 694 ort(10x tavan)  -36.2% (±2.2) kazan  23% medyan 0.911 | test n= 140 ort(10x tavan)  -40.6% (±4.4) kazan  20% medyan 0.957
+    6 saat tut                   | train n= 694 ort(10x tavan)  -47.5% (±2.4) kazan  15% medyan 0.046 | test n= 140 ort(10x tavan)  -40.3% (±5.4) kazan  23% medyan 0.946
+    16 saat tut                  | train n= 694 ort(10x tavan)  -54.4% (±2.7) kazan   9% medyan 0.017 | test n= 140 ort(10x tavan)  -41.3% (±7.0) kazan  19% medyan 0.022
+    2x hedef / -30% stop         | train n= 694 ort(10x tavan)   -0.8% (±1.7) kazan  22% medyan 0.701 | test n= 140 ort(10x tavan)  +11.9% (±4.2) kazan  37% medyan 0.963
+    1.5x hedef / -25% stop       | train n= 694 ort(10x tavan)   +1.3% (±1.2) kazan  33% medyan 0.945 | test n= 140 ort(10x tavan)  +10.6% (±2.5) kazan  49% medyan 0.992
+    3x hedef / -40% stop         | train n= 694 ort(10x tavan)  -12.8% (±2.2) kazan  12% medyan 0.582 | test n= 140 ort(10x tavan)   +9.7% (±6.5) kazan  29% medyan 0.956
+    iz süren %25                 | train n= 694 ort(10x tavan)  -41.5% (±2.5) kazan  12% medyan 0.651 | test n= 140 ort(10x tavan)  -35.8% (±6.9) kazan  19% medyan 0.493
+    iz süren %40                 | train n= 694 ort(10x tavan)  -44.1% (±2.6) kazan  11% medyan 0.490 | test n= 140 ort(10x tavan)  -36.5% (±6.9) kazan  19% medyan 0.462
+    iz süren %25, max 2 saat     | train n= 694 ort(10x tavan)  -25.6% (±2.0) kazan  26% medyan 0.940 | test n= 140 ort(10x tavan)  -35.6% (±4.2) kazan  20% medyan 0.957
+
+=== B. Filtreler (yalnız erişilebilir grup; giriş +5 dk ve +15 dk), seçili çıkışlar ===
+
+  giriş +5 dk
+    hepsi                          5 dk tut               | train n= 176 ort(10x tavan)  -24.6% (±4.9) kazan  28% medyan 0.633 | test n= 189 ort(10x tavan)  -31.8% (±4.4) kazan  25% medyan 0.615
+    hepsi                          30 dk tut              | train n= 176 ort(10x tavan)  -43.0% (±7.5) kazan  15% medyan 0.247 | test n= 189 ort(10x tavan)  -48.5% (±7.2) kazan  13% medyan 0.214
+    hepsi                          1.5x hedef / -25% stop | train n= 176 ort(10x tavan)  -11.1% (±2.2) kazan  22% medyan 0.728 | test n= 189 ort(10x tavan)   -3.0% (±2.5) kazan  33% medyan 0.728
+    hepsi                          2x hedef / -30% stop   | train n= 176 ort(10x tavan)  -11.4% (±3.5) kazan  16% medyan 0.679 | test n= 189 ort(10x tavan)   -6.1% (±3.7) kazan  21% medyan 0.679
+    hepsi                          iz süren %25           | train n= 176 ort(10x tavan)  -24.2% (±4.1) kazan  21% medyan 0.698 | test n= 189 ort(10x tavan)  -24.1% (±4.5) kazan  27% medyan 0.711
+    ilk k dk getiri > +20%         5 dk tut               | train n=  64 ort(10x tavan)  -13.9% (±8.4) kazan  38% medyan 0.869 | test n=  66 ort(10x tavan)  -29.6% (±8.5) kazan  32% medyan 0.871
+    ilk k dk getiri > +20%         30 dk tut              | train n=  64 ort(10x tavan)  -33.6% (±17.3) kazan  22% medyan 0.143 | test n=  66 ort(10x tavan)  -46.4% (±16.3) kazan  15% medyan 0.036
+    ilk k dk getiri > +20%         1.5x hedef / -25% stop | train n=  64 ort(10x tavan)   -2.2% (±4.3) kazan  34% medyan 0.728 | test n=  66 ort(10x tavan)   +4.7% (±4.4) kazan  44% medyan 0.728
+    ilk k dk getiri > +20%         2x hedef / -30% stop   | train n=  64 ort(10x tavan)   -4.5% (±6.5) kazan  22% medyan 0.679 | test n=  66 ort(10x tavan)   +0.4% (±6.8) kazan  26% medyan 0.679
+    ilk k dk getiri > +20%         iz süren %25           | train n=  64 ort(10x tavan)  -16.7% (±6.7) kazan  31% medyan 0.792 | test n=  66 ort(10x tavan)  -17.8% (±6.7) kazan  39% medyan 0.874
+    ilk k dk getiri < -20%         5 dk tut               | train n=  65 ort(10x tavan)  -40.9% (±7.4) kazan  12% medyan 0.414 | test n=  81 ort(10x tavan)  -43.1% (±5.2) kazan  12% medyan 0.454
+    ilk k dk getiri < -20%         30 dk tut              | train n=  65 ort(10x tavan)  -53.0% (±8.6) kazan   6% medyan 0.257 | test n=  81 ort(10x tavan)  -52.7% (±5.3) kazan  10% medyan 0.286
+    ilk k dk getiri < -20%         1.5x hedef / -25% stop | train n=  65 ort(10x tavan)  -17.0% (±3.0) kazan  12% medyan 0.728 | test n=  81 ort(10x tavan)  -12.8% (±3.1) kazan  20% medyan 0.728
+    ilk k dk getiri < -20%         2x hedef / -30% stop   | train n=  65 ort(10x tavan)  -18.7% (±4.5) kazan   9% medyan 0.679 | test n=  81 ort(10x tavan)  -15.0% (±4.6) kazan  14% medyan 0.679
+    ilk k dk getiri < -20%         iz süren %25           | train n=  65 ort(10x tavan)  -32.2% (±7.3) kazan  11% medyan 0.602 | test n=  81 ort(10x tavan)  -30.6% (±7.6) kazan  15% medyan 0.614
+    ilk k dk getiri -20%..+20%     5 dk tut               | train n=  47 ort(10x tavan)  -16.5% (±9.0) kazan  36% medyan 0.802 | test n=  42 ort(10x tavan)  -13.6% (±10.4) kazan  38% medyan 0.811
+    ilk k dk getiri -20%..+20%     30 dk tut              | train n=  47 ort(10x tavan)  -42.0% (±9.2) kazan  19% medyan 0.324 | test n=  42 ort(10x tavan)  -43.4% (±16.8) kazan  17% medyan 0.168
+    ilk k dk getiri -20%..+20%     1.5x hedef / -25% stop | train n=  47 ort(10x tavan)  -14.9% (±4.0) kazan  17% medyan 0.728 | test n=  42 ort(10x tavan)   +3.9% (±5.6) kazan  43% medyan 0.728
+    ilk k dk getiri -20%..+20%     2x hedef / -30% stop   | train n=  47 ort(10x tavan)  -10.6% (±6.9) kazan  17% medyan 0.679 | test n=  42 ort(10x tavan)   +0.9% (±8.6) kazan  26% medyan 0.679
+    ilk k dk getiri -20%..+20%     iz süren %25           | train n=  47 ort(10x tavan)  -23.3% (±7.1) kazan  21% medyan 0.710 | test n=  42 ort(10x tavan)  -21.5% (±9.4) kazan  31% medyan 0.753
+    ilk k dk hacim üst %25         5 dk tut               | train n=  35 ort(10x tavan)  -31.5% (±11.2) kazan  31% medyan 0.509 | test n=  57 ort(10x tavan)  -32.0% (±9.9) kazan  28% medyan 0.328
+    ilk k dk hacim üst %25         30 dk tut              | train n=  35 ort(10x tavan)  -76.2% (±7.2) kazan  11% medyan 0.037 | test n=  57 ort(10x tavan)  -47.1% (±18.5) kazan  16% medyan 0.044
+    ilk k dk hacim üst %25         1.5x hedef / -25% stop | train n=  35 ort(10x tavan)   -8.5% (±5.4) kazan  26% medyan 0.728 | test n=  57 ort(10x tavan)   +7.2% (±4.8) kazan  47% medyan 0.728
+    ilk k dk hacim üst %25         2x hedef / -30% stop   | train n=  35 ort(10x tavan)   -6.9% (±8.5) kazan  20% medyan 0.679 | test n=  57 ort(10x tavan)   +7.7% (±7.8) kazan  32% medyan 0.679
+    ilk k dk hacim üst %25         iz süren %25           | train n=  35 ort(10x tavan)  -24.3% (±8.9) kazan  26% medyan 0.709 | test n=  57 ort(10x tavan)  -13.4% (±8.2) kazan  44% medyan 0.873
+    her dakika işlem gördü         5 dk tut               | train n=   5 ort(10x tavan)  -32.6% (±20.5) kazan  20% medyan 0.588 | test n=   2 ort(10x tavan)   -7.1% (±3.4) kazan   0% medyan 0.929
+    her dakika işlem gördü         30 dk tut              | train n=   5 ort(10x tavan)  +33.7% (±67.7) kazan  40% medyan 0.918 | test n=   2 ort(10x tavan)  -25.3% (±16.3) kazan   0% medyan 0.747
+    her dakika işlem gördü         1.5x hedef / -25% stop | train n=   5 ort(10x tavan)  -27.2% (±0.0) kazan   0% medyan 0.728 | test n=   2 ort(10x tavan)  +45.5% (±0.0) kazan 100% medyan 1.455
+    her dakika işlem gördü         2x hedef / -30% stop   | train n=   5 ort(10x tavan)  -32.1% (±0.0) kazan   0% medyan 0.679 | test n=   2 ort(10x tavan)  +94.0% (±0.0) kazan 100% medyan 1.940
+    her dakika işlem gördü         iz süren %25           | train n=   5 ort(10x tavan)  -50.1% (±11.8) kazan   0% medyan 0.541 | test n=   2 ort(10x tavan)  +41.6% (±37.7) kazan  50% medyan 1.416
+
+  giriş +15 dk
+    hepsi                          5 dk tut               | train n= 174 ort(10x tavan)  -10.3% (±3.0) kazan  23% medyan 0.946 | test n= 182 ort(10x tavan)   -1.8% (±5.7) kazan  21% medyan 0.961
+    hepsi                          30 dk tut              | train n= 174 ort(10x tavan)  -15.8% (±6.7) kazan  17% medyan 0.869 | test n= 182 ort(10x tavan)  -14.9% (±6.0) kazan  13% medyan 0.923
+    hepsi                          1.5x hedef / -25% stop | train n= 174 ort(10x tavan)   -6.4% (±2.1) kazan  21% medyan 0.813 | test n= 182 ort(10x tavan)   -4.8% (±2.0) kazan  19% medyan 0.929
+    hepsi                          2x hedef / -30% stop   | train n= 174 ort(10x tavan)   -8.4% (±3.1) kazan  14% medyan 0.679 | test n= 182 ort(10x tavan)   -8.7% (±2.7) kazan  10% medyan 0.845
+    hepsi                          iz süren %25           | train n= 174 ort(10x tavan)  -11.4% (±3.1) kazan  18% medyan 0.859 | test n= 182 ort(10x tavan)  -10.0% (±3.4) kazan  14% medyan 0.924
+    ilk k dk getiri > +20%         5 dk tut               | train n=  50 ort(10x tavan)  -10.2% (±7.8) kazan  26% medyan 0.887 | test n=  38 ort(10x tavan)  +15.9% (±24.6) kazan  42% medyan 0.961
+    ilk k dk getiri > +20%         30 dk tut              | train n=  50 ort(10x tavan)   -6.1% (±21.5) kazan  30% medyan 0.598 | test n=  38 ort(10x tavan)  -13.9% (±26.0) kazan  29% medyan 0.657
+    ilk k dk getiri > +20%         1.5x hedef / -25% stop | train n=  50 ort(10x tavan)   -5.4% (±4.7) kazan  30% medyan 0.728 | test n=  38 ort(10x tavan)   -0.4% (±5.7) kazan  37% medyan 0.728
+    ilk k dk getiri > +20%         2x hedef / -30% stop   | train n=  50 ort(10x tavan)   -6.9% (±7.1) kazan  20% medyan 0.679 | test n=  38 ort(10x tavan)   -2.2% (±8.7) kazan  24% medyan 0.679
+    ilk k dk getiri > +20%         iz süren %25           | train n=  50 ort(10x tavan)  -17.4% (±5.7) kazan  24% medyan 0.749 | test n=  38 ort(10x tavan)  -12.4% (±7.6) kazan  24% medyan 0.799
+    ilk k dk getiri < -20%         5 dk tut               | train n= 108 ort(10x tavan)   -6.9% (±2.8) kazan  23% medyan 0.957 | test n= 126 ort(10x tavan)   -6.6% (±1.9) kazan  13% medyan 0.964
+    ilk k dk getiri < -20%         30 dk tut              | train n= 108 ort(10x tavan)  -13.8% (±3.4) kazan  12% medyan 0.933 | test n= 126 ort(10x tavan)  -16.2% (±2.0) kazan   6% medyan 0.943
+    ilk k dk getiri < -20%         1.5x hedef / -25% stop | train n= 108 ort(10x tavan)   -5.2% (±2.4) kazan  19% medyan 0.921 | test n= 126 ort(10x tavan)   -6.3% (±1.9) kazan  12% medyan 0.940
+    ilk k dk getiri < -20%         2x hedef / -30% stop   | train n= 108 ort(10x tavan)   -6.8% (±3.5) kazan  12% medyan 0.889 | test n= 126 ort(10x tavan)  -12.3% (±2.0) kazan   3% medyan 0.919
+    ilk k dk getiri < -20%         iz süren %25           | train n= 108 ort(10x tavan)   -4.7% (±3.9) kazan  17% medyan 0.924 | test n= 126 ort(10x tavan)  -11.8% (±1.6) kazan  10% medyan 0.939
+    ilk k dk getiri -20%..+20%     5 dk tut               | train n=  16 ort(10x tavan)  -33.3% (±11.2) kazan  12% medyan 0.728 | test n=  18 ort(10x tavan)   -5.7% (±19.4) kazan  28% medyan 0.722
+    ilk k dk getiri -20%..+20%     30 dk tut              | train n=  16 ort(10x tavan)  -60.3% (±9.0) kazan   6% medyan 0.341 | test n=  18 ort(10x tavan)   -7.4% (±20.7) kazan  28% medyan 0.683
+    ilk k dk getiri -20%..+20%     1.5x hedef / -25% stop | train n=  16 ort(10x tavan)  -18.2% (±6.0) kazan  12% medyan 0.728 | test n=  18 ort(10x tavan)   -3.0% (±8.1) kazan  33% medyan 0.728
+    ilk k dk getiri -20%..+20%     2x hedef / -30% stop   | train n=  16 ort(10x tavan)  -24.2% (±7.6) kazan   6% medyan 0.679 | test n=  18 ort(10x tavan)   +2.9% (±13.3) kazan  28% medyan 0.679
+    ilk k dk getiri -20%..+20%     iz süren %25           | train n=  16 ort(10x tavan)  -38.5% (±8.7) kazan  12% medyan 0.649 | test n=  18 ort(10x tavan)   +8.0% (±27.4) kazan  22% medyan 0.697
+    ilk k dk hacim üst %25         5 dk tut               | train n=  40 ort(10x tavan)  -23.1% (±6.3) kazan  20% medyan 0.887 | test n=  52 ort(10x tavan)  +11.4% (±17.7) kazan  23% medyan 0.966
+    ilk k dk hacim üst %25         30 dk tut              | train n=  40 ort(10x tavan)  -27.6% (±11.9) kazan  12% medyan 0.765 | test n=  52 ort(10x tavan)   -6.9% (±18.4) kazan  10% medyan 0.944
+    ilk k dk hacim üst %25         1.5x hedef / -25% stop | train n=  40 ort(10x tavan)  -11.0% (±4.0) kazan  15% medyan 0.728 | test n=  52 ort(10x tavan)   -3.0% (±3.5) kazan  19% medyan 0.935
+    ilk k dk hacim üst %25         2x hedef / -30% stop   | train n=  40 ort(10x tavan)  -16.0% (±5.2) kazan   8% medyan 0.679 | test n=  52 ort(10x tavan)   +0.2% (±5.8) kazan  15% medyan 0.929
+    ilk k dk hacim üst %25         iz süren %25           | train n=  40 ort(10x tavan)  -20.8% (±5.4) kazan  15% medyan 0.862 | test n=  52 ort(10x tavan)   -6.9% (±4.5) kazan  13% medyan 0.935
+    her dakika işlem gördü         5 dk tut               | train n=  15 ort(10x tavan)  +13.9% (±11.2) kazan  33% medyan 0.964 | test n=  10 ort(10x tavan)   -9.1% (±10.0) kazan  20% medyan 0.956
+    her dakika işlem gördü         30 dk tut              | train n=  15 ort(10x tavan)  +23.2% (±23.5) kazan  20% medyan 0.962 | test n=  10 ort(10x tavan)  -18.4% (±9.6) kazan  10% medyan 0.946
+    her dakika işlem gördü         1.5x hedef / -25% stop | train n=  15 ort(10x tavan)   -1.1% (±6.3) kazan  20% medyan 0.913 | test n=  10 ort(10x tavan)   -6.0% (±6.0) kazan  10% medyan 0.922
+    her dakika işlem gördü         2x hedef / -30% stop   | train n=  15 ort(10x tavan)   +0.7% (±9.7) kazan  13% medyan 0.906 | test n=  10 ort(10x tavan)  -14.7% (±3.7) kazan   0% medyan 0.905
+    her dakika işlem gördü         iz süren %25           | train n=  15 ort(10x tavan)  +10.0% (±11.6) kazan  27% medyan 0.925 | test n=  10 ort(10x tavan)  -24.9% (±9.5) kazan   0% medyan 0.905
+
+=== C. Migrasyon sonrası yol (yalnız erişilebilir grup): dakika bazında fiyat (migrasyon dakikası açılışı = 1.0) ===
+   +   1 dk: n= 365 medyan 0.988  ort(10x tavan) 1.196  >1 48%  ≥2x 7.7%
+   +   5 dk: n= 365 medyan 0.914  ort(10x tavan) 1.290  >1 46%  ≥2x 14.8%
+   +  15 dk: n= 360 medyan 0.189  ort(10x tavan) 1.055  >1 26%  ≥2x 14.2%
+   +  30 dk: n= 357 medyan 0.086  ort(10x tavan) 0.854  >1 20%  ≥2x 11.2%
+   +  60 dk: n= 355 medyan 0.070  ort(10x tavan) 0.720  >1 14%  ≥2x 8.2%
+   + 120 dk: n= 346 medyan 0.064  ort(10x tavan) 0.604  >1 10%  ≥2x 6.4%
+   + 360 dk: n= 321 medyan 0.061  ort(10x tavan) 0.479  >1 7%  ≥2x 4.7%
+   + 960 dk: n= 139 medyan 0.097  ort(10x tavan) 0.608  >1 12%  ≥2x 5.8%
+   zirve dakikası: medyan 4  ≤5 dk 57%  ≤30 dk 86%  ≤2 saat 93%
+
+Not: dakikalık mum 'high'ı fitil içerir; hedef dolumu iyimser, stop dolumu da seviyeden varsayıldı. Ücret %3 gidiş-dönüş.

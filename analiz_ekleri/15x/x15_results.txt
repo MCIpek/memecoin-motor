@@ -1,0 +1,73 @@
+sample mints: 8000 15s
+mints with trades: 8000 155s
+
+== BASE RATES (raw mid-price, no fees/slippage), horizon = rest of 600s window ==
+from launch price (sniper at t=0)      2x 2273/8000 (28.41%) | 3x 1128/8000 (14.10%) | 5x 534/8000 (6.68%) | 10x 244/8000 (3.05%) | 15x 36/8000 (0.45%) | 20x 21/8000 (0.26%)
+entry first trade >=2s                 2x 1310/7846 (16.70%) | 3x 633/7846 (8.07%) | 5x 258/7846 (3.29%) | 10x 73/7846 (0.93%) | 15x 40/7846 (0.51%) | 20x 22/7846 (0.28%)
+entry first trade >=10s                2x 1048/7222 (14.51%) | 3x 531/7222 (7.35%) | 5x 230/7222 (3.18%) | 10x 71/7222 (0.98%) | 15x 33/7222 (0.46%) | 20x 20/7222 (0.28%)
+entry first trade >=30s                2x 760/6112 (12.43%) | 3x 392/6112 (6.41%) | 5x 176/6112 (2.88%) | 10x 56/6112 (0.92%) | 15x 36/6112 (0.59%) | 20x 21/6112 (0.34%)
+
+median peak age (s) for tokens reaching >=15x from launch: 91.5
+tokens reaching >=15x from launch that ALSO give >=5x from a 10s entry: 32 / 36
+tokens >=15x from launch: final (end of window) x from launch median: 10.985981785716906
+
+== Does 10s data separate big winners? (target: >=5x from 10s entry, and >=15x from launch) ==
+
+by 10s decision
+   ADAY                   n=  702  >=2x@10s  13.0%  >=5x@10s  1.14%  >=15x launch  0.00%  median final@10s 0.832
+   GIRME                  n= 1116  >=2x@10s  10.3%  >=5x@10s  2.15%  >=15x launch  0.36%  median final@10s 0.913
+   IZLE                   n= 5404  >=2x@10s  15.6%  >=5x@10s  3.66%  >=15x launch  0.59%  median final@10s 0.943
+
+by unique buyers in first 10s
+   0                      n=   18  >=2x@10s  11.1%  >=5x@10s  5.56%  >=15x launch  0.00%  median final@10s 0.987
+   1-2                    n= 3726  >=2x@10s  16.5%  >=5x@10s  4.00%  >=15x launch  0.59%  median final@10s 0.970
+   11-20                  n=  563  >=2x@10s  12.1%  >=5x@10s  1.95%  >=15x launch  0.00%  median final@10s 0.776
+   21+                    n=  324  >=2x@10s  17.6%  >=5x@10s  2.16%  >=15x launch  0.00%  median final@10s 0.615
+   3-5                    n= 1742  >=2x@10s  13.0%  >=5x@10s  3.10%  >=15x launch  0.80%  median final@10s 0.950
+   6-10                   n=  849  >=2x@10s   9.2%  >=5x@10s  0.94%  >=15x launch  0.00%  median final@10s 0.878
+
+by net SOL flow in first 10s
+   <0.5                   n= 3500  >=2x@10s  19.4%  >=5x@10s  5.03%  >=15x launch  0.86%  median final@10s 0.983
+   <10                    n=  790  >=2x@10s   8.9%  >=5x@10s  1.52%  >=15x launch  0.13%  median final@10s 0.751
+   <2                     n= 1292  >=2x@10s   8.3%  >=5x@10s  1.24%  >=15x launch  0.31%  median final@10s 0.967
+   <5                     n=  913  >=2x@10s   7.6%  >=5x@10s  1.31%  >=15x launch  0.00%  median final@10s 0.884
+   <=0                    n=   18  >=2x@10s  11.1%  >=5x@10s  5.56%  >=15x launch  0.00%  median final@10s 0.987
+   >=10 SOL               n=  709  >=2x@10s  16.9%  >=5x@10s  1.83%  >=15x launch  0.14%  median final@10s 0.596
+
+by top buyer share at 10s
+   <0.3                   n=  926  >=2x@10s  14.1%  >=5x@10s  2.16%  >=15x launch  0.00%  median final@10s 0.708
+   <0.5                   n= 1087  >=2x@10s  12.1%  >=5x@10s  2.48%  >=15x launch  0.46%  median final@10s 0.860
+   <0.8                   n= 2084  >=2x@10s  16.0%  >=5x@10s  3.89%  >=15x launch  0.91%  median final@10s 0.939
+   >=0.8                  n= 3125  >=2x@10s  14.5%  >=5x@10s  3.26%  >=15x launch  0.38%  median final@10s 0.981
+
+by snapshot quality at 10s
+   LATE                   n= 3904  >=2x@10s  13.8%  >=5x@10s  2.95%  >=15x launch  0.38%  median final@10s 0.931
+   ON_TIME                n= 3318  >=2x@10s  15.4%  >=5x@10s  3.47%  >=15x launch  0.63%  median final@10s 0.931
+
+by creator sold within 10s
+   creator sold           n= 1081  >=2x@10s  10.1%  >=5x@10s  2.13%  >=15x launch  0.37%  median final@10s 0.910
+   no                     n= 6141  >=2x@10s  15.3%  >=5x@10s  3.37%  >=15x launch  0.52%  median final@10s 0.934
+
+== Top-20 biggest winners from launch: what did 10s look like? ==
+   7xdYx4ps… x_launch   73.2  x@10s  68.6  final@10s 68.16  peak_age  285s  peak_vs 2000.0 SOL  ub10   1 tc10   1 flow10   0.49 top 1.00 q ON_TIME dec IZLE
+   F1GpEL6Z… x_launch   70.8  x@10s  22.1  final@10s  0.01  peak_age  160s  peak_vs 1287.6 SOL  ub10   2 tc10   3 flow10   0.12 top 0.69 q ON_TIME dec IZLE
+   4n8fQdx3… x_launch   62.1  x@10s 142.4  final@10s 141.56  peak_age  135s  peak_vs 1767.4 SOL  ub10   3 tc10  15 flow10   0.16 top 0.40 q LATE dec IZLE
+   FcfYtdiR… x_launch   56.4  x@10s  72.4  final@10s 72.22  peak_age  133s  peak_vs 1666.7 SOL  ub10   2 tc10   3 flow10   0.25 top 0.91 q LATE dec IZLE
+   GWL7za8m… x_launch   54.3  x@10s  10.8  final@10s  0.01  peak_age   23s  peak_vs 1401.3 SOL  ub10   5 tc10  71 flow10   6.22 top 0.82 q LATE dec IZLE
+   25nRqUuQ… x_launch   42.5  x@10s   9.0  final@10s  8.97  peak_age   84s  peak_vs 1231.7 SOL  ub10   4 tc10  17 flow10   0.45 top 0.53 q ON_TIME dec IZLE
+   y93e8gKi… x_launch   42.1  x@10s  11.8  final@10s  0.36  peak_age   45s  peak_vs 1221.1 SOL  ub10   2 tc10  11 flow10   0.00 top 0.74 q ON_TIME dec GIRME
+   HFcxN4Vg… x_launch   40.1  x@10s  17.6  final@10s 15.16  peak_age   95s  peak_vs 1124.4 SOL  ub10   3 tc10  11 flow10   0.42 top 0.59 q LATE dec IZLE
+   vA2FWhYp… x_launch   37.0  x@10s  14.2  final@10s  0.00  peak_age   88s  peak_vs 1085.6 SOL  ub10   3 tc10  15 flow10   0.01 top 0.76 q LATE dec GIRME
+   9LbscuZC… x_launch   36.8  x@10s  12.9  final@10s 12.88  peak_age  101s  peak_vs 1066.7 SOL  ub10   2 tc10   2 flow10   0.10 top 0.97 q ON_TIME dec IZLE
+   DCQ3KRwy… x_launch   35.6  x@10s  11.3  final@10s 11.26  peak_age   29s  peak_vs 1038.4 SOL  ub10   3 tc10  13 flow10   0.70 top 0.73 q LATE dec GIRME
+   FpUQ63sG… x_launch   32.4  x@10s  10.2  final@10s 10.15  peak_age  585s  peak_vs  961.0 SOL  ub10   2 tc10   6 flow10   0.26 top 0.56 q ON_TIME dec IZLE
+   BqFja9g2… x_launch   29.9  x@10s   7.6  final@10s  0.02  peak_age   58s  peak_vs  849.4 SOL  ub10   3 tc10  14 flow10   0.89 top 0.61 q ON_TIME dec IZLE
+   3MrbE55j… x_launch   27.8  x@10s  13.0  final@10s 12.94  peak_age   59s  peak_vs  817.1 SOL  ub10   3 tc10   4 flow10   0.17 top 0.48 q ON_TIME dec IZLE
+   25jDpPBB… x_launch   27.0  x@10s  79.1  final@10s  0.30  peak_age  105s  peak_vs  782.0 SOL  ub10   2 tc10   3 flow10   0.16 top 0.63 q ON_TIME dec IZLE
+   A1wgnXuh… x_launch   24.3  x@10s  17.7  final@10s 17.54  peak_age   73s  peak_vs  677.8 SOL  ub10   3 tc10  13 flow10   0.21 top 0.48 q LATE dec IZLE
+   BLMes4XJ… x_launch   23.0  x@10s  19.7  final@10s 19.71  peak_age  498s  peak_vs  683.2 SOL  ub10   1 tc10   1 flow10   0.06 top 1.00 q LATE dec IZLE
+   72R9yzwE… x_launch   22.5  x@10s   7.5  final@10s  6.05  peak_age   15s  peak_vs  669.2 SOL  ub10   4 tc10  19 flow10   0.13 top 0.62 q LATE dec GIRME
+   G5jDdEDg… x_launch   21.7  x@10s  24.3  final@10s 24.28  peak_age  233s  peak_vs  607.5 SOL  ub10   2 tc10   5 flow10   0.27 top 0.66 q LATE dec IZLE
+   49q5Mtnk… x_launch   21.1  x@10s   3.8  final@10s  3.59  peak_age   21s  peak_vs  602.2 SOL  ub10   3 tc10  10 flow10   0.68 top 0.55 q ON_TIME dec IZLE
+
+done 156s

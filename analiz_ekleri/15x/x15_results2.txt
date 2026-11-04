@@ -1,0 +1,66 @@
+== 1. Outlier inspection ==
+ launch {'mint': '7xdYx4psDqgGNSXEjqjaUNfhBn8xx3hBaS9kQFpFpump', 'instruction_name': 'create_v2', 'is_mayhem_mode': 1, 'is_cashback_enabled': 0, 'virtual_sol_reserves': 30000000000, 'virtual_token_reserves': 1073000000000000, 'real_token_reserves': 793100000000000, 'token_total_supply': 1000000000000000, 'quote_asset': 'SOL', 'event_timestamp': 1788431703}
+    trade {'age': 0, 'is_buy': 1, 'sol_amount': 488808425, 'token_amount': 17202752950970, 'vs': 30488808425, 'vt': 1055797247049030, 'rs': 488808425, 'rt': 775897247049030, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+    trade {'age': 12, 'is_buy': 1, 'sol_amount': 493827159, 'token_amount': 16828179531005, 'vs': 30982635584, 'vt': 1038969067518025, 'rs': 982635584, 'rt': 759069067518025, 'ix_name': 'buy_exact_quote_in', 'quote_asset': 'SOL'}
+    trade {'age': 26, 'is_buy': 0, 'sol_amount': 240647453, 'token_amount': 8133021840541, 'vs': 23572315294, 'vt': 1047102089358566, 'rs': 741988131, 'rt': 767202089358566, 'ix_name': 'sell', 'quote_asset': 'SOL'}
+    trade {'age': 29, 'is_buy': 1, 'sol_amount': 98765431, 'token_amount': 4368938170387, 'vs': 23671080725, 'vt': 1042733151188179, 'rs': 840753562, 'rt': 762833151188179, 'ix_name': 'buy_exact_quote_in', 'quote_asset': 'SOL'}
+    trade {'age': 30, 'is_buy': 1, 'sol_amount': 98765431, 'token_amount': 4332631662014, 'vs': 23769846156, 'vt': 1038400519526165, 'rs': 939518993, 'rt': 758500519526165, 'ix_name': 'buy_exact_quote_in', 'quote_asset': 'SOL'}
+    trade {'age': 32, 'is_buy': 1, 'sol_amount': 49382715, 'token_amount': 2152841981286, 'vs': 23819228871, 'vt': 1036247677544879, 'rs': 988901708, 'rt': 756347677544879, 'ix_name': 'buy_exact_quote_in', 'quote_asset': 'SOL'}
+ launch {'mint': '4n8fQdx36U14uiHjfCQrtZZfYPtSEKmWXU6KVBt7pump', 'instruction_name': 'create_v2', 'is_mayhem_mode': 1, 'is_cashback_enabled': 0, 'virtual_sol_reserves': 30000000000, 'virtual_token_reserves': 1073000000000000, 'real_token_reserves': 793100000000000, 'token_total_supply': 1000000000000000, 'quote_asset': 'SOL', 'event_timestamp': 1789537811}
+    trade {'age': 0, 'is_buy': 1, 'sol_amount': 98765431, 'token_amount': 3520918746848, 'vs': 30098765431, 'vt': 1069479081253152, 'rs': 98765431, 'rt': 789579081253152, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+    trade {'age': 1, 'is_buy': 1, 'sol_amount': 18399999, 'token_amount': 653395289517, 'vs': 35684422187, 'vt': 1068825685963635, 'rs': 117165430, 'rt': 788925685963635, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+    trade {'age': 2, 'is_buy': 0, 'sol_amount': 39625347, 'token_amount': 1188184349849, 'vs': 23642118047, 'vt': 1070013870313484, 'rs': 77540083, 'rt': 790113870313484, 'ix_name': 'sell', 'quote_asset': 'SOL'}
+    trade {'age': 3, 'is_buy': 1, 'sol_amount': 18345983, 'token_amount': 829673342401, 'vs': 29213248279, 'vt': 1069184196971083, 'rs': 95886066, 'rt': 789284196971083, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+    trade {'age': 3, 'is_buy': 0, 'sol_amount': 23789331, 'token_amount': 871382298557, 'vs': 21983285001, 'vt': 1070055579269640, 'rs': 72096735, 'rt': 790155579269640, 'ix_name': 'sell', 'quote_asset': 'SOL'}
+    trade {'age': 4, 'is_buy': 1, 'sol_amount': 9509559, 'token_amount': 462685932730, 'vs': 24872156258, 'vt': 1069592893336910, 'rs': 81606294, 'rt': 789692893336910, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+ launch {'mint': 'GWL7za8m7jNzU8LwLGZjFVjaxBg2uJyDVv3oYbcpump', 'instruction_name': 'create_v2', 'is_mayhem_mode': 1, 'is_cashback_enabled': 0, 'virtual_sol_reserves': 30000000000, 'virtual_token_reserves': 1073000000000000, 'real_token_reserves': 793100000000000, 'token_total_supply': 1000000000000000, 'quote_asset': 'SOL', 'event_timestamp': 1788777850}
+    trade {'age': 0, 'is_buy': 1, 'sol_amount': 987654320, 'token_amount': 34199203154141, 'vs': 30987654320, 'vt': 1038800796845859, 'rs': 987654320, 'rt': 758900796845859, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+    trade {'age': 2, 'is_buy': 0, 'sol_amount': 328296294, 'token_amount': 11123339652756, 'vs': 20901815225, 'vt': 1049924136498615, 'rs': 659358026, 'rt': 770024136498615, 'ix_name': 'sell', 'quote_asset': 'SOL'}
+    trade {'age': 2, 'is_buy': 0, 'sol_amount': 114134873, 'token_amount': 5764614281413, 'vs': 17375613811, 'vt': 1055688750780028, 'rs': 545223153, 'rt': 775788750780028, 'ix_name': 'sell', 'quote_asset': 'SOL'}
+    trade {'age': 3, 'is_buy': 1, 'sol_amount': 34332, 'token_amount': 2085902401, 'vs': 17375648143, 'vt': 1055686664877627, 'rs': 545257485, 'rt': 775786664877627, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+    trade {'age': 3, 'is_buy': 1, 'sol_amount': 33009, 'token_amount': 2005513384, 'vs': 17375681152, 'vt': 1055684659364243, 'rs': 545290494, 'rt': 775784659364243, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+    trade {'age': 3, 'is_buy': 1, 'sol_amount': 30436, 'token_amount': 1849179996, 'vs': 17375711588, 'vt': 1055682810184247, 'rs': 545320930, 'rt': 775782810184247, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+ launch {'mint': 'F1GpEL6ZYPcZGtPcpEepjaNsDp3grrMVgTmasy5ipump', 'instruction_name': 'create_v2', 'is_mayhem_mode': 1, 'is_cashback_enabled': 0, 'virtual_sol_reserves': 30000000000, 'virtual_token_reserves': 1073000000000000, 'real_token_reserves': 793100000000000, 'token_total_supply': 1000000000000000, 'quote_asset': 'SOL', 'event_timestamp': 1788504512}
+    trade {'age': 0, 'is_buy': 1, 'sol_amount': 80002345, 'token_amount': 2853806819926, 'vs': 30080002345, 'vt': 1070146193180074, 'rs': 80002345, 'rt': 790246193180074, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+    trade {'age': 0, 'is_buy': 1, 'sol_amount': 21472629, 'token_amount': 763379608533, 'vs': 38126330912, 'vt': 1069382813571541, 'rs': 101474974, 'rt': 789482813571541, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+    trade {'age': 2, 'is_buy': 1, 'sol_amount': 14084726, 'token_amount': 394908227042, 'vs': 43402274407, 'vt': 1068987905344499, 'rs': 115559700, 'rt': 789087905344499, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+    trade {'age': 2, 'is_buy': 1, 'sol_amount': 19753085, 'token_amount': 486292536515, 'vs': 43422027492, 'vt': 1068501612807984, 'rs': 135312785, 'rt': 788601612807984, 'ix_name': 'buy_exact_quote_in', 'quote_asset': 'SOL'}
+    trade {'age': 3, 'is_buy': 1, 'sol_amount': 4888888888, 'token_amount': 108128473916292, 'vs': 48310916380, 'vt': 960373138891692, 'rs': 5024201673, 'rt': 680473138891692, 'ix_name': 'buy', 'quote_asset': 'SOL'}
+    trade {'age': 3, 'is_buy': 0, 'sol_amount': 494883863, 'token_amount': 9939619513549, 'vs': 43956169063, 'vt': 970312758405241, 'rs': 4529317810, 'rt': 690412758405241, 'ix_name': 'sell', 'quote_asset': 'SOL'}
+
+== 2. Launch curve types ==
+   {'vs': 30000000000, 'vt': 1073000000000000, 'm': 0, 'n': 35021}
+   {'vs': 30000000000, 'vt': 1073000000000000, 'm': 1, 'n': 19883}
+
+== 3. Recomputed base rates with per-token launch price; standard curve only (30 SOL / 1.073e15) ==
+n: 8000 standard curve: 8000 mayhem: 3458 74s
+
+ALL n=8000
+  from launch price    n= 8000 2x 27.54% | 3x 13.76% | 5x  6.93% | 10x  3.21% | 15x  0.57% | 20x  0.40% | median 1.411
+  entry >=2s           n= 7846 2x 15.50% | 3x  7.70% | 5x  3.28% | 10x  1.05% | 15x  0.55% | 20x  0.27% | median 1.078
+  entry >=10s          n= 7245 2x 13.87% | 3x  7.05% | 5x  3.29% | 10x  1.13% | 15x  0.55% | 20x  0.32% | median 1.022
+  entry >=30s          n= 6182 2x 12.15% | 3x  6.36% | 5x  2.73% | 10x  0.82% | 15x  0.42% | 20x  0.32% | median 1.001
+
+STANDARD curve n=8000
+  from launch price    n= 8000 2x 27.54% | 3x 13.76% | 5x  6.93% | 10x  3.21% | 15x  0.57% | 20x  0.40% | median 1.411
+  entry >=2s           n= 7846 2x 15.50% | 3x  7.70% | 5x  3.28% | 10x  1.05% | 15x  0.55% | 20x  0.27% | median 1.078
+  entry >=10s          n= 7245 2x 13.87% | 3x  7.05% | 5x  3.29% | 10x  1.13% | 15x  0.55% | 20x  0.32% | median 1.022
+  entry >=30s          n= 6182 2x 12.15% | 3x  6.36% | 5x  2.73% | 10x  0.82% | 15x  0.42% | 20x  0.32% | median 1.001
+
+NON-STANDARD curve n=0
+
+STANDARD non-mayhem n=4542
+  from launch price    n= 4542 2x 25.45% | 3x 13.06% | 5x  7.33% | 10x  3.87% | 15x  0.00% | 20x  0.00% | median 1.346
+  entry >=2s           n= 4395 2x  7.37% | 3x  3.00% | 5x  1.23% | 10x  0.20% | 15x  0.00% | 20x  0.00% | median 1.006
+  entry >=10s          n= 4209 2x  5.77% | 3x  2.33% | 5x  0.95% | 10x  0.12% | 15x  0.00% | 20x  0.00% | median 1.001
+  entry >=30s          n= 3811 2x  4.78% | 3x  1.81% | 5x  0.47% | 10x  0.08% | 15x  0.00% | 20x  0.00% | median 1.000
+
+STANDARD mayhem n=3458
+  from launch price    n= 3458 2x 30.28% | 3x 14.69% | 5x  6.39% | 10x  2.34% | 15x  1.33% | 20x  0.93% | median 1.490
+  entry >=2s           n= 3451 2x 25.85% | 3x 13.68% | 5x  5.88% | 10x  2.12% | 15x  1.25% | 20x  0.61% | median 1.371
+  entry >=10s          n= 3036 2x 25.10% | 3x 13.60% | 5x  6.52% | 10x  2.54% | 15x  1.32% | 20x  0.76% | median 1.302
+  entry >=30s          n= 2371 2x 24.00% | 3x 13.67% | 5x  6.37% | 10x  2.02% | 15x  1.10% | 20x  0.84% | median 1.214
+
+STANDARD: tokens >=15x from launch: 46 ; their peak virtual SOL (median): 680.4910670419999
+STANDARD: tokens >=10x from launch: 257 ; peak_vs>=115 SOL (graduated): 424
+done 74s

@@ -1,0 +1,138 @@
+=== 0. SCHEMA / PRAGMA ===
+page_size 4096 page_count 2501129
+tables: ['chain_events', 'early_trade_metadata', 'executable_outcomes_v2', 'market_outcomes', 'paper_outcomes', 'paper_positions', 'paper_v2_positions', 'pump_launches', 'pump_trades', 'risk_decisions', 'service_state', 'snapshot_tracking', 'sniper_scores', 'sqlite_sequence', 'stream_gaps', 'token_snapshots', 'tokens_minimal', 'transaction_enrichment_queue', 'wallet_analysis_queue', 'wallet_behavior_stats', 'wallet_edges', 'wallet_positions', 'wallet_profiles', 'x_band_calibration']
+indexes: ['idx_chain_events_slot', 'idx_early_trade_meta_fee_payer', 'idx_early_trade_meta_mint_slot', 'idx_early_trade_meta_mint_user', 'idx_paper_v2_canonical', 'idx_pump_launches_slot', 'idx_pump_trades_mint_time', 'idx_pump_trades_user', 'idx_tokens_launch_slot', 'idx_tx_enrichment_work', 'idx_wallet_profiles_funder', 'idx_wallet_queue_address_mint', 'idx_wallet_queue_work']
+service_state: [{'key': 'last_observed_slot', 'value': '455963889'}]
+
+=== 1. TABLE COUNTS (README claims in brackets) ===
+chain_events                      2,078,144  [-]
+tokens_minimal                       58,316  [-]
+pump_launches                        58,316  [58316]
+snapshot_tracking                    58,282  [-]
+   [slow 7.5s] SELECT COUNT(*) FROM pump_trades
+pump_trades                       2,094,977  [2094977]
+wallet_positions                    608,540  [608540]
+wallet_behavior_stats                39,759  [-]
+token_snapshots                     291,358  [291358]
+stream_gaps                           1,512  [-]
+wallet_analysis_queue               147,455  [-]
+wallet_profiles                      14,568  [14568]
+wallet_edges                          8,707  [-]
+risk_decisions                      291,358  [291358]
+paper_positions                       8,146  [-]
+paper_outcomes                       13,052  [-]
+market_outcomes                     188,770  [-]
+transaction_enrichment_queue         26,521  [-]
+early_trade_metadata                  5,964  [-]
+sniper_scores                         5,615  [5615]
+paper_v2_positions                   30,749  [30749]
+executable_outcomes_v2                4,389  [4389]
+x_band_calibration                       10  [-]
+
+=== 2. PUMP_LAUNCHES ===
+event_timestamp range: 2026-09-01 07:46:35 -> 2026-10-08 05:49:06 | slots 443370252 - 454455248 | distinct creators 22355 | distinct days 18
+by instruction: [('create', 270), ('create_v2', 58046)]
+by quote_asset: [('1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz', 1), ('2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump', 6), ('2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv', 1), ('3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh', 88), ('3ZLekZYq2qkZiSpnSvabjit34tUkjSwD1JFuW9as9wBG', 3), ('4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R', 16), ('4nV5gNwwP68zUDat26ySChREqVaQaLudfJBkSgEzpump', 1), ('5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2', 2), ('5eyib4qghYGHNh7VvxSFGYLFJSanjq9hug9fR52kksnm', 1), ('5tCju6YNxHq5zrA6tGndr6F7TK42mpUFmeE31cSFpump', 1), ('63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9', 4), ('69LjZUUzxj3Cb3Fxeo1X4QpYEQTboApkhXTysPpbpump', 2), ('6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx', 17), ('6UpQcMAb5xMzxc7ZfPaVMgx3KqsvKZdT5U718BzD5We2', 9), ('6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN', 2), ('739dnZEG4yaBWFsY8L8ZwrfhGG6dhtCSercW8Umspump', 19), ('7GUnr7krtQhJwd6ASY2VUprd9t4c64zcgCsjdmZepump', 2), ('7VertkgF9KLhxxJXHX6uaWuoYZTP9LdGj2bWmVXVpump', 5), ('7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs', 13), ('8J69rbLTzWWgUJziFY8jeu5tDwEPBwUz4pKBMr5rpump', 4), ('8XtRWb4uAAJFMP4QQhoYYCWR6XXb7ybcCdiqPwz9s5WS', 2), ('8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn', 1), ('98kfF7rmsg1QDUEoCqNE7g7M1FdrTt92TEp2CLzypump', 33), ('98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g', 22), ('9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump', 1), ('9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump', 8), ('9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump', 14), ('A13oRB9FFaiUjfi6LdCg6p9ka1u8SfGkUFs4SKvPpump', 1), ('A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS', 142), ('AMC1qwR9KhiyrQBRPrxnfo4JfMeMZqEBvt5tgTytNNoc', 2), ('AMD8XwJXgQ9WV45Wyj9yFLejxzf2J6VM1PJY8bJEjeES', 3), ('ARBzQTYDCW2KnVEjs1Mc81LekB1ibVFZKbSVmorkoT9d', 1), ('Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump', 18), ('AywAYdNJnSLSXwKWYxDciPjqGRnwp4iZdQptuuQTpump', 1), ('BABANGA4JE7Kkam4nTrALAwAVgsNJUuFJnnkF7S16BZp', 9), ('BArimz1PcKZr8PcPh3tcZ2dg4S7FJLk3cw6R5F8GsHKg', 2), ('BLKKYfF41c6xRPrtX1rdYbxLE1xxEdZUnxQsB5hcZ8Nf', 3), ('BMKdM4yUxX12moFqVk195k7coMbaybd4RUKCUdm7D1Sk', 8), ('BPxxfRCXkUVhig4HS1Lh7kZqV6SPJhzfEk4x6fVBjPCy', 39), ('BULL151gUXcFV5wXEUqu9Am2L7Qt4bTJRLRuAUjkcspC', 2), ('BoTx8y9ynfdxf5ZjWtCoBVkff52qKA82ysaLU8ZM6d8T', 19), ('C1MHyoTJpRTeS9AQCyspNVu2EWAYCZwmJ1jNkEArFP1f', 1), ('CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp', 32), ('CB9dDufT3ZuQXqqSfa1c5kY935TEreyBw9XJXxHKpump', 2), ('CTPoyCwkjMvoJwU4xvZZqoD8tiYk6yDchySiN5gGpump', 5), ('CZEB3WNZuF2Yz1z2H81RcCk8T7fsw82KB33zqamASVsg', 2), ('CashcatZMRn4Jv8sPQZUSsbTLi2PcPe1ssqbHcnaJqSS', 5), ('CbcyNo7m1amFWqEQm2m4PLv1UNvpcL3C1Ujm6AkzpKoU', 8), ('CbyTNf7UPzvewHh4Zp6umogM2RWahhmGRJWLJnPwpump', 9), ('Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump', 8), ('Cm6fNnMk7NfzStP9CZpsQA2v3jjzbcYGAxdJySmHpump', 3), ('DELL2aRKQz7DMq5DrKLtkn47ZCnbxXPZXrSGbkmd13wy', 1), ('DJTu7vi8norVzdVAffgvb39VP7wjKeTsgaMBJrzfxvoF', 86), ('DKNGQFNGQmoBdXSRGKJ8tTu7uPDasw5JDcfMmWniNfow', 12), ('DNhQZ1CE9qZ2FNrVhsCXwQJ2vZG8ufZkcYakTS5Jpump', 1), ('DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263', 36), ('Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump', 2), ('Dfh5DzRgSvvCFDoYc2ciTkMrbDfRKybA4SoFbPmApump', 4), ('DoGEV7LASBkQbibMc5k5vKnTZoMg423GpJ5QtJEGfm7R', 53), ('DvdmEnztCmXwBnAbedD48XVGZJSxq31zNvnyftXdpump', 3), ('Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk', 8), ('ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY', 1), ('EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm', 14), ('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', 828), ('EicWvteVi2fWepEzS3FYWsnuPoP6caZfjnKqNvydLjCH', 2), ('FLYRq3en8r2Z69gN3KyAnDrvnitEJNkwPYY7favinHeD', 1), ('FWDtiB5fXHdVAewPqvHPL2dh4aBC1C6GacQbePoQXKjz', 1), ('GPRR2u6NS5yBQHWGauoJ9HXgjrTH8dDsrBfTV5zAYvDH', 2), ('GRNDYDpqwpCm6jVxpbh4xT5AM4r3p391qYsKTHqgaET2', 10), ('GTBxUiw6wJdmmkCGZgRHLyYxqu1vG4KtRpeox6yDpump', 6), ('Ge87EtsjwRQbHaqQmKRno69RFTwh9bfSsm99XNxTpump', 4), ('GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump', 1), ('H74CYmXgMkYHYuSRsZt6RJb4NYp2u72Vw8BS5huApump', 3), ('H8xQ6poBjB9DTPMDTKWzWPrnxu4bDEhybxiouF8Ppump', 1), ('HNg5PYJmtqcmzXrv6S9zP1CDKk5BgDuyFBxbvNApump', 2), ('Hg5Ja55T5wESq4vyFoiVCMeHXtGyVA69X2UHq8hgpump', 3), ('HiMSSzzwkZkrXJ4PGVJRdtfLaANeAztjjcgk5Dxe7Lwx', 9), ('J3NKxxXZcnNiMjKw9hYb2K4LUxgwB6t1FtPtQVsv3KFr', 9), ('J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump', 8), ('JNJg1znKdF712Phe7L7z52AATAvEjEytBdN2w8Lnh1Y', 3), ('LLYuwZ33keFihgwoxXsBawy31AiRFLFSva32TYq5TvD', 2), ('LMT3i1BHgixFqPUgcyteJhnEz2dpy9i3cYy4pi9BoeV', 2), ('LULUmT9VMttkfAJE236LXJcYJ2tTP7nunrSWR5G1BdS', 1), ('LUV9GB51PNZNRyzzyYK3rtqFfvDvWtRiXZ34wVq2HrX', 1), ('LinkhB3afbBKb2EQQu7s7umdZceV3wcvAUJhQAfQ23L', 2), ('METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL', 1), ('MGMuubtUEirmkhfEQdmGUh4pr7HuUdMWcZXFtpPbVJD', 2), ('MRVLSjkR2ceUBukujaD3xCyHP1H3B2SzpsNTZF546jo', 12), ('MUxEsUKSMACyw5fZf68wxf5FLnZVhtU9CwH8uNNGay1', 4), ('MukLDtJ8Cx9DxLbeyLRSWPSposTMWuwHANbuaudpump', 5), ('NFLX7qV57zuVxCoHy3s1jiGZyALraLNwttbxdvmYJLJ', 6), ('NKEda5nHhNGgjrE9nDdMvaEmkmJ96qqxzBVZEcKmjSg', 9), ('NQ5hSuXQZrbnrwcDVk2qN73njjd3E3v3badYHnj5thF', 2), ('PEPEqnuuCDbBC89p1u9vpnP1KQ2oj1xTcQBsjt9X55m', 19), ('PFER6ENqP8r8NF3CqVt4mFowxsin3V5MLidBNQFCC3x', 1), ('PTNzAfFAB4LvoUQEUUGrFMyUoRLExMYjH6CcfyQfsVP', 1), ('QUBTAD8C9bMU9LvmMNgKPhrmBGbHvxpu6vfWQtThxxw', 4), ('RBLXDGRD64AtRamHMFVcjqne3Ar7NLWtFtYNtsrf1cE', 7), ('RDDTGbhHwVXfyCvQMXzzowKjf5qrYBZAnehoXW83ooh', 18), ('SH55hfaipFAbwT42nQYhRoM5o5t61QpkmJ6p62vXB3m', 6), ('SKHYhSjuRWHgikq8eRKbtBbpABgJSkd7ytQV14i9EQ3', 5), ('SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3', 1), ('SNAPcESrvnH8yUdgeMF6xm1hym9b6hW6s8YeqeHdZFz', 4), ('SNDKbwMUQvZhnLnxLduradgLHG5KrPuKwpnrkkGRhfH', 3), ('SOL', 54904), ('SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb', 138), ('SQQQAa3gUxgnqcEsdjPA4RQNQBgB97TnG2hJhk2WaGE', 1), ('SV151D5pjygAKA8aJJcKzm4wFnRX5G92Fye94jQJk7g', 2), ('TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo', 16), ('URARfsinxCRw4JpvQhuT4CxavdZXZEMjv9ZwWmWpwag', 1), ('USNv3NkKA27Dh4nsHJDPhW4VoEcTQmjoZyJt2dqdwFu', 2), ('WENAZ2WyPbmgvUcKfQ8hyMDfBQP9bZ65hsZ5KTFrRGZ', 1), ('WXMRyRZhsa19ety5erZhHg4N3xj3EVN92u94422teJp', 23), ('Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg', 11), ('Xs6B6zawENwAbWVi7w92rjazLuAr5Az59qgWKcNb45x', 9), ('Xs7ZdzSHLU9ftNJsii5fCeJhoRWSC32SQGzGQtePxNu', 9), ('Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ', 22), ('XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN', 22), ('XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB', 36), ('XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ', 6), ('Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu', 26), ('XsaBXg8dU5cPM6ehmVctMkVqoiRG2ZjMo1cyBJ3AykQ', 5), ('XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp', 65), ('Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh', 182), ('Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc', 16), ('XsfCC9VL4DamVGNgdJpfLXB3sBVa158Gbx8sh7NzmTk', 1), ('XsgSaSvNSqLTtFuyWPBhK9196Xb9Bbdyjj4fH3cPJGo', 1), ('XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4', 13), ('XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W', 227), ('XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX', 14), ('XsqE9cRRpzxcGKDXj1BJ7Xmg4GRhZoyY1KpmGSxAWT2', 15), ('XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1', 11), ('Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re', 29), ('XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg', 40), ('cbADAmv9issuPfhFwyQG3xac4DGPd1LDSt1oz7vwJsg', 1), ('chipCAT7vi5CZtbZsn9z7iMPXvFwyAnKz3QFu8XVuHm', 2), ('he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A', 7), ('iNTCy1qTsUEZQe3DSocLz1ZXXai34Gdw8THQh5rxFaF', 1), ('oreoU2P8bN6jkk3jbaiVxYnG1dCXcYxwhwyK9jSybcp', 1), ('poNSfquKq512ApeYjVghwViSun4x1MhCqHVH2Paq4jN', 10), ('pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn', 580), ('qntUzPUsJ51abNP7VYNxkmsQ4RnvEZAhavUxsCxpxH4', 11), ('shib5gSoVKPjwkXrxRk7SbQFzb2R9rQB3TgQWYX4RwW', 1), ('suifhC9gU1VbJAPYPTBkHJyyyStKGLLYPVDTmPoqbvA', 10), ('taoC6xyv2v8tDLcev4uaGUgV4vdQsWJrGft2kcBRrBY', 3), ('uniHfuPhEQSrtpzXpJZDCSq53yaejKKpNhFUiKoHKHV', 6)]
+mayhem/cashback: [(0, 0, 34935), (0, 1, 2980), (1, 0, 20035), (1, 1, 366)]
+token_program: [('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA', 270), ('TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb', 58046)]
+null block_time: 0
+block_time != event_timestamp: 0
+|block_time - event_timestamp|>2: 0
+initial reserves distinct: [(30000000000, 1073000000000000, 793100000000000, 1000000000000000, 54904), (4292000000, 1073000000000000, 793100000000000, 1000000000000000, 828), (998139534884, 1073000000000000, 793100000000000, 1000000000000000, 281), (841456831991, 1073000000000000, 793100000000000, 1000000000000000, 129), (557158400, 1073000000000000, 793100000000000, 1000000000000000, 128)]
+creator==user: 52896 creator!=user: 5420
+launches per day:
+   2026-09-01      59  07:46:35 - 12:39:08
+   2026-09-03     747  10:08:50 - 11:05:14
+   2026-09-04    6670  05:41:33 - 13:41:23
+   2026-09-07    6808  05:14:52 - 14:20:07
+   2026-09-08    5247  05:32:06 - 13:42:05
+   2026-09-09     333  05:33:54 - 06:17:29
+   2026-09-15     223  16:43:39 - 17:09:17
+   2026-09-16    4182  05:12:54 - 16:09:15
+   2026-09-17    4078  05:15:37 - 13:42:46
+   2026-09-18    4253  05:13:22 - 13:42:50
+   2026-09-21    4094  04:21:06 - 16:23:03
+   2026-09-22     432  08:33:06 - 12:52:33
+   2026-09-23    1358  06:12:09 - 10:19:23
+   2026-09-29    2235  06:55:24 - 10:34:44
+   2026-09-30    5914  08:19:57 - 13:42:30
+   2026-10-01    5603  04:20:04 - 17:25:42
+   2026-10-07    6013  08:29:02 - 13:49:30
+   2026-10-08      67  05:30:26 - 05:49:06
+top creators by launch count: [('6ATnpbwa43DtscAWjiR3uh5bEfpc4mhFpF42F5a5f68T', 624), ('4UKLdTBiz6pGRccq9CGw9n53UwmAdd4UX1sJKeUohSiP', 560), ('3xtyS7oYkE8wQ3uZN4uMf3jdhBj5SKnM4HM6kZr7M6uc', 546), ('K6Eh9fwKkrhVNq6SpRtJn7F4Myi3HUst5QP8x5BKHnR', 519), ('NMgfqcn6BoS1k6yZoYfureFGPChTdUAgJAQpuhzdLBZ', 303)]
+creators with >1 launch: 4530
+first_seen_at vs event_timestamp delay (s) sample 20000:
+   p10 p50 p90 p99 max: [4.29, 22.54, 172.97, 396.4, 91917.04] negative: 0
+   [slow 11.1s] SELECT COUNT(*) FROM pump_launches l WHERE NOT EXISTS (SELECT 1 FROM chain_event
+launches without chain_event: 0
+launches without tokens_minimal: 0
+tokens_minimal without launch: 0
+tokens_minimal completeness: [('BACKFILLED', 18), ('COMPLETE', 58298)]
+
+=== 3. COLLECTOR SESSIONS (gaps > 15 min between consecutive launches) ===
+sessions: 36  total covered hours: 84.6  calendar span days: 36.9  coverage: 9.6%
+   2026-09-01 07:46:35 -> 2026-09-01 08:02:08    0.26 h
+   2026-09-01 08:28:15 -> 2026-09-01 08:47:38    0.32 h
+   2026-09-01 12:38:27 -> 2026-09-01 12:39:08    0.01 h
+   2026-09-03 10:08:50 -> 2026-09-03 11:05:14    0.94 h
+   2026-09-04 05:41:33 -> 2026-09-04 13:41:23    8.00 h
+   2026-09-07 05:14:52 -> 2026-09-07 14:20:07    9.09 h
+   2026-09-08 05:32:06 -> 2026-09-08 13:42:05    8.17 h
+   2026-09-09 05:33:54 -> 2026-09-09 06:17:29    0.73 h
+   2026-09-15 16:43:39 -> 2026-09-15 17:09:17    0.43 h
+   2026-09-16 05:12:54 -> 2026-09-16 13:42:04    8.49 h
+   2026-09-16 15:58:56 -> 2026-09-16 16:09:15    0.17 h
+   2026-09-17 05:15:37 -> 2026-09-17 11:41:48    6.44 h
+   2026-09-17 12:29:13 -> 2026-09-17 13:42:46    1.23 h
+   2026-09-18 05:13:22 -> 2026-09-18 13:42:50    8.49 h
+   2026-09-21 04:21:06 -> 2026-09-21 05:30:31    1.16 h
+   2026-09-21 08:38:14 -> 2026-09-21 13:43:34    5.09 h
+   2026-09-21 16:17:42 -> 2026-09-21 16:23:03    0.09 h
+   2026-09-22 08:33:06 -> 2026-09-22 08:35:44    0.04 h
+   2026-09-22 08:51:57 -> 2026-09-22 09:19:06    0.45 h
+   2026-09-22 11:10:23 -> 2026-09-22 11:24:17    0.23 h
+   2026-09-22 11:40:55 -> 2026-09-22 12:52:33    1.19 h
+   2026-09-23 06:12:09 -> 2026-09-23 06:23:58    0.20 h
+   2026-09-23 06:46:21 -> 2026-09-23 08:20:12    1.56 h
+   2026-09-23 08:43:51 -> 2026-09-23 10:19:23    1.59 h
+   2026-09-29 06:55:24 -> 2026-09-29 06:55:48    0.01 h
+   2026-09-29 07:11:28 -> 2026-09-29 07:23:45    0.20 h
+   2026-09-29 07:40:58 -> 2026-09-29 07:57:14    0.27 h
+   2026-09-29 08:24:27 -> 2026-09-29 10:16:27    1.87 h
+   2026-09-29 10:32:14 -> 2026-09-29 10:34:44    0.04 h
+   2026-09-30 08:19:57 -> 2026-09-30 13:42:30    5.38 h
+   2026-10-01 04:20:04 -> 2026-10-01 11:42:06    7.37 h
+   2026-10-01 17:11:11 -> 2026-10-01 17:25:42    0.24 h
+   2026-10-07 08:29:02 -> 2026-10-07 10:19:09    1.84 h
+   2026-10-07 10:42:41 -> 2026-10-07 12:44:28    2.03 h
+   2026-10-07 13:05:18 -> 2026-10-07 13:49:30    0.74 h
+   2026-10-08 05:30:26 -> 2026-10-08 05:49:06    0.31 h
+
+=== 4. PUMP_TRADES ===
+   [slow 203.6s] SELECT MIN(event_timestamp) a, MAX(event_timestamp) b, COUNT(DISTINCT mint) m, C
+range: 2026-09-01 08:31:24 -> 2026-10-08 05:49:06 | distinct mints 53591 | distinct users 105092 | buys 1149201
+   [slow 199.7s] SELECT ix_name, COUNT(*) FROM pump_trades GROUP BY 1
+ix_name: [('buy', 767805), ('buy_exact_quote_in', 197873), ('buy_exact_sol_in', 183523), ('sell', 945776)]
+   [slow 201.0s] SELECT quote_asset, COUNT(*) FROM pump_trades GROUP BY 1
+quote_asset: [('1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz', 1), ('2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump', 69), ('2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv', 1), ('3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh', 457), ('3ZLekZYq2qkZiSpnSvabjit34tUkjSwD1JFuW9as9wBG', 3), ('4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R', 17), ('4nV5gNwwP68zUDat26ySChREqVaQaLudfJBkSgEzpump', 1), ('5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2', 2), ('5eyib4qghYGHNh7VvxSFGYLFJSanjq9hug9fR52kksnm', 19), ('5tCju6YNxHq5zrA6tGndr6F7TK42mpUFmeE31cSFpump', 1), ('63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9', 5), ('69LjZUUzxj3Cb3Fxeo1X4QpYEQTboApkhXTysPpbpump', 1), ('6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx', 22), ('6UpQcMAb5xMzxc7ZfPaVMgx3KqsvKZdT5U718BzD5We2', 44), ('6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN', 2), ('739dnZEG4yaBWFsY8L8ZwrfhGG6dhtCSercW8Umspump', 9), ('7GUnr7krtQhJwd6ASY2VUprd9t4c64zcgCsjdmZepump', 2), ('7VertkgF9KLhxxJXHX6uaWuoYZTP9LdGj2bWmVXVpump', 3), ('7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs', 38), ('8J69rbLTzWWgUJziFY8jeu5tDwEPBwUz4pKBMr5rpump', 4), ('8XtRWb4uAAJFMP4QQhoYYCWR6XXb7ybcCdiqPwz9s5WS', 2), ('98kfF7rmsg1QDUEoCqNE7g7M1FdrTt92TEp2CLzypump', 157), ('98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g', 63), ('9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump', 1), ('9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump', 102), ('9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump', 27), ('A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS', 368), ('AMC1qwR9KhiyrQBRPrxnfo4JfMeMZqEBvt5tgTytNNoc', 2), ('AMD8XwJXgQ9WV45Wyj9yFLejxzf2J6VM1PJY8bJEjeES', 7), ('ARBzQTYDCW2KnVEjs1Mc81LekB1ibVFZKbSVmorkoT9d', 1), ('Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump', 760), ('AywAYdNJnSLSXwKWYxDciPjqGRnwp4iZdQptuuQTpump', 1), ('BABANGA4JE7Kkam4nTrALAwAVgsNJUuFJnnkF7S16BZp', 52), ('BArimz1PcKZr8PcPh3tcZ2dg4S7FJLk3cw6R5F8GsHKg', 4), ('BMKdM4yUxX12moFqVk195k7coMbaybd4RUKCUdm7D1Sk', 33), ('BPxxfRCXkUVhig4HS1Lh7kZqV6SPJhzfEk4x6fVBjPCy', 29), ('BULL151gUXcFV5wXEUqu9Am2L7Qt4bTJRLRuAUjkcspC', 1), ('BoTx8y9ynfdxf5ZjWtCoBVkff52qKA82ysaLU8ZM6d8T', 26), ('C1MHyoTJpRTeS9AQCyspNVu2EWAYCZwmJ1jNkEArFP1f', 1), ('CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp', 172), ('CB9dDufT3ZuQXqqSfa1c5kY935TEreyBw9XJXxHKpump', 2), ('CTPoyCwkjMvoJwU4xvZZqoD8tiYk6yDchySiN5gGpump', 6), ('CZEB3WNZuF2Yz1z2H81RcCk8T7fsw82KB33zqamASVsg', 1), ('CashcatZMRn4Jv8sPQZUSsbTLi2PcPe1ssqbHcnaJqSS', 64), ('CbcyNo7m1amFWqEQm2m4PLv1UNvpcL3C1Ujm6AkzpKoU', 3), ('CbyTNf7UPzvewHh4Zp6umogM2RWahhmGRJWLJnPwpump', 172), ('Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump', 25), ('Cm6fNnMk7NfzStP9CZpsQA2v3jjzbcYGAxdJySmHpump', 3), ('DJTu7vi8norVzdVAffgvb39VP7wjKeTsgaMBJrzfxvoF', 247), ('DKNGQFNGQmoBdXSRGKJ8tTu7uPDasw5JDcfMmWniNfow', 314), ('DNhQZ1CE9qZ2FNrVhsCXwQJ2vZG8ufZkcYakTS5Jpump', 15), ('DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263', 67), ('Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump', 59), ('Dfh5DzRgSvvCFDoYc2ciTkMrbDfRKybA4SoFbPmApump', 4), ('DoGEV7LASBkQbibMc5k5vKnTZoMg423GpJ5QtJEGfm7R', 269), ('DvdmEnztCmXwBnAbedD48XVGZJSxq31zNvnyftXdpump', 3), ('Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk', 9), ('ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY', 48), ('EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm', 74), ('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', 34595), ('EicWvteVi2fWepEzS3FYWsnuPoP6caZfjnKqNvydLjCH', 1), ('FLYRq3en8r2Z69gN3KyAnDrvnitEJNkwPYY7favinHeD', 9), ('FWDtiB5fXHdVAewPqvHPL2dh4aBC1C6GacQbePoQXKjz', 13), ('GPRR2u6NS5yBQHWGauoJ9HXgjrTH8dDsrBfTV5zAYvDH', 12), ('GRNDYDpqwpCm6jVxpbh4xT5AM4r3p391qYsKTHqgaET2', 13), ('GTBxUiw6wJdmmkCGZgRHLyYxqu1vG4KtRpeox6yDpump', 6), ('Ge87EtsjwRQbHaqQmKRno69RFTwh9bfSsm99XNxTpump', 4), ('GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump', 2), ('H74CYmXgMkYHYuSRsZt6RJb4NYp2u72Vw8BS5huApump', 3), ('H8xQ6poBjB9DTPMDTKWzWPrnxu4bDEhybxiouF8Ppump', 21), ('HNg5PYJmtqcmzXrv6S9zP1CDKk5BgDuyFBxbvNApump', 24), ('Hg5Ja55T5wESq4vyFoiVCMeHXtGyVA69X2UHq8hgpump', 5), ('HiMSSzzwkZkrXJ4PGVJRdtfLaANeAztjjcgk5Dxe7Lwx', 19), ('J3NKxxXZcnNiMjKw9hYb2K4LUxgwB6t1FtPtQVsv3KFr', 6), ('J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump', 12), ('JNJg1znKdF712Phe7L7z52AATAvEjEytBdN2w8Lnh1Y', 1), ('LLYuwZ33keFihgwoxXsBawy31AiRFLFSva32TYq5TvD', 2), ('LMT3i1BHgixFqPUgcyteJhnEz2dpy9i3cYy4pi9BoeV', 2), ('LULUmT9VMttkfAJE236LXJcYJ2tTP7nunrSWR5G1BdS', 1), ('LUV9GB51PNZNRyzzyYK3rtqFfvDvWtRiXZ34wVq2HrX', 20), ('LinkhB3afbBKb2EQQu7s7umdZceV3wcvAUJhQAfQ23L', 2), ('METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL', 1), ('MGMuubtUEirmkhfEQdmGUh4pr7HuUdMWcZXFtpPbVJD', 348), ('MRVLSjkR2ceUBukujaD3xCyHP1H3B2SzpsNTZF546jo', 12), ('MUxEsUKSMACyw5fZf68wxf5FLnZVhtU9CwH8uNNGay1', 3), ('MukLDtJ8Cx9DxLbeyLRSWPSposTMWuwHANbuaudpump', 6), ('NKEda5nHhNGgjrE9nDdMvaEmkmJ96qqxzBVZEcKmjSg', 54), ('NQ5hSuXQZrbnrwcDVk2qN73njjd3E3v3badYHnj5thF', 2), ('PEPEqnuuCDbBC89p1u9vpnP1KQ2oj1xTcQBsjt9X55m', 18), ('PFER6ENqP8r8NF3CqVt4mFowxsin3V5MLidBNQFCC3x', 1), ('QUBTAD8C9bMU9LvmMNgKPhrmBGbHvxpu6vfWQtThxxw', 4), ('RBLXDGRD64AtRamHMFVcjqne3Ar7NLWtFtYNtsrf1cE', 7), ('RDDTGbhHwVXfyCvQMXzzowKjf5qrYBZAnehoXW83ooh', 20), ('SH55hfaipFAbwT42nQYhRoM5o5t61QpkmJ6p62vXB3m', 66), ('SKHYhSjuRWHgikq8eRKbtBbpABgJSkd7ytQV14i9EQ3', 1), ('SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3', 1), ('SNAPcESrvnH8yUdgeMF6xm1hym9b6hW6s8YeqeHdZFz', 36), ('SOL', 2049476), ('SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb', 686), ('SV151D5pjygAKA8aJJcKzm4wFnRX5G92Fye94jQJk7g', 5), ('TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo', 108), ('URARfsinxCRw4JpvQhuT4CxavdZXZEMjv9ZwWmWpwag', 1), ('USNv3NkKA27Dh4nsHJDPhW4VoEcTQmjoZyJt2dqdwFu', 1), ('WENAZ2WyPbmgvUcKfQ8hyMDfBQP9bZ65hsZ5KTFrRGZ', 4), ('WXMRyRZhsa19ety5erZhHg4N3xj3EVN92u94422teJp', 212), ('Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg', 9), ('Xs6B6zawENwAbWVi7w92rjazLuAr5Az59qgWKcNb45x', 19), ('Xs7ZdzSHLU9ftNJsii5fCeJhoRWSC32SQGzGQtePxNu', 11), ('Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ', 99), ('XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN', 52), ('XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB', 269), ('XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ', 14), ('Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu', 367), ('XsaBXg8dU5cPM6ehmVctMkVqoiRG2ZjMo1cyBJ3AykQ', 58), ('XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp', 372), ('Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh', 268), ('Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc', 21), ('XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4', 26), ('XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W', 1183), ('XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX', 38), ('XsqE9cRRpzxcGKDXj1BJ7Xmg4GRhZoyY1KpmGSxAWT2', 189), ('XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1', 75), ('Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re', 62), ('XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg', 76), ('cbADAmv9issuPfhFwyQG3xac4DGPd1LDSt1oz7vwJsg', 1), ('he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A', 3), ('iNTCy1qTsUEZQe3DSocLz1ZXXai34Gdw8THQh5rxFaF', 1), ('oreoU2P8bN6jkk3jbaiVxYnG1dCXcYxwhwyK9jSybcp', 1), ('poNSfquKq512ApeYjVghwViSun4x1MhCqHVH2Paq4jN', 18), ('pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn', 1974), ('qntUzPUsJ51abNP7VYNxkmsQ4RnvEZAhavUxsCxpxH4', 10), ('shib5gSoVKPjwkXrxRk7SbQFzb2R9rQB3TgQWYX4RwW', 1), ('suifhC9gU1VbJAPYPTBkHJyyyStKGLLYPVDTmPoqbvA', 10), ('taoC6xyv2v8tDLcev4uaGUgV4vdQsWJrGft2kcBRrBY', 3), ('uniHfuPhEQSrtpzXpJZDCSq53yaejKKpNhFUiKoHKHV', 6)]
+   [slow 198.9s] SELECT COUNT(*) FROM pump_trades WHERE quote_amount=0
+   [slow 198.7s] SELECT COUNT(*) FROM pump_trades WHERE token_amount=0
+quote_amount=0: 248 token_amount=0: 0
+   [slow 194.9s] SELECT COUNT(*) FROM pump_trades WHERE sol_amount<>quote_amount
+sol_amount<>quote_amount: 45501
+   [slow 195.6s] SELECT COUNT(*) FROM pump_trades WHERE virtual_sol_reserves<>virtual_quote_reser
+virtual_sol<>virtual_quote: 45501
+   [slow 197.1s] SELECT COUNT(*) FROM pump_trades WHERE virtual_sol_reserves<=0 OR virtual_token_
+negative/zero reserves: 45501
+   [slow 9.6s] SELECT COUNT(*) FROM pump_trades t WHERE NOT EXISTS (SELECT 1 FROM pump_launches
+orphan trades (mint w/o launch): 0
+   [slow 28.0s] SELECT COUNT(*) FROM pump_trades t WHERE NOT EXISTS (SELECT 1 FROM chain_events 
+trades w/o chain_event (FK): 0
+trade age vs launch: <0 / >600: 0 / 0
+trades per mint distribution:
+   mints w/ trades: 53591 p50 p90 p99 max: [2.0, 84.0, 616.0, 5461.0] mean 39.1
+   mints with >=10 trades: 17009 >=50: 7673 >=200: 2636
+launches with 0 trades: 4725
+trade age distribution (s): buckets 0-10/10-60/60-300/300-600: [('0-10', 399195), ('10-60', 656221), ('300-600', 267395), ('60-300', 772166)]
+   [slow 230.9s] SELECT fee, quote_amount q FROM pump_trades WHERE quote_amount>0 ORDER BY RANDOM
+fee bps distribution (fee/quote*1e4) sample: [(95, 14846), (0, 5075), (96, 26), (104, 12), (97, 6), (99, 6)]

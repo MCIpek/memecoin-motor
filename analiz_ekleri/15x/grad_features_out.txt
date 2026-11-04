@@ -1,0 +1,114 @@
+SOL rows 54904 non-mayhem 35021  grad non-mayhem 1436 (4.10%)  grad within 600s 1038
+
+by 60s decision (non-mayhem)
+   ADAY               n=  2523  grad 14.74%   grad<=600s 13.04%   grad>600s  1.70%
+   GIRME              n= 10728  grad  1.02%   grad<=600s  0.29%   grad>600s  0.73%
+   IZLE               n= 21721  grad  4.39%   grad<=600s  3.12%   grad>600s  1.27%
+
+by 60s unique buyers
+   a 0                n=  4142  grad  0.43%   grad<=600s  0.00%   grad>600s  0.43%
+   b 1-2              n= 20791  grad  4.48%   grad<=600s  3.20%   grad>600s  1.28%
+   c 3-5              n=  3218  grad  2.24%   grad<=600s  1.99%   grad>600s  0.25%
+   d 6-10             n=  2234  grad  9.00%   grad<=600s  8.59%   grad>600s  0.40%
+   e 11-20            n=  1727  grad  2.08%   grad<=600s  1.16%   grad>600s  0.93%
+   f 21-50            n=  1616  grad  4.64%   grad<=600s  2.72%   grad>600s  1.92%
+   g 51+              n=  1244  grad  8.12%   grad<=600s  4.26%   grad>600s  3.86%
+
+by 60s net SOL flow
+   a <=0              n=  4179  grad  0.45%   grad<=600s  0.02%   grad>600s  0.43%
+   b <0.5             n= 15519  grad  0.92%   grad<=600s  0.03%   grad>600s  0.89%
+   c <2               n=  6473  grad  0.66%   grad<=600s  0.02%   grad>600s  0.65%
+   d <5               n=  4389  grad  1.62%   grad<=600s  0.11%   grad>600s  1.50%
+   e <15              n=  2389  grad  1.51%   grad<=600s  0.17%   grad>600s  1.34%
+   f <40              n=   879  grad  9.90%   grad<=600s  2.73%   grad>600s  7.17%
+   g >=40 SOL         n=  1144  grad 90.56%   grad<=600s 87.33%   grad>600s  3.23%
+
+by 60s top buyer share
+   a <0.2             n=  6831  grad  2.21%   grad<=600s  0.91%   grad>600s  1.30%
+   b <0.4             n=  2992  grad  9.93%   grad<=600s  9.06%   grad>600s  0.87%
+   c <0.7             n=  3020  grad  1.09%   grad<=600s  0.93%   grad>600s  0.17%
+   d >=0.7            n= 22129  grad  4.31%   grad<=600s  3.06%   grad>600s  1.25%
+
+by creator sold within 60s
+   no                 n= 28512  grad  4.72%   grad<=600s  3.53%   grad>600s  1.19%
+   sold               n=  6460  grad  1.38%   grad<=600s  0.48%   grad>600s  0.90%
+
+by creator launch count
+   a 1                n= 15173  grad  8.13%   grad<=600s  6.23%   grad>600s  1.89%
+   b 2-5              n=  6871  grad  1.57%   grad<=600s  0.84%   grad>600s  0.73%
+   c 6-20             n=  5678  grad  0.88%   grad<=600s  0.42%   grad>600s  0.46%
+   d 21+              n=  7299  grad  0.62%   grad<=600s  0.14%   grad>600s  0.48%
+
+by max sniper score
+   a none             n= 32092  grad  4.05%   grad<=600s  3.02%   grad>600s  1.04%
+   b <45              n=  1669  grad  7.07%   grad<=600s  3.77%   grad>600s  3.30%
+   c <70              n=  1176  grad  1.02%   grad<=600s  0.60%   grad>600s  0.43%
+   d >=70             n=    84  grad  5.95%   grad<=600s  0.00%   grad>600s  5.95%
+
+by creator self-buy in first 10s (SOL)
+   a none             n=  8532  grad  1.42%   grad<=600s  0.55%   grad>600s  0.87%
+   b <0.5             n= 13276  grad  2.76%   grad<=600s  1.63%   grad>600s  1.13%
+   c <2               n=  6313  grad  1.44%   grad<=600s  0.78%   grad>600s  0.67%
+   d <5               n=  4866  grad  2.30%   grad<=600s  0.72%   grad>600s  1.58%
+   e >=5              n=  2034  grad 36.68%   grad<=600s 33.97%   grad>600s  2.70%
+
+by buys in first 2s (SOL)
+   a none             n=  4228  grad  0.47%   grad<=600s  0.00%   grad>600s  0.47%
+   b <1               n= 15812  grad  0.97%   grad<=600s  0.01%   grad>600s  0.96%
+   c <5               n=  8099  grad  1.17%   grad<=600s  0.07%   grad>600s  1.10%
+   d <20              n=  5176  grad  2.13%   grad<=600s  0.70%   grad>600s  1.43%
+   e >=20             n=  1706  grad 61.96%   grad<=600s 58.26%   grad>600s  3.69%
+
+by 10s unique buyers
+   a 0                n=  4209  grad  0.43%   grad<=600s  0.00%   grad>600s  0.43%
+   b 1-2              n= 21880  grad  4.29%   grad<=600s  3.05%   grad>600s  1.24%
+   c 3-5              n=  3529  grad  2.47%   grad<=600s  2.13%   grad>600s  0.34%
+   d 6-10             n=  2673  grad  8.98%   grad<=600s  7.93%   grad>600s  1.05%
+   e 11+              n=  2702  grad  5.55%   grad<=600s  3.07%   grad>600s  2.48%
+   z n/a              n=    28  grad  7.14%   grad<=600s  0.00%   grad>600s  7.14%
+
+by 60s snapshot quality
+   LATE               n= 25010  grad  3.80%   grad<=600s  2.37%   grad>600s  1.43%
+   ON_TIME            n=  9962  grad  4.86%   grad<=600s  4.47%   grad>600s  0.39%
+
+by day
+   2026-09-01         n=    48  grad  6.25%   grad<=600s  2.08%   grad>600s  4.17%
+   2026-09-03         n=   489  grad  4.09%   grad<=600s  3.48%   grad>600s  0.61%
+   2026-09-04         n=  3718  grad  5.22%   grad<=600s  4.95%   grad>600s  0.27%
+   2026-09-07         n=  4696  grad  5.09%   grad<=600s  4.54%   grad>600s  0.55%
+   2026-09-08         n=  3972  grad  3.93%   grad<=600s  3.25%   grad>600s  0.68%
+   2026-09-09         n=   237  grad  2.53%   grad<=600s  2.53%   grad>600s  0.00%
+   2026-09-15         n=   100  grad  5.00%   grad<=600s  3.00%   grad>600s  2.00%
+   2026-09-16         n=  2142  grad  6.07%   grad<=600s  5.23%   grad>600s  0.84%
+   2026-09-17         n=  2175  grad  4.46%   grad<=600s  3.63%   grad>600s  0.83%
+   2026-09-18         n=  2621  grad  3.28%   grad<=600s  1.83%   grad>600s  1.45%
+   2026-09-21         n=  2518  grad  3.97%   grad<=600s  1.99%   grad>600s  1.99%
+   2026-09-22         n=   261  grad  3.83%   grad<=600s  2.30%   grad>600s  1.53%
+   2026-09-23         n=   701  grad  7.99%   grad<=600s  2.57%   grad>600s  5.42%
+   2026-09-29         n=  1413  grad  1.70%   grad<=600s  0.71%   grad>600s  0.99%
+   2026-09-30         n=  2976  grad  2.89%   grad<=600s  1.41%   grad>600s  1.48%
+   2026-10-01         n=  3121  grad  4.13%   grad<=600s  2.18%   grad>600s  1.95%
+   2026-10-07         n=  3794  grad  2.48%   grad<=600s  1.34%   grad>600s  1.13%
+   2026-10-08         n=    39  grad  2.56%   grad<=600s  2.56%   grad>600s  0.00%
+
+== Rules, time split (train <= 09-21, test > 09-21), non-mayhem with 60s snapshot; target = graduated LATER than 600s (reachable) and ANY graduation ==
+  train: n=22676 grad 4.56%  grad>600s 0.85%
+  test: n=12296 grad 3.25%  grad>600s 1.66%
+  creator_n==1                                   train: sel  8139 (35.9%) grad  873 (10.73%)  grad>600s  116 ( 1.43%, lift 1.7x)  grad<=600s  757  EV@60s->sell@grad, losers -100%: -76%
+  creator_n==1                                   test: sel  7007 (57.0%) grad  359 ( 5.12%)  grad>600s  170 ( 2.43%, lift 1.5x)  grad<=600s  189  EV@60s->sell@grad, losers -100%: -67%
+  creator_n==1 & !creator_sold60                 train: sel  6881 (30.3%) grad  855 (12.43%)  grad>600s  102 ( 1.48%, lift 1.8x)  grad<=600s  753  EV@60s->sell@grad, losers -100%: -73%
+  creator_n==1 & !creator_sold60                 test: sel  7004 (57.0%) grad  358 ( 5.11%)  grad>600s  169 ( 2.41%, lift 1.5x)  grad<=600s  189  EV@60s->sell@grad, losers -100%: -67%
+  creator_n==1 & ub60>=6 & flow60>=1             train: sel  1569 ( 6.9%) grad  286 (18.23%)  grad>600s   44 ( 2.80%, lift 3.3x)  grad<=600s  242  EV@60s->sell@grad, losers -100%: -69%
+  creator_n==1 & ub60>=6 & flow60>=1             test: sel     5 ( 0.0%) grad    1 (20.00%)  grad>600s    1 (20.00%, lift 12.1x)  grad<=600s    0  EV@60s->sell@grad, losers -100%: -46%
+  creator_n==1 & ub60>=11 & flow60>=3 & top<0.5  train: sel   842 ( 3.7%) grad   86 (10.21%)  grad>600s   38 ( 4.51%, lift 5.3x)  grad<=600s   48  EV@60s->sell@grad, losers -100%: -69%
+  creator_n==1 & ub60>=11 & flow60>=3 & top<0.5  test: sel     3 ( 0.0%) grad    0 ( 0.00%)  grad>600s    0 ( 0.00%, lift 0.0x)  grad<=600s    0  EV@60s->sell@grad, losers -100%: -100%
+  ub60>=21 & flow60>=5                           train: sel  1758 ( 7.8%) grad  168 ( 9.56%)  grad>600s   74 ( 4.21%, lift 5.0x)  grad<=600s   94  EV@60s->sell@grad, losers -100%: -76%
+  ub60>=21 & flow60>=5                           test: sel     1 ( 0.0%) grad    0 ( 0.00%)  grad>600s    0 ( 0.00%, lift 0.0x)  grad<=600s    0  EV@60s->sell@grad, losers -100%: -100%
+  flow60>=15                                     train: sel  1781 ( 7.9%) grad  911 (51.15%)  grad>600s   84 ( 4.72%, lift 5.6x)  grad<=600s  827  EV@60s->sell@grad, losers -100%: -37%
+  flow60>=15                                     test: sel   242 ( 2.0%) grad  212 (87.60%)  grad>600s   16 ( 6.61%, lift 4.0x)  grad<=600s  196  EV@60s->sell@grad, losers -100%: -4%
+  d60==ADAY                                      train: sel  2517 (11.1%) grad  371 (14.74%)  grad>600s   42 ( 1.67%, lift 2.0x)  grad<=600s  329  EV@60s->sell@grad, losers -100%: -78%
+  d60==ADAY                                      test: sel     6 ( 0.0%) grad    1 (16.67%)  grad>600s    1 (16.67%, lift 10.0x)  grad<=600s    0  EV@60s->sell@grad, losers -100%: +26%
+  d60!=GIRME & creator_n==1 & ub60>=6            train: sel  1411 ( 6.2%) grad  270 (19.14%)  grad>600s   30 ( 2.13%, lift 2.5x)  grad<=600s  240  EV@60s->sell@grad, losers -100%: -70%
+  d60!=GIRME & creator_n==1 & ub60>=6            test: sel     5 ( 0.0%) grad    0 ( 0.00%)  grad>600s    0 ( 0.00%, lift 0.0x)  grad<=600s    0  EV@60s->sell@grad, losers -100%: -100%
+
+NOTE: EV = buy at 60s snapshot price, sell at curve-full price (14.7x from launch), 3% costs; tokens that never graduate counted as -100%; tokens already full by 60s counted as -3%.

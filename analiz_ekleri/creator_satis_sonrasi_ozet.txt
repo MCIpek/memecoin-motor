@@ -1,0 +1,85 @@
+universe 17577 coins, meta 6s
+  loaded 0/17577 6s
+  loaded 4000/17577 84s
+  loaded 8000/17577 176s
+  loaded 12000/17577 231s
+  loaded 16000/17577 285s
+loaded trades for 16722 coins 300s
+computed 317s
+
+=== 1. Creator ne zaman satıyor? (n=16722 coin) ===
+   creator ilk 600 sn içinde sattı: 9647 (57.7%)
+   ilk satış: medyan 8 sn | ≤2 sn 23.8% ≤5 sn 43.2% ≤22 sn 62.3% ≤60 sn 73.2%
+   tamamen çıktı (aldığının ≥%90'ını sattı): 9326 (96.7% of sellers) | tam çıkış medyan 13 sn
+   ilk satışın fiyat etkisi: medyan %5.3  ≥%20 8.5%
+   creator alım medyan 1.00 SOL, satış medyan 1.23 SOL
+   graduate oranı: creator sattı 1.06%  |  satmadı 10.54%
+
+=== 2. Creator sattıktan SONRA girersem? ===
+   EV politikaları: '2x'te-sat' = pencere içinde 2x görürse 2x'ten sat, yoksa 600. sn fiyatı | 'tut' = graduate ise dolum fiyatı, değilse bugünkü eğri fiyatı | 'ATH/2' = graduate ise PumpSwap zirvesinin yarısı (iyimser). Maliyet %3.
+   creator İLK satışından +0 sn sonra gir                     n= 6963 | giriş medyan 1.21x | sonra ≥2x   8.8% ≥3x  4.2% ≥5x  1.6% | graduate  1.45% | EV: 2x'te-sat    -9%  tut   -14%  ATH/2    -4%
+   creator İLK satışından +5 sn sonra gir                     n= 6544 | giriş medyan 1.14x | sonra ≥2x   8.0% ≥3x  3.6% ≥5x  1.2% | graduate  1.54% | EV: 2x'te-sat    -8%  tut   -14%  ATH/2    -2%
+   creator İLK satışından +22 sn sonra gir                    n= 5855 | giriş medyan 1.06x | sonra ≥2x   6.4% ≥3x  2.8% ≥5x  0.7% | graduate  1.59% | EV: 2x'te-sat    -8%  tut   -12%  ATH/2    +2%
+   creator TAM çıkışından +0 sn sonra gir                     n= 6506 | giriş medyan 1.17x | sonra ≥2x   8.3% ≥3x  4.0% ≥5x  1.4% | graduate  1.48% | EV: 2x'te-sat    -8%  tut   -13%  ATH/2    +0%
+   creator TAM çıkışından +5 sn sonra gir                     n= 6062 | giriş medyan 1.11x | sonra ≥2x   7.2% ≥3x  3.3% ≥5x  1.1% | graduate  1.53% | EV: 2x'te-sat    -9%  tut   -13%  ATH/2    +2%
+   creator TAM çıkışından +22 sn sonra gir                    n= 5436 | giriş medyan 1.05x | sonra ≥2x   6.1% ≥3x  2.4% ≥5x  0.6% | graduate  1.62% | EV: 2x'te-sat    -8%  tut   -11%  ATH/2   +10%
+
+=== 3. Karşılaştırma: aynı yaşta, creator HENÜZ SATMAMIŞ coin'e girersem? ===
+   yaş   5 sn, creator henüz satmamış                         n= 9952 | giriş medyan 1.06x | sonra ≥2x   5.3% ≥3x  2.2% ≥5x  0.8% | graduate  1.55% | EV: 2x'te-sat    -6%  tut   -10%  ATH/2    -7%
+   yaş   5 sn, creator zaten satmış                           n= 3098 | giriş medyan 1.37x | sonra ≥2x  10.3% ≥3x  4.9% ≥5x  1.7% | graduate  1.78% | EV: 2x'te-sat   -11%  tut   -17%  ATH/2   +10%
+   yaş  10 sn, creator henüz satmamış                         n= 8376 | giriş medyan 1.03x | sonra ≥2x   4.0% ≥3x  1.5% ≥5x  0.5% | graduate  1.54% | EV: 2x'te-sat    -6%  tut    -8%  ATH/2    -5%
+   yaş  10 sn, creator zaten satmış                           n= 4224 | giriş medyan 1.26x | sonra ≥2x   9.5% ≥3x  4.3% ≥5x  1.5% | graduate  1.75% | EV: 2x'te-sat   -10%  tut   -16%  ATH/2    +4%
+   yaş  30 sn, creator henüz satmamış                         n= 6670 | giriş medyan 1.03x | sonra ≥2x   3.1% ≥3x  1.1% ≥5x  0.3% | graduate  1.51% | EV: 2x'te-sat    -5%  tut    -7%  ATH/2    -3%
+   yaş  30 sn, creator zaten satmış                           n= 4622 | giriş medyan 1.07x | sonra ≥2x   7.3% ≥3x  3.2% ≥5x  0.8% | graduate  1.88% | EV: 2x'te-sat    -8%  tut   -12%  ATH/2    +6%
+   yaş  60 sn, creator henüz satmamış                         n= 5538 | giriş medyan 1.02x | sonra ≥2x   2.5% ≥3x  1.0% ≥5x  0.2% | graduate  1.43% | EV: 2x'te-sat    -5%  tut    -7%  ATH/2    -2%
+   yaş  60 sn, creator zaten satmış                           n= 4453 | giriş medyan 1.03x | sonra ≥2x   6.0% ≥3x  2.2% ≥5x  0.5% | graduate  2.00% | EV: 2x'te-sat    -6%  tut   -10%  ATH/2   +10%
+   yaş 120 sn, creator henüz satmamış                         n= 4056 | giriş medyan 1.02x | sonra ≥2x   2.5% ≥3x  0.9% ≥5x  0.2% | graduate  1.50% | EV: 2x'te-sat    -4%  tut    -6%  ATH/2    +0%
+   yaş 120 sn, creator zaten satmış                           n= 3867 | giriş medyan 1.02x | sonra ≥2x   4.8% ≥3x  1.7% ≥5x  0.3% | graduate  2.12% | EV: 2x'te-sat    -5%  tut    -9%  ATH/2   +18%
+   yaş 300 sn, creator henüz satmamış                         n= 2086 | giriş medyan 1.03x | sonra ≥2x   1.9% ≥3x  0.3% ≥5x  0.1% | graduate  1.97% | EV: 2x'te-sat    -3%  tut    -7%  ATH/2    +3%
+   yaş 300 sn, creator zaten satmış                           n= 2281 | giriş medyan 1.04x | sonra ≥2x   3.0% ≥3x  0.7% ≥5x  0.1% | graduate  2.85% | EV: 2x'te-sat    -4%  tut   -12%  ATH/2   -13%
+
+=== 4. Creator satışından sonra yürüyenler: alt kırılımlar (tam çıkış +5 sn giriş) ===
+
+   creator tam çıkış zamanı
+        a ≤5 sn                                               n= 2039 | giriş medyan 1.15x | sonra ≥2x   8.3% ≥3x  4.0% ≥5x  1.4% | graduate  1.32% | EV: 2x'te-sat    -8%  tut   -14%  ATH/2    -8%
+        b 6-30 sn                                             n= 2677 | giriş medyan 1.20x | sonra ≥2x   9.0% ≥3x  4.0% ≥5x  1.2% | graduate  1.94% | EV: 2x'te-sat   -10%  tut   -15%  ATH/2   -16%
+        c 31-120 sn                                           n=  874 | giriş medyan 1.02x | sonra ≥2x   2.6% ≥3x  0.9% ≥5x  0.1% | graduate  1.37% | EV: 2x'te-sat    -6%  tut    -9%  ATH/2   +88%
+        d >120 sn                                             n=  472 | giriş medyan 1.02x | sonra ≥2x   0.8% ≥3x  0.6% ≥5x  0.4% | graduate  0.42% | EV: 2x'te-sat    -6%  tut    -7%  ATH/2    -8%
+
+   creator alımı
+        a <0,5 SOL                                            n= 1105 | giriş medyan 1.01x | sonra ≥2x   3.6% ≥3x  1.7% ≥5x  0.6% | graduate  0.63% | EV: 2x'te-sat    -6%  tut    -8%  ATH/2    -5%
+        b 0,5-2 SOL                                           n= 1636 | giriş medyan 1.05x | sonra ≥2x   5.4% ≥3x  2.5% ≥5x  0.7% | graduate  0.43% | EV: 2x'te-sat    -7%  tut   -14%  ATH/2   -14%
+        c 2-5 SOL                                             n= 2609 | giriş medyan 1.26x | sonra ≥2x   9.4% ≥3x  4.2% ≥5x  1.4% | graduate  2.22% | EV: 2x'te-sat   -10%  tut   -14%  ATH/2   +21%
+        d ≥5 SOL                                              n=  712 | giriş medyan 1.26x | sonra ≥2x   9.0% ≥3x  4.2% ≥5x  1.3% | graduate  2.95% | EV: 2x'te-sat   -12%  tut   -16%  ATH/2   -18%
+
+   satış öncesi zirve (launch'a göre)
+        a <1,2x                                               n= 1270 | giriş medyan 1.00x | sonra ≥2x   1.7% ≥3x  0.6% ≥5x  0.0% | graduate  0.08% | EV: 2x'te-sat    -3%  tut    -4%  ATH/2    -5%
+        b 1,2-2x                                              n= 3336 | giriş medyan 1.16x | sonra ≥2x   6.6% ≥3x  3.3% ≥5x  1.2% | graduate  0.90% | EV: 2x'te-sat   -10%  tut   -14%  ATH/2   +12%
+        c 2-5x                                                n= 1360 | giriş medyan 1.73x | sonra ≥2x  14.0% ≥3x  6.0% ≥5x  1.8% | graduate  3.68% | EV: 2x'te-sat   -11%  tut   -19%  ATH/2   -13%
+        d ≥5x                                                 n=   96 | giriş medyan 1.20x | sonra ≥2x   4.2% ≥3x  1.0% ≥5x  0.0% | graduate 12.50% | EV: 2x'te-sat   -16%  tut   -21%  ATH/2   -20%
+
+   giriş anındaki fiyat (launch'a göre)
+        a <1,1x (eğri başa döndü)                             n= 2979 | giriş medyan 1.01x | sonra ≥2x   1.1% ≥3x  0.4% ≥5x  0.2% | graduate  0.20% | EV: 2x'te-sat    -3%  tut    -2%  ATH/2    -3%
+        b 1,1-1,5x                                            n= 1523 | giriş medyan 1.23x | sonra ≥2x   7.4% ≥3x  3.5% ≥5x  1.2% | graduate  0.59% | EV: 2x'te-sat   -11%  tut   -16%  ATH/2   +45%
+        c 1,5-3x                                              n= 1348 | giriş medyan 1.89x | sonra ≥2x  17.8% ≥3x  8.5% ≥5x  3.0% | graduate  2.97% | EV: 2x'te-sat   -17%  tut   -32%  ATH/2   -31%
+        d ≥3x                                                 n=  212 | giriş medyan 3.67x | sonra ≥2x  25.0% ≥3x  8.5% ≥5x  0.0% | graduate 17.92% | EV: 2x'te-sat   -13%  tut   -21%  ATH/2   -20%
+
+=== 5. Creator tamamen çıktıktan sonra en çok yürüyen 15 coin (+5 sn giriş) ===
+   RWA            85icBSJj… creator 1.47 SOL aldı, 15 sn'de çıktı | giriş 1.03x @ 25 sn | sonra max 14.2x | graduate True | tut 14.22x
+   AUtism         3JG4GCpN… creator 3.00 SOL aldı, 5 sn'de çıktı | giriş 1.07x @ 11 sn | sonra max 13.7x | graduate True | tut 13.71x
+   AOTC           7wUnRBJj… creator 0.04 SOL aldı, 300 sn'de çıktı | giriş 1.10x @ 306 sn | sonra max 13.4x | graduate True | tut 13.41x
+   BIRK           hHWxHzFk… creator 1.47 SOL aldı, 22 sn'de çıktı | giriş 1.11x @ 28 sn | sonra max 12.7x | graduate False | tut 0.91x
+   PCAT           6fYozkCk… creator 2.96 SOL aldı, 9 sn'de çıktı | giriş 1.36x @ 46 sn | sonra max 10.8x | graduate True | tut 10.80x
+   income         BvAN885q… creator 1.00 SOL aldı, 3 sn'de çıktı | giriş 1.29x @ 13 sn | sonra max 10.5x | graduate False | tut 0.78x
+   JOLLYBOT       FGgyc7rp… creator 3.16 SOL aldı, 3 sn'de çıktı | giriş 1.43x @ 8 sn | sonra max 10.3x | graduate True | tut 10.28x
+   MEME           5aNbZ9iu… creator 7.76 SOL aldı, 3 sn'de çıktı | giriş 1.09x @ 10 sn | sonra max 9.9x | graduate False | tut 0.92x
+   MKBHD          651xGRNr… creator 0.75 SOL aldı, 4 sn'de çıktı | giriş 1.18x @ 9 sn | sonra max 9.8x | graduate False | tut 0.85x
+   LARP           8bc49KFV… creator 2.96 SOL aldı, 8 sn'de çıktı | giriş 1.52x @ 15 sn | sonra max 9.7x | graduate True | tut 9.65x
+   paid           39Xw3Q2z… creator 3.00 SOL aldı, 9 sn'de çıktı | giriş 1.62x @ 16 sn | sonra max 8.6x | graduate False | tut 0.63x
+   Fly64          AicjnMzq… creator 2.50 SOL aldı, 9 sn'de çıktı | giriş 1.46x @ 14 sn | sonra max 8.5x | graduate True | tut 10.07x
+   PVE            Hqyfjsy6… creator 5.00 SOL aldı, 7 sn'de çıktı | giriş 1.77x @ 12 sn | sonra max 8.3x | graduate True | tut 8.28x
+   SUGAR          DZWQT5dq… creator 3.00 SOL aldı, 5 sn'de çıktı | giriş 1.79x @ 10 sn | sonra max 7.9x | graduate True | tut 8.20x
+   Zoinbase       K2RceVRG… creator 1.98 SOL aldı, 7 sn'de çıktı | giriş 1.75x @ 12 sn | sonra max 7.7x | graduate False | tut 0.58x
+
+csv: C:/Users/PD/project_claude/memecoin/analiz_ekleri/creator_satis_sonrasi.csv
+done 439s

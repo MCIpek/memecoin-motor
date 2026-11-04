@@ -1,0 +1,32 @@
+60s price vs launch (how much already up at entry): median 1.020  p90 2.09
+
+== rules: train = healthy days <=09-09 (n=13126, grad>600s 0.50%), test = healthy days >=09-15 (n=4417, grad>600s 0.86%) ==
+EV = buy at 60s price; graduates(>600s) sold at curve-full price; non-graduates valued at CURRENT curve price (weeks later); 3% costs. EV_x3 = same but graduates sold at 3x curve-full price (optimistic PumpSwap run).
+  ALL (buy everything)                 | train: n=13126 grad>600s  66 ( 0.50%, lift  1.0x) full@60s 550  EV    -9% | test: n= 4417 grad>600s  38 ( 0.86%, lift  1.0x) full@60s 194  EV   -10%
+  prior launches==0                    | train: n= 5418 grad>600s  27 ( 0.50%, lift  1.0x) full@60s 501  EV    -8% | test: n= 2451 grad>600s  28 ( 1.14%, lift  1.3x) full@60s 183  EV    -9%
+  prior==0 & !csold                    | train: n= 3821 grad>600s  14 ( 0.37%, lift  0.7x) full@60s 494  EV    -7% | test: n= 2107 grad>600s  20 ( 0.95%, lift  1.1x) full@60s 180  EV    -9%
+  prior==0 & ub>=6 & flow>=1           | train: n= 1211 grad>600s  24 ( 1.98%, lift  3.9x) full@60s 148  EV   -23% | test: n=  716 grad>600s  27 ( 3.77%, lift  4.4x) full@60s  96  EV   -18%
+  prior==0 & ub>=11 & flow>=3 & top<0.5 | train: n=  627 grad>600s  20 ( 3.19%, lift  6.3x) full@60s  36  EV   -31% | test: n=  411 grad>600s  23 ( 5.60%, lift  6.5x) full@60s  23  EV   -19%
+  ub>=21 & flow>=5                     | train: n= 1222 grad>600s  47 ( 3.85%, lift  7.6x) full@60s  72  EV   -36% | test: n=  472 grad>600s  25 ( 5.30%, lift  6.2x) full@60s  22  EV   -29%
+  ub>=51                               | train: n=  971 grad>600s  30 ( 3.09%, lift  6.1x) full@60s  42  EV   -33% | test: n=  250 grad>600s  17 ( 6.80%, lift  7.9x) full@60s  11  EV   -22%
+  flow>=15 & not full yet (x60<10)     | train: n=  663 grad>600s  43 ( 6.49%, lift 12.9x) full@60s  32  EV   -39% | test: n=  238 grad>600s  23 ( 9.66%, lift 11.2x) full@60s  14  EV   -30%
+  flow 5-40 & prior==0 & top<0.4       | train: n=  535 grad>600s  17 ( 3.18%, lift  6.3x) full@60s  10  EV   -35% | test: n=  380 grad>600s  14 ( 3.68%, lift  4.3x) full@60s   6  EV   -33%
+  d60==ADAY                            | train: n= 1579 grad>600s  19 ( 1.20%, lift  2.4x) full@60s 211  EV   -20% | test: n=  853 grad>600s  22 ( 2.58%, lift  3.0x) full@60s 104  EV   -18%
+  d60==ADAY & prior==0                 | train: n=  925 grad>600s  11 ( 1.19%, lift  2.4x) full@60s 187  EV   -17% | test: n=  649 grad>600s  18 ( 2.77%, lift  3.2x) full@60s 100  EV   -15%
+  buy2s>=20 SOL (bundle launch)        | train: n= 1012 grad>600s  23 ( 2.27%, lift  4.5x) full@60s 519  EV   -17% | test: n=  323 grad>600s  17 ( 5.26%, lift  6.1x) full@60s 182  EV   -12%
+  x60<1.5 & ub>=6 & prior==0           | train: n= 1357 grad>600s   5 ( 0.37%, lift  0.7x) full@60s   3  EV    -7% | test: n=  515 grad>600s   4 ( 0.78%, lift  0.9x) full@60s   0  EV    -5%
+
+== same rules, graduates sold at 3x curve-full price (optimistic; real ATH pending from GeckoTerminal) ==
+  ALL (buy everything)                 train EV    +1%   test EV    +3%
+  prior launches==0                    train EV    +8%   test EV    +9%
+  prior==0 & !csold                    train EV   +12%   test EV   +10%
+  prior==0 & ub>=6 & flow>=1           train EV   +15%   test EV   +30%
+  prior==0 & ub>=11 & flow>=3 & top<0.5 train EV   +12%   test EV   +42%
+  ub>=21 & flow>=5                     train EV    +6%   test EV   +20%
+  ub>=51                               train EV    -2%   test EV   +47%
+  flow>=15 & not full yet (x60<10)     train EV   +21%   test EV   +49%
+  flow 5-40 & prior==0 & top<0.4       train EV    +2%   test EV    +1%
+  d60==ADAY                            train EV    +8%   test EV   +18%
+  d60==ADAY & prior==0                 train EV   +22%   test EV   +28%
+  buy2s>=20 SOL (bundle launch)        train EV   +51%   test EV   +74%
+  x60<1.5 & ub>=6 & prior==0           train EV    +2%   test EV   +12%

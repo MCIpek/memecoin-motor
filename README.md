@@ -1,118 +1,106 @@
-# Memecoin Motoru
+# Memecoin Engine
 
-> **English summary.** A Solana research engine for Pump.fun launches: event-time data pipeline (WebSocket + IDL decoding), rule-based risk scoring and wallet-free, bonding-curve-aware paper trading. Between 1 Sep and 8 Oct 2026 it recorded 58,316 launches and 2.09M trades; every coin's fate was then read back from chain (graduation flag) and PumpSwap price history. **Verdict:** 63% of graduates are filled in the launch block by insiders; the dev sells at a median of 8 s; every outsider entry strategy tested (early-feature selection, post-dev-exit entry, smart-wallet copying, enter-and-ride, post-graduation minute trading) has negative expected value after costs, and the only positive edge exists at 0-second (same-block) latency. Reports are in Turkish: `ANALIZ_RAPORU_2026-10-14.md` (system/data/revenue), `ANALIZ_YUKSEK_X_KOINLER_2026-10-23.md` (58k-coin post-mortem and strategy tests), `KAPANIS_NOTU_2026-11-04.md` (closing note). Raw outputs and read-only analysis scripts live in `analiz_ekleri/`. The 10 GB SQLite database is not in the repo.
+A Solana research engine for Pump.fun launches: an event-time data pipeline (WebSocket + official IDL decoding), rule-based risk scoring and wallet-free, bonding-curve-aware paper trading. Between 1 Sep and 8 Oct 2026 it recorded 58,316 launches and 2.09M trades; every coin's fate was then read back from chain (graduation flag) and PumpSwap price history.
 
-Bu depo, `memecoin_analiz_motoru_v2.md` tasariminin uygulamasidir. Sistem veri
-toplar, kural karari ve cuzdansiz paper test uretir; gercek alim-satim yapmaz,
-cuzdan istemez ve henuz ML/agent calistirmaz.
+**Verdict (Nov 2026):** 63% of graduates are filled in the launch block by insiders; the dev sells at a median of 8 s; every outsider entry strategy tested (early-feature selection, post-dev-exit entry, smart-wallet copying, enter-and-ride, post-graduation minute trading) has negative expected value after costs. The only positive edge exists at 0-second (same-block) latency. The project is archived; see [CLOSING_NOTE_2026-11-04.md](CLOSING_NOTE_2026-11-04.md).
 
-> Guncel durum (14 Ekim 2026): Sistem PostgreSQL degil, yaklasik 10.2 GB
-> buyuklugundeki `data/memecoin_motor.db` SQLite veritabanini kullanir. Son
-> toplanan launch 8 Ekim 2026 tarihlidir. Mevcut sonuclar arastirma verisidir;
-> canli para kullanimi icin yeterli performans veya veri surekliligi kaniti yoktur.
+Documents:
+- [ANALYSIS_REPORT_2026-10-14.md](ANALYSIS_REPORT_2026-10-14.md): system, data quality and revenue-model review
+- [HIGH_X_COINS_ANALYSIS_2026-10-23.md](HIGH_X_COINS_ANALYSIS_2026-10-23.md): what happened to all 58,316 coins, and every strategy test
+- [CLOSING_NOTE_2026-11-04.md](CLOSING_NOTE_2026-11-04.md): decision, results, conditions to reopen
+- [DESIGN_v2.md](DESIGN_v2.md): the original design document the code implements
+- [TURKCE.md](TURKCE.md): all original Turkish documents in one file
+- `analiz_ekleri/`: raw outputs and read-only analysis scripts (the 10 GB SQLite database is not in the repo)
 
-## Mevcut kapsam
+The rest of this file is the operational README of the engine as it was at the end of collection.
 
-- Tek Solana programini `logsSubscribe` ile izleme
-- Tum slotlari `slotSubscribe` ile takip etme
-- Slot bosluklarini kaydetme ve sinirli HTTP backfill
-- Olay zamani, gelis zamani ve RPC zenginlestirme gecikmesini ayri tutma
-- SQLite WAL ile idempotent olay kaydi
-- Resmi Pump IDL discriminatorleriyle `Create`/`CreateV2` decode etme
-- `CreateEvent` icinden kesin mint, creator, bonding curve, quote ve rezervler
-- Dogrulanmis launch mintleri icin minimal token tablosu
-- WebSocket `TradeEvent` icinden RPC cagirmadan Buy/Sell decode etme
-- Yalniz collector acikken yakalanan yeni tokenlari varsayilan 600 saniye izleme
-- Cuzdan bazli alim/satim ve net token pozisyonu
-- 2/5/10/30/60 saniye olay-zamanli snapshotlar
-- Creator ve ilk 10 saniyedeki sinirli alicilar icin asenkron analiz kuyrugu
-- Sinirli imza gecmisi, acik SOL transferinden fonlayici adayi ve cuzdan grafigi
-- Yerel tekrar eden creator/creator satis gecmisi
-- Snapshot + creator + cuzdan grafiginden aciklanabilir `GIRME/IZLE/ADAY`
-  kural baseline'i (`baseline-v1`)
-- `ADAY` icin cuzdansiz, gecikme/fee/slippage/rezerv etkili sanal giris
-- 60/300 saniyelik net X, hedef vurma ve drawdown sonuc etiketleri
-- `GIRME/IZLE/ADAY` ayrimi yapmadan tum kararlar icin ham piyasa X etiketleri
-- Ilk 10 saniyedeki ilk 5 alici icin sniper davranis skoru
-- Sinirli tam transaction zenginlestirmesiyle fee payer, priority fee, Jito tip
-  ve bundle olasiligi kanitlari
-- `.env` ile RPC, program ve limit ayarlari
-- Launch `getTransaction` isteklerini WebSocket okuma dongusunden ayiran bellek
-  ici kuyruk, uc deneme ve basarisizlikta slot backfill
-- Canli paper worker icin yalniz son 120 saniyeyi kapsayan sinirli is yukü;
-  buyuk gecmis taramasi icin ayri `paper-run`
+> Status as of 14 Oct 2026: the system uses the ~10.2 GB SQLite database `data/memecoin_motor.db`, not PostgreSQL. The last collected launch is dated 8 Oct 2026. Results are research data; there is no evidence of sufficient performance or data continuity for live capital.
 
-## Toplanan veri ve mevcut sonuc
+## Current scope
 
-8 Ekim 2026 sonu itibariyla yerel veritabaninda:
+- Watch a single Solana program with `logsSubscribe`
+- Track every slot with `slotSubscribe`
+- Record slot gaps and run bounded HTTP backfill
+- Keep event time, arrival time and RPC enrichment delay separately
+- Idempotent event storage in SQLite WAL
+- Decode `Create`/`CreateV2` with the official Pump IDL discriminators
+- Exact mint, creator, bonding curve, quote and reserves from `CreateEvent`
+- Minimal token table for verified launch mints
+- Decode Buy/Sell from WebSocket `TradeEvent` without RPC calls
+- Track new tokens for 600 s (default) only while the collector is running
+- Per-wallet buy/sell and net token position
+- Event-time snapshots at 2/5/10/30/60 s
+- Asynchronous analysis queue for the creator and a bounded set of first-10-second buyers
+- Bounded signature history, funder candidate from explicit SOL transfers, wallet graph
+- Local repeat-creator and creator-sell history
+- Explainable `GIRME/IZLE/ADAY` (REJECT/WATCH/CANDIDATE) rule baseline from snapshot + creator + wallet graph (`baseline-v1`)
+- Wallet-free virtual entry for `ADAY` with latency, fees, slippage and reserve impact
+- 60/300 s net X, target-hit and drawdown outcome labels
+- Raw market X labels for all decisions, regardless of class
+- Sniper behaviour score for the first 5 buyers in the first 10 s
+- Fee payer, priority fee, Jito tip and bundle-likelihood evidence from bounded full-transaction enrichment
+- RPC, program and limits configured via `.env`
+- In-memory queue that separates launch `getTransaction` calls from the WebSocket read loop, three attempts, slot backfill on failure
+- Live paper worker bounded to the last 120 s; large historical passes run via `paper-run`
 
-| Kayit | Adet |
+## Collected data and current result
+
+In the local database at the end of 8 Oct 2026:
+
+| Record | Count |
 |---|---:|
-| Pump launch | 58.316 |
-| Pump trade | 2.094.977 |
-| En az bir trade'i olan token | 53.591 |
-| Snapshot / risk karari | 291.358 |
-| Token-cuzdan pozisyonu | 608.540 |
-| Analiz edilmis cuzdan | 14.568 |
-| Sniper skoru | 5.615 |
-| Paper-v2 giris denemesi | 30.749 |
-| Yurutulebilir paper sonucu | 4.389 |
+| Pump launches | 58,316 |
+| Pump trades | 2,094,977 |
+| Tokens with at least one trade | 53,591 |
+| Snapshots / risk decisions | 291,358 |
+| Token-wallet positions | 608,540 |
+| Analyzed wallets | 14,568 |
+| Sniper scores | 5,615 |
+| Paper-v2 entry attempts | 30,749 |
+| Executable paper outcomes | 4,389 |
 
-Veri 1 Eylul-8 Ekim 2026 takvim araliginda olsa da collector yalniz 18 farkli
-gunde calismistir. Bu nedenle veri 37 gunluk kesintisiz bir zaman serisi degildir.
+Although the data spans 1 Sep to 8 Oct 2026, the collector ran on only 18 distinct days (36 sessions, 84.6 hours in total, 9.6% of the calendar). It is not a continuous 37-day series. Trade capture was healthy only on 1-17 Sep; after 18 Sep the launch `getTransaction` queue backed up on the free RPC and trades of most coins were dropped (see the high-X analysis, section 2).
 
-### Snapshot kalitesi
+### Snapshot quality
 
-| Hedef yas | Zamaninda | Gec | Zamaninda oran |
+| Target age | On time | Late | On-time share |
 |---|---:|---:|---:|
-| 2 saniye | 2.313 | 55.968 | %4.0 |
-| 5 saniye | 5.880 | 52.401 | %10.1 |
-| 10 saniye | 13.089 | 45.190 | %22.5 |
-| 30 saniye | 15.485 | 42.781 | %26.6 |
-| 60 saniye | 16.438 | 41.813 | %28.2 |
+| 2 s | 2,313 | 55,968 | 4.0% |
+| 5 s | 5,880 | 52,401 | 10.1% |
+| 10 s | 13,089 | 45,190 | 22.5% |
+| 30 s | 15,485 | 42,781 | 26.6% |
+| 60 s | 16,438 | 41,813 | 28.2% |
 
-Mevcut restart mantigi, onceki acik `snapshot_tracking` kayitlarini yeni process
-baslangicinda kapatip eksik snapshotlari sonradan uretebilir. Bu satirlar `LATE`
-etiketi tasir fakat collector'in kapali oldugu araligi guvenilir bicimde temsil
-etmez. Model, kalibrasyon ve ana performans raporlarinda yalniz kesintisiz oturum
-icinde uretilmis `ON_TIME + CONTINUOUS` ornekler kullanilmalidir.
+The restart logic closes previous open `snapshot_tracking` rows at the new process start and can then produce the missing snapshots retroactively. Those rows carry `LATE` but do not reliably represent the interval during which the collector was down. Models, calibration and headline performance should use only `ON_TIME + CONTINUOUS` samples produced inside an uninterrupted session.
 
-Slot bosluklarinda 207 kucuk gap backfill edilmis; 1.276 buyuk gap limit nedeniyle
-atlanmistir. Atlanan araliklar toplam 11.6 milyon slota ulasir. Bu sayi collector'in
-kapali oldugu uzun araliklari da icerebilir ve kesintisiz kapsama olarak yorumlanmaz.
+207 small slot gaps were backfilled; 1,276 large gaps were skipped due to the limit. The skipped intervals total 11.6 million slots, which includes long periods with the collector down, and must not be read as continuous coverage.
 
-### Paper-v2 baseline sonucu
+### Paper-v2 baseline result
 
-300 saniyelik, `CONTINUOUS`, kanonik `ADAY` grubunda su an yalniz 163 sonuc vardir:
+In the 300 s, `CONTINUOUS`, canonical `ADAY` group there are only 163 outcomes:
 
-| Metrik | Sonuc |
+| Metric | Result |
 |---|---:|
-| Medyan gorulebilen tepe | 0.945x |
-| Medyan final | 0.804x |
-| Medyan kademeli strateji | 0.872x |
-| Medyan maksimum dusus | %27.3 |
-| 1.5x gorulme | %12.9 |
-| 2x gorulme | %9.2 |
-| 3x gorulme | %2.5 |
-| 5x gorulme | %0.6 |
-| Kademeli stratejide karli | %17.2 |
+| Median visible peak | 0.945x |
+| Median final | 0.804x |
+| Median staged strategy | 0.872x |
+| Median max drawdown | 27.3% |
+| Saw 1.5x | 12.9% |
+| Saw 2x | 9.2% |
+| Saw 3x | 2.5% |
+| Saw 5x | 0.6% |
+| Profitable under the staged strategy | 17.2% |
 
-Bu baseline pozitif beklenti gostermemektedir ve orneklem henuz kucuktur. Gercek
-para icin kullanilamaz. `IZLE` grubunun daha cok yukselen token icermesi, tek
-aday sinifinin erken Pump piyasasindaki konsantre momentumu fazla cezalandirdigini
-gosterir; esikler kor test olmadan gevsetilmemelidir.
+This baseline shows no positive expectancy and the sample is small. It cannot be used for real capital. The `IZLE` group contains more rising tokens than `ADAY`, which shows that the single candidate class over-penalizes concentrated momentum in the early Pump market; thresholds must not be loosened without a blind test.
 
-Pump IDL, resmi `pump-fun/pump-public-docs` deposundan
-`src/memecoin_motor/resources/pump.json` altina sabitlenmistir. Canli islemler
-IDL instruction ve event discriminatorleriyle decode edilir; islemde gorulen her
-mint artik yeni launch kabul edilmez.
+The Pump IDL is pinned from the official `pump-fun/pump-public-docs` repository at `src/memecoin_motor/resources/pump.json`. Live transactions are decoded with IDL instruction and event discriminators; a mint seen in a transaction is no longer assumed to be a new launch.
 
-## Gereksinimler
+## Requirements
 
-- Python 3.11 veya ustu
-- Internet erisimi olan Solana HTTP ve WebSocket RPC
+- Python 3.11 or newer
+- Solana HTTP and WebSocket RPC with internet access
 
-## Kurulum
+## Setup
 
 PowerShell:
 
@@ -123,15 +111,11 @@ python -m pip install -e ".[dev]"
 Copy-Item .env.example .env
 ```
 
-Depoda yerel `.env` olusturulmustur ve resmi Pump bonding-curve programi
-`6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P` izlenir. Bunun icin Pump.fun
-hesabi veya Pump API anahtari gerekmez. Veri Solana RPC/WebSocket'ten okunur.
+The default `.env` watches the official Pump bonding-curve program `6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P`. No Pump.fun account or API key is needed; data is read from Solana RPC/WebSocket.
 
-Varsayilan Solana public RPC ucretsizdir fakat rate-limit ve gecikme garantisi
-yoktur. Veri toplama dogrulanirsa daha guvenilir bir RPC saglayicisinin HTTP ve
-WebSocket adresleri `.env` icinde degistirilebilir.
+The default public Solana RPC is free but has no rate-limit or latency guarantee (measured chain-to-client latency: median 22 s). A more reliable provider's HTTP and WebSocket URLs can be set in `.env`.
 
-## Calistirma
+## Running
 
 ```powershell
 memecoin-motor doctor
@@ -140,17 +124,17 @@ memecoin-motor redecode
 memecoin-motor collect
 ```
 
-Baska terminalde durum:
+In another terminal:
 
 ```powershell
 memecoin-motor status
 memecoin-motor snapshots --limit 20
-memecoin-motor wallets MINT_ADRESI --limit 20
-memecoin-motor wallet CUZDAN_ADRESI
+memecoin-motor wallets MINT_ADDRESS --limit 20
+memecoin-motor wallet WALLET_ADDRESS
 memecoin-motor creators --limit 20
-memecoin-motor creator CREATOR_ADRESI
+memecoin-motor creator CREATOR_ADDRESS
 memecoin-motor score
-memecoin-motor score --mint MINT_ADRESI
+memecoin-motor score --mint MINT_ADDRESS
 memecoin-motor scores --limit 20
 memecoin-motor paper-run
 memecoin-motor paper --limit 20
@@ -160,169 +144,95 @@ memecoin-motor outcomes-v2 --limit 20
 memecoin-motor missed-watchlist --horizon 300 --minimum-x 1.5
 memecoin-motor calibrate-x --horizon 300 --minimum-samples 30
 memecoin-motor x-bands --horizon 300 --limit 30
-memecoin-motor sniper MINT_ADRESI --limit 20
+memecoin-motor sniper MINT_ADDRESS --limit 20
 memecoin-motor snipers --limit 50
 memecoin-motor sniper-backfill
 ```
 
-`collect` canli veri hattidir. Canli paper worker yalniz yakin zamandaki yeni
-kararlari kucuk partilerle isler. `paper-run` ise eski veriyi buyuk partilerle
-paper-v2 motorundan gecirir; SQLite kullaniminda canli collector ile ayni anda
-calistirilmasi gecikme yaratabilir.
+`collect` is the live pipeline. The live paper worker only processes recent decisions in small batches. `paper-run` pushes historical data through the paper-v2 engine in large batches; with SQLite, running it alongside the live collector causes lock waits.
 
-Test:
+Tests:
 
 ```powershell
 pytest
 ```
 
-## Veri tablolari
+## Tables
 
-- `chain_events`: programla iliskili islemler ve zaman/tamlik bilgisi
-- `tokens_minimal`: gozlenen mintler icin minimal kayit
-- `pump_launches`: decode edilmis Pump launch ayrintilari ve ilk rezervler
-- `pump_trades`: izleme penceresindeki IDL-decode Buy/Sell olaylari
-- `wallet_positions`: token/cuzdan bazli alim, satim ve net pozisyon
-- `snapshot_tracking`: kesintisiz takip penceresinin baslangic/bitisi
-- `token_snapshots`: 2/5/10/30/60 saniye akim ve yogunlasma ozellikleri
-- `stream_gaps`: tespit edilen ve backfill edilen slot bosluklari
-- `wallet_analysis_queue`: hizli hattan ayrilmis creator/ilk alici is kuyrugu
-- `wallet_profiles`: tarama kapsami ve muhtemel fonlayici sonucu
-- `wallet_edges`: kanit islemiyle fonlama grafigi kenarlari
-- `risk_decisions`: snapshot yasi bazinda puan, guven, nedenler ve kullanilan
-  ozelliklerin dondurulmus kopyasi
-- `paper_positions`: legacy-v1 sanal giris veya acik basarisizlik nedeni
-- `paper_outcomes`: legacy-v1 60/300 saniye sonuc etiketleri
-- `market_outcomes`: legacy-v1 ham piyasa X etiketleri
-- `transaction_enrichment_queue`: yalniz ilk alicilar icin sinirli RPC kuyrugu
-- `early_trade_metadata`: fee payer, compute budget, priority fee ve Jito tip izi
-- `sniper_scores`: tekrar erken giris, hizli satis, ayni slot/fonlayici/fee payer
-  ile aciklanabilir sniper skoru
-- `wallet_behavior_stats`: cüzdanin farkli launchlardaki erken giris sayaci
-- `paper_v2_positions`: 8 saniyelik fill penceresi, rezerv girdileri ve 10/30/60 deney gruplari
-- `executable_outcomes_v2`: 0.1 SOL icin rezerv etkili X, kademeli cikis ve gap kalitesi
-- `x_band_calibration`: yalniz `CONTINUOUS` sonuclardan olusan ampirik X bantlari
-- `service_state`: collector checkpoint bilgisi
+- `chain_events`: program-related transactions with timing and completeness
+- `tokens_minimal`: minimal record per observed mint
+- `pump_launches`: decoded Pump launch details and initial reserves
+- `pump_trades`: IDL-decoded Buy/Sell events inside the tracking window
+- `wallet_positions`: per token/wallet buys, sells and net position
+- `snapshot_tracking`: start/end of the uninterrupted tracking window
+- `token_snapshots`: 2/5/10/30/60 s flow and concentration features
+- `stream_gaps`: detected and backfilled slot gaps
+- `wallet_analysis_queue`: creator/first-buyer work queue, separated from the fast path
+- `wallet_profiles`: scan coverage and likely-funder result
+- `wallet_edges`: funding-graph edges with the evidence transaction
+- `risk_decisions`: score, confidence, reasons and a frozen copy of the features per snapshot age
+- `paper_positions`: legacy-v1 virtual entry or explicit failure reason
+- `paper_outcomes`: legacy-v1 60/300 s outcome labels
+- `market_outcomes`: legacy-v1 raw market X labels
+- `transaction_enrichment_queue`: bounded RPC queue for first buyers only
+- `early_trade_metadata`: fee payer, compute budget, priority fee and Jito tip trace
+- `sniper_scores`: explainable sniper score (repeat early entry, quick sell, same slot/funder/fee payer)
+- `wallet_behavior_stats`: per-wallet counter of early entries across launches
+- `paper_v2_positions`: 8 s fill window, reserve inputs and 10/30/60 s experiment groups
+- `executable_outcomes_v2`: reserve-aware X for 0.1 SOL, staged exit and gap quality
+- `x_band_calibration`: empirical X bands from `CONTINUOUS` outcomes only
+- `service_state`: collector checkpoint
 
-Veritabani varsayilan olarak `data/memecoin_motor.db` konumundadir ve Git'e eklenmez.
-Kod tabani henuz PostgreSQL kullanmaz. Buyuyen veri, eszamanli worker kilitleri ve
-analiz sorgulari nedeniyle PostgreSQL'e kontrollu migrasyon planlanmaktadir;
-mevcut SQLite dosyasi migrasyon sonrasinda salt-okunur arsiv olarak korunmalidir.
-`redecode`, kayitli ham islemleri guncel IDL ile tekrar cozer ve eski kaba
-extractor'dan kalan dogrulanmamis Pump mintlerini minimal tablodan temizler.
+The database defaults to `data/memecoin_motor.db` and is not committed. The code does not use PostgreSQL. `redecode` re-decodes stored raw transactions with the current IDL and removes unverified Pump mints left by the old coarse extractor from the minimal table.
 
 ## Risk baseline-v1
 
-Bu katman tahmin modeli degildir ve islem acmaz. Net quote akisi, benzersiz
-alici, tek/top-5 alici yogunlasmasi, creator satisi/gecmisi, snapshot kalitesi,
-cuzdan analiz kapsami ve ortak fonlayiciyi puanlar. `ADAY` en erken 10 saniyede
-ve yeterli guvenle verilir. Kritik creator satisi disinda 2/5 saniyelik yetersiz
-veri `GIRME` degil `IZLE` sonucudur. Her karar nedenleri ve warnings alanlariyla
-saklanir; esikler paper test verisi birikince kalibre edilmelidir.
+This layer is not a prediction model and opens no positions. It scores net quote flow, unique buyers, single/top-5 buyer concentration, creator sells/history, snapshot quality, wallet-analysis coverage and shared funders. `ADAY` is given at 10 s at the earliest and only with enough confidence. Apart from a critical creator sell, insufficient data at 2/5 s yields `IZLE`, not `GIRME`. Every decision is stored with reasons and warnings.
 
-## Cuzdansiz paper test
+## Wallet-free paper test
 
-Paper motoru yalniz veritabanindaki olaylari okur; private key, seed phrase,
-cuzdan adresi veya RPC `sendTransaction` kullanmaz. V2 motoru 2 saniye sanal
-gecikme sonrasinda, karar anindan en gec 8 saniyeye kadar fill arar. Son mikro
-trade fiyatini degil, 0.1 SOL pozisyonun sanal rezervlerdeki yurutulebilir
-giris/cikis degerini kullanir. Ucret, slippage ve rezerv etkisi dahil edilir.
+The paper engine only reads events from the database; it uses no private key, seed phrase, wallet address or `sendTransaction`. The V2 engine looks for a fill from 2 s after the decision up to 8 s. It does not multiply a position by the last micro-trade price; it computes the executable entry/exit value of a 0.1 SOL position on the virtual reserves, including fees, slippage and reserve impact.
 
-Bu ilk maliyet baseline'idir: priority fee/Jito degerleri simdilik sabittir,
-gercek block landing veya Jito acik artirmasi replay edilmez. Bu nedenle sonuc
-canli uygulanabilirlik kaniti degil, iyimser backtestleri elemek icin muhafazakar
-bir testtir.
+This is a first cost baseline: priority fee/Jito values are constant and real block landing or Jito auctions are not replayed. The result is therefore not proof of live executability but a conservative filter against optimistic backtests.
 
-`executable_outcomes_v2`, selection bias olusmamasi icin yalniz `ADAY`lari
-degil tum karar siniflarini etiketler. Yalniz `is_canonical=1` satirlari ana
-paper performansidir; digerleri deney ve kural denetimi icindir.
+`executable_outcomes_v2` labels all decision classes, not only `ADAY`, to avoid selection bias. Only `is_canonical=1` rows are headline paper performance; the rest are for experiments and rule audits.
 
-## Paper-v2 ve X kalibrasyonu
+## Paper-v2 and X calibration
 
-V2 motoru karar anindan itibaren en fazla 8 saniye icinde fill arar. Kucuk bir
-trade'in fiyatini pozisyona carpmaz; o slotun sanal quote/token rezervlerinde
-0.1 SOL'un alabilecegi tokeni ve bu tokenlerin satilabilecegi net SOL'u hesaplar.
-Ag ucretleri, Pump event fee tahmini, slippage ve rezerv etkisi uygulanir.
-Cozulememis slot gap'i ile cakisan sonuc `GAP_AFFECTED` olur ve kalibrasyona girmez.
+The V2 engine looks for a fill within 8 s of the decision. It computes how many tokens 0.1 SOL buys on that slot's virtual quote/token reserves and the net SOL those tokens could be sold for, applying network fees, the Pump event fee estimate, slippage and reserve impact. An outcome overlapping an unresolved slot gap is `GAP_AFFECTED` and excluded from calibration.
 
-Ayni tokenin ilk basarili `ADAY` girisi kanonik islemdir. 10/30/60 saniye
-sonuclari deney gruplari olarak saklanir; `IZLE/GIRME` sanal etiketleri yalniz
-kural denetiminde kullanilir. Strateji %40 @ 1.5x, %30 @ 2x, %20 @ 3x satar;
-kalan kisim alici/satici ivmesi, negatif akis ve %15 geri cekilme birlikteyse cikar.
+The first successful `ADAY` entry per token is canonical. 10/30/60 s outcomes are stored as experiment groups; `IZLE/GIRME` virtual labels are only for rule audits. The strategy sells 40% at 1.5x, 30% at 2x, 20% at 3x and exits the remainder when buyer/seller momentum, negative flow and a 15% pullback coincide.
 
-```powershell
-memecoin-motor paper-run
-memecoin-motor outcomes-v2 --limit 20
-memecoin-motor missed-watchlist --horizon 300 --minimum-x 1.5
-memecoin-motor calibrate-x --horizon 300 --minimum-samples 30
-memecoin-motor x-bands --horizon 300
-```
+Calibration reports p25/p50/p75/p90 executable X and 1.5x/2x/3x/5x hit rates per decision age, decision class, risk and opportunity bucket.
 
-Kalibrasyon karar yasi, karar sinifi, risk ve firsat kovalarina gore
-p25/p50/p75/p90 yurutulebilir X ile 1.5x/2x/3x/5x gorulme oranlarini verir.
+## Sniper and bundle evidence
 
-## Sniper ve bundle kanitlari
+The sniper layer binds no wallet and sends no transactions. For up to 5 unique buyers in the first 10 s after launch, the full transaction is read via slow, asynchronous RPC. First entry age, same-slot buyers, repeat early entries across launches, quick sells, shared funder, shared fee payer, priority fee, transfers to official Jito tip accounts and the `jitodontfront` marker are scored.
 
-Sniper katmani cüzdan baglamaz ve transaction gondermez. Launch sonrasi ilk 10
-saniyedeki en fazla 5 benzersiz alicinin tam islemi asenkron/dusuk hizli RPC ile
-okunur. Ilk giris yasi, ayni slot alicilari, farkli launchlarda tekrar erken
-giris, hizli satis, ortak fonlayici, ortak fee payer, priority fee, resmi Jito
-tip hesabi transferi ve `jitodontfront` izi puanlanir.
+`JITO_ROUTED` only means a transfer to one of the official tip accounts was seen; `bundle_likelihood=HIGH/MEDIUM/LOW` is a heuristic from on-chain evidence. Without the bundle ID, same slot or a Jito tip alone is not proof, so the system never emits `BUNDLE_CONFIRMED`.
 
-`JITO_ROUTED` yalniz resmi tip hesaplarindan birine transfer goruldugunu;
-`bundle_likelihood=HIGH/MEDIUM/LOW` ise zincir ustu kanitlardan uretilen
-heuristigi belirtir. Bundle ID bilinmeden ayni slot veya Jito tip tek basina
-kesin bundle kaniti degildir; sistem bu nedenle `BUNDLE_CONFIRMED` uretmez.
-Jito bundle'lari en fazla 5 transaction'dan olusur ve ayni slotta atomik
-calisir. Public RPC limiti nedeniyle her trade degil yalniz erken secili
-islemler zenginlestirilir.
+## Known limits
 
-## Bilinen sinirlar
+- Free RPC is not adequate for live trading.
+- Launch `getTransaction` calls run in an in-memory queue with three attempts; the queue is not persistent and pending work is lost on shutdown. On the free RPC this queue backed up to hours after 18 Sep 2026 and the 600 s trade window of most coins was missed. Fix: decode the launch from the WebSocket log (`CreateEvent` is present in 97% of launch logs) and use RPC only as fallback.
+- Gap backfill skips large gaps for cost/rate-limit reasons.
+- Pump launch and bonding-curve Buy/Sell decoders exist; post-migration PumpSwap trades are not covered.
+- Wallet scans are bounded to 2x100 signatures by default to protect the free RPC.
+- `TRADE_TRACK_SECONDS` defaults to 600 s; the whole Pump market is not recorded.
+- Time with the collector down is not complete. The restart logic can produce missing snapshots as `LATE`; those rows are not training or headline data.
+- SQLite: heavy `paper-run`, report or enrichment passes alongside the live collector cause lock waits.
+- Roughly 111k wallet-enrichment and 20k transaction-enrichment jobs are pending; sniper/wallet coverage does not represent all tokens.
+- The reliable canonical paper sample at 300 s is only 163 rows; not a balanced training set.
+- Dynamic landing/Jito replay, PumpSwap, ML and agentic layers do not exist.
+- Mayhem-mode coins (36% of launches) inflate virtual reserves without real SOL; their prices are not executable and must be excluded from analysis.
 
-- Ucretsiz RPC canli islem icin yeterli kabul edilmez.
-- Launch `getTransaction` islemleri WebSocket'ten ayrilmis bellek ici kuyrukta
-  uc kez denenir; son basarisizlikta ilgili slot backfill'e verilir. Kuyruk henuz
-  kalici degildir ve process kapanisinda bekleyen isler kaybolabilir.
-- Gap backfill, buyuk bosluklari maliyet/rate-limit nedeniyle atlar.
-- Pump launch ve bonding-curve Buy/Sell snapshot decoderlari vardir; PumpSwap
-  migrasyon sonrasi islemler henuz kapsamda degildir.
-- Cuzdan taramasi ucretsiz RPC'yi korumak icin varsayilan olarak 2x100 imzayla
-  sinirlidir. Bu sinira ulasilirsa bulunan transfer `RECENT_FUNDING_CANDIDATE`,
-  gecmis sonuna ulasilirsa `FIRST_FUNDING` olarak etiketlenir. Transfer olmayan
-  bakiye farklarindan fonlayici tahmini yapilmaz.
-- `TRADE_TRACK_SECONDS` varsayilan 600 saniyedir; tum Pump piyasasi kaydedilmez.
-- Collector kapaliyken gecen sure eksiksiz degildir. Mevcut restart/tracking
-  mantigi eksik snapshotlari sonradan `LATE` olarak uretebildigi icin bu satirlar
-  egitim veya ana performans verisi kabul edilmez.
-- Veritabani SQLite'tir; agir `paper-run`, rapor veya enrichment islemleri canli
-  collector ile ayni anda calistirilirsa kilit beklemesi ve gecikme yaratabilir.
-- Wallet enrichment kuyruğunda 111 bin, transaction enrichment kuyruğunda 20 bin
-  civarinda bekleyen is vardir; sniper/cuzdan kapsami tum tokenlari temsil etmez.
-- 300 saniyelik guvenilir kanonik paper orneklemi yalniz 163 satirdir; ML icin
-  yeterli ve donemler arasi dengeli bir egitim seti degildir.
-- Dinamik landing/Jito replay, PumpSwap, ML ve agentic katmanlar henuz yoktur.
-- Public RPC uzerinde uzun sureli uretim kullanimi hedeflenmez.
+## Development priorities (as they stood before closure)
 
-## Gelistirme onceligi
-
-1. **Collection session ve continuity:** Her collector calismasini ayri oturum
-   olarak kaydet; beklenmedik kapanista son gercek slot/zamani kullan; kesinti
-   uzerinden geriye donuk snapshot uretme.
-2. **Veri kullanilabilirlik etiketi:** Eski `LATE` satirlari silmeden
-   `LEGACY_LATE/UNUSABLE` olarak ayir; model ve raporlari yalniz
-   `ON_TIME + CONTINUOUS` veriyle calistir.
-3. **PostgreSQL migrasyonu:** Bolumlenmis `pump_trades`, ayri baglanti havuzlari,
-   `FOR UPDATE SKIP LOCKED` kuyruklari ve ham JSON saklama suresi uygula.
-4. **Guvenilir RPC/Geyser:** Canli collector'u wallet/sniper arastirma
-   cagrisindan ayir; saglayici gecikmesi, timeout, 429 ve gap metrikleri tut.
-5. **Paper-v2 tamamlama:** Ayni mintin 10/30/60 deneylerini tek basari gibi
-   saymadan kanonik sonuclari backfill et; tarih sirali train/test donemleri kur.
-6. **Iki aday sinifi:** Organik/dagitik aday ile konsantre-yuksek-risk momentum
-   adayini farkli pozisyon, fill ve cikis kurallariyla A/B paper test et.
-7. **PumpSwap takibi:** Bonding curve migrasyonu sonrasi havuz, swap, rezerv ve
-   1 saat/6 saat/24 saat yurutulebilir X sonucunu ekle.
-8. **ML en son:** Birden fazla piyasa doneminden birkac bin guvenilir kanonik
-   sonuc birikince kalibre `P(1.5x)`, `P(2x)`, `P(dump)` ve net getiri modelleri kur.
-
-Ilk teknik hedef daha fazla veri toplamak degil, hangi saniyelerde gercekten
-kesintisiz veri goruldugunu kanitlayan collection-session modelidir.
+1. **Collection sessions and continuity:** record each collector run as a session; on unexpected shutdown use the last real slot/time; never produce snapshots across a gap.
+2. **Data usability flag:** keep old `LATE` rows but mark them `LEGACY_LATE/UNUSABLE`; run models and reports on `ON_TIME + CONTINUOUS` only.
+3. **Decode launches from logs:** remove the RPC queue bottleneck.
+4. **Reliable RPC/Geyser:** separate the live collector from wallet/sniper research calls; keep latency, timeout, 429 and gap metrics.
+5. **Complete paper-v2:** backfill canonical outcomes without counting 10/30/60 experiments as separate successes; time-ordered train/test periods.
+6. **Two candidate classes:** A/B paper test organic vs concentrated-momentum candidates with different position, fill and exit rules.
+7. **PumpSwap tracking:** post-migration pool, swaps, reserves and 1h/6h/24h executable X.
+8. **ML last:** only after a few thousand reliable canonical outcomes across several market regimes.
